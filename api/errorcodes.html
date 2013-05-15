@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Playtomic: Error codes</title>
+	<meta name="description" content="Error codes for the Playtomic leaderboard, player levels and more.">
+	<link href='../css/bootstrap/bootstrap.min.css' rel='stylesheet' type='text/css'>
+	<link href='../css/custom.css' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	
+	<div id="sponsor">
+		<div class="container">
+			Sponsor this initiative and share your message with game developers everywhere.  <a href="mailto:benlowry@outlook.com">email</a>
+		</div>
+	</div>
+	
+	<header>
+		<div class="container">
+			<a href="http://playtomic.org/"><img src="../assets/playtomic.png" alt="Playtomic" title="Playtomic" /></a>
+			<ul>
+				<li><a href="/">Home</a></li>				
+				<li><a href="/server.html">Server setup</a></li>
+				<li><a href="/apis.html">API documentation</a></li>
+				<li><a href="http://lvlboost.com/">Game analytics</a></li>
+			</ul>
+		</div>
+	</header>
+		
+	<div id="content2">
+				
+		<div class="row">
+			
+			<div class="span3">
+		
+				<div class="docnav">
+
+					<h2>API documentation</h2>
+					<ul>
+						<li><a href="as3.html">ActionScript 3</a></li>
+						<li><a href="android.html">Android / Java</a></li>
+						<li><a href="html5.html">HTML5 / JavaScript</a></li>
+						<li><a href="ios.html">iOS / Objective C</a></li>
+						<li><a href="csharp.html">Mono and .NET</a></li>
+						<li><a href="unity3d.html">Unity3d</a></li>
+					</ul>
+					
+					<h2>Supplements</h2>
+					<ul>
+						<li><a href="errorcodes.html">Error codes</a></li>
+					</ul>
+				</div>
+			
+			</div>
+			
+			<div class="span7">
+				
+				<a name="settingup"></a>
+				<div class="section">
+					
+					<h1>Error codes</h1>
+					<p>The server and in some cases API clients will return these codes when requests do not work properly.</p>
+					
+					<table class="table table-striped">
+						<tr>
+							<th>Code</th>
+							<th>Section</th>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td>0</td>
+							<td>All</td>
+							<td>No problem.</td>
+						</tr>						
+						<tr>
+							<td>1</td>
+							<td>All</td>
+							<td>A general error occurred, this often means a communication problem.</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>All</td>
+							<td>Invalid game credentials.  Make sure you set your public and private keys up properly in your database.</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td>All</td>
+							<td>Request timed out.</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td>All</td>
+							<td>Invalid request.</td>
+						</tr>
+						<tr>
+							<td>100</td>
+							<td>GeoIP</td>
+							<td>GeoIP API has been disabled for this game.</td>
+						</tr>
+						<tr>
+							<td>200</td>
+							<td>Leaderboards</td>
+							<td>Leaderboard API has been disabled for this game.</td>
+						</tr>
+						<tr>
+							<td>201</td>
+							<td>Leaderboards</td>
+							<td>The player's name was not provided when saving a score.</td>
+						</tr>
+						<tr>
+							<td>202</td>
+							<td>Leaderboards</td>
+							<td>Leaderboard API has been disabled for this game.</td>
+						</tr>
+						<tr>
+							<td>203</td>
+							<td>Leaderboards</td>
+							<td>Player is banned from submitting scores.</td>
+						</tr>
+						<tr>
+							<td>204</td>
+							<td>Leaderboards</td>
+							<td>Score was not saved because it was not the player's best.  You can allow players to have
+								more than one score by specifying allowduplicates=true in your save options.</td>
+						</tr>
+						<tr>
+							<td>300</td>
+							<td>GameVars</td>
+							<td>GameVars API has been disabled for this game.</td>
+						</tr>
+						<tr>
+							<td>400</td>
+							<td>PlayerLevels</td>
+							<td>PlayerLevel API has been disabled for this game.</td>
+						</tr>
+						<tr>
+							<td>401</td>
+							<td>PlayerLevels</td>
+							<td>Invalid rating value (must be 1 - 10)</td>
+						</tr>
+						<tr>
+							<td>402</td>
+							<td>PlayerLevels</td>
+							<td>Player has already rated this level.</td>
+						</tr>
+						<tr>
+							<td>403</td>
+							<td>PlayerLevels</td>
+							<td>Missing level name</td>
+						</tr>
+						<tr>
+							<td>404</td>
+							<td>PlayerLevels</td>
+							<td>Missing level id</td>
+						</tr>
+						<tr>
+							<td>405</td>
+							<td>PlayerLevels</td>
+							<td>Level already exists</td>
+						</tr>
+					</table>
+							
+				</div>
+					
+			</div>
+		</div>
+	</div>
+	
+
+	<footer>
+		<div class="container">
+			&copy; 2013 <a href="http://lvlboost.com/">lvlboost</a>.  Server and client software are released under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.
+		</div>
+	</footer>
+	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-40077834-4', 'playtomic.org');
+	  ga('send', 'pageview');
+
+	</script>
+	
+</body>
+</html>

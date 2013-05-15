@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Playtomic: iOS API documentation</title>
+	<meta name="description" content="Free, open source, self-hosted leaderboards and more for iOS games.">
+	<link href='../css/bootstrap/bootstrap.min.css' rel='stylesheet' type='text/css'>
+	<link href='../css/custom.css' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	
+	<div id="sponsor">
+		<div class="container">
+			Sponsor this initiative and share your message with game developers everywhere.  <a href="mailto:benlowry@outlook.com">email</a>
+		</div>
+	</div>
+	
+	<header>
+		<div class="container">
+			<a href="http://playtomic.org/"><img src="../assets/playtomic.png" alt="Playtomic" title="Playtomic" /></a>
+			<ul>
+				<li><a href="/">Home</a></li>				
+				<li><a href="/serveresponse.html">Server setup</a></li>
+				<li><a href="/apis.html">API documentation</a></li>
+				<li><a href="http://lvlboost.com/">Game analytics</a></li>
+			</ul>
+		</div>
+	</header>
+		
+	<div id="content2">
+				
+		<div class="row">
+			
+			<div class="span3">
+		
+				<div class="docnav">
+					<h2>API Sections</h2>
+					<ul>
+						<li><a href="#settingup">Setting up</a></li>
+						<li><a href="#leaderboards">Leaderboards</a></li>
+						<li><a href="#playerlevels">Player levels</a></li>
+						<li><a href="#gamevars">GameVars</a></li>
+						<li><a href="#geoip">GeoIP</a></li>
+					</ul>
+				
+					<h2>API documentation</h2>
+					<ul>
+						<li><a href="as3.html">ActionScript 3</a></li>
+						<li><a href="android.html">Android / Java</a></li>
+						<li><a href="html5.html">HTML5 / JavaScript</a></li>
+						<li><a href="ios.html">iOS / Objective C</a></li>
+						<li><a href="csharp.html">Mono and .NET</a></li>
+						<li><a href="unity3d.html">Unity3d</a></li>
+					</ul>
+					
+					<h2>Supplements</h2>
+					<ul>
+						<li><a href="errorcodes.html">Error codes</a></li>
+					</ul>
+				</div>
+			
+			</div>
+			
+			<div class="span9">
+				
+				<a name="settingup"></a>
+				<div class="section">
+					
+					<h1>iOS API</h1>
+					
+					<h2>Downloading the API</h2>
+					<p>You can either <a href="https://github.com/playtomic/gameapi-ios/archive/masteresponse.zip">download the zip</a> or if you're a git user <a href="https://github.com/playtomic/gameapi-ios">clone the repository</a>.</p>
+
+					<h2>Initializing the API</h2>
+					<p>Before using the API you must initialize it with your public and private keys.  Your	keys need to be created in your database.</p>
+					<pre>[Playtomic initWithPublicKey:@"testpublickey" 
+               andPrivateKey:@"testprivatekey" 
+                   andAPIURL:@"http://127.0.0.1:3000/"];</pre>
+					<p>Your apiurl will be in the format http://your-application-name.herokuapp.com/ or similar.</p>
+					
+					<h2>Examples</h2>
+					<p>Each API has an extensive test library in the source code that demonstrates how to use every part in a variety of ways.</p>
+				</div>
+				
+				<a name="leaderboards"></a>
+				<div class="section">
+					
+					<h2>Leaderboards</h2>
+					<p>The Leaderboards API gives you very flexible high and low score leaderboards. They can be 
+						created in your game dynamically or set up in the edit leaderboards page.</p>
+
+					<h2>PlayerScore structure</h2>
+					<table class="table table-striped">
+						<tr>
+							<th>Property</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td>name</td>
+							<td>NSString</td>
+							<td>The player name.  This can be by the player or provided by any 3rd party</td>
+						</tr>
+						<tr>
+							<td>playerid</td>
+							<td>NSString</td>
+							<td>Facebook or other userids, used for filtering by friends.</td>
+						</tr>
+						<tr>
+							<td>points</td>
+							<td>int64_t</td>
+							<td>The player's score</td>
+						</tr>
+						<tr>
+							<td>source</td>
+							<td>NSString</td>
+							<td>The website or device the score occurred on</td>
+						</tr>
+						<tr>
+							<td>fields</td>
+							<td>NSDictionary</td>
+							<td>Any additional data you want to (or have) attached to a score.</td>
+						</tr>
+						<tr>
+							<th colspan="3">Properties set by the API server</th>
+						</tr>
+						<tr>
+							<td>date</td>
+							<td>NSDate</td>
+							<td>The date of the score</td>
+						</tr>
+						<tr>
+							<td>rdate</td>
+							<td>NSString</td>
+							<td>The relative date of the score eg "7 minutes ago"</td>
+						</tr>
+						<tr>
+							<td>rank</td>
+							<td>NSInteger</td>
+							<td>The rank based on your listing parameters.</td>
+						</tr>
+						<tr>
+							<th colspan="3">Table detais</th>
+						</tr>
+						<tr>
+							<td>table</td>
+							<td>NSString</td>
+							<td>The name of the score table</td>
+						</tr>
+						<tr>
+							<td>highest</td>
+							<td>Boolean</td>
+							<td>The sort ordering by highest or lowest</td>
+						</tr>
+						<tr>
+							<td>allowduplicates</td>
+							<td>Boolean</td>
+							<td>Create duplicates, or override or reject scores if they're not the best</td>
+						</tr>
+					</table>
+
+						<h2>Submitting scores</h2>
+						<p>Score submission is handled by:</p>
+						<pre>[[Playtomic Leaderboards] save:score 
+                     andHander:(void(^)(PResponse *response))handler);</pre>
+						
+<pre>// basic score
+PlayerScore *score = [[PlayerScore alloc] init];
+score.name = @"ben";
+score.points = 173000;
+score.table = @"highscores";
+score.allowduplicates = true;
+
+[[Playtomic Leaderboards] save:score andHandler:^(PResponse* response) {
+	if(response.success)
+	{
+	}
+	else
+	{
+		// score failed because of [response errorMessage] with response.errorcode
+	}
+}]; 
+
+// another score	
+NSMutableDictionary *fields = [[NSMutableDictionary] alloc] init];
+[fields setObject:@"barbarian" forKey:@"character"];
+[fields setObject:[NSNumber numberWithInt:7] forKey:@"level"];
+[fields setObject:[NSNumber numberWithInt:18] forKey:@"kills"];
+	
+PlayerScore *score2 = [[PlayerScore alloc] init];
+score2.name = @"ben";
+score2.points = 173000;
+score2.table = @"highscores";
+score2.allowduplicates = true;
+score2.fields = fields;
+
+[[Playtomic Leaderboards] save:score andHandler:^(PResponse* response) 
+{
+	if(response.success)
+	{
+	}
+	else
+	{
+		// score failed because of [response errorMessage] with response.errorcode
+	}
+}];</pre>
+
+		
+					<h2>Showing scores</h2>
+					<p>Scores are loaded via a simple method that returns an array of 
+					scores to your function where you can display the data in your leaderboard.</p>
+					
+					<pre>[[Playtomic Leaderboards] list:options 
+                    andHandler:(void(^)(NSArray *scores, int numscores, PResponse *response))handler;</pre>
+			
+					<table class="table table-striped">
+						<tr>
+							<th>Property</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td>table</td>
+							<td>NSString</td>
+							<td>The name of the score table</td>
+						</tr>
+						<tr>
+							<td>highest</td>
+							<td>Boolean</td>
+							<td>The sort ordering by highest or lowest</td>
+						</tr>
+						<tr>
+							<td>allowduplicates</td>
+							<td>Boolean</td>
+							<td>Reject scores if they're not the player's best (default false) or allow multiple scores per player</td>
+						</tr>
+						<tr>
+							<td>filters</td>
+							<td>NSDictionary</dt>
+							<td>Additional properties to filter by from the 'save' fields</td>
+						</tr>
+						<tr>
+							<td>source</td>
+							<td>NSString</td>
+							<td>The website or device the score occurred on</td>
+						</tr>
+						<tr>
+							<td>friendslist</td>
+							<td>NSArray</td>
+							<td>Array of friend's playerids</td>
+						</tr>
+						<tr>
+							<td>playerid</td>
+							<td>NSString</td>
+							<td>A specific playerid</td>
+						</tr>
+						<tr>
+							<td>mode</td>
+							<td>String</td>
+							<td>Time limits, 'last7days', 'last30days', 'alltime' (default), 'today' and 'newest' which returns latest unsorted scores.</td>
+						</tr>
+						<tr>
+							<th colspan="3">Pagination</th>
+						</tr>
+						<tr>
+							<td>page</td>
+							<td>int</td>
+							<td>Page number to return (default is 1)</td>
+						</tr>
+						<tr>
+							<td>perpage</td>
+							<td>int</td>
+							<td>Results per page (default is 20)</td>
+						</tr>
+					</table>
+					
+<pre>NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
+[options setObject:@"highscores" forKey:@"table"];
+[options setObject:[NSNumber numberWithBool:true] forKey:@"highest"];
+[options setObject:[NSNumber numberWithInteger:1] forKey:@"page"];
+[options setObject:[NSNumber numberWithInteger:10] forKey:@"perpage"];
+
+[[Playtomic Leaderboards] list:options andHandler:^(NSArray *scores, int numscores, PResponse *response) {
+    if(response.success) 
+	{
+		for(PlayerScore *score in scores)
+		{
+			NSLog(@"%@ got %lld points", score.name, score.points);
+		}
+    } 
+	else 
+	{
+        // score failed because of [response errorMessage] with response.errorcode
+    }
+}];</pre>
+					
+					<h2>Save and list</h2>
+					<p>You can submit scores and at the same time return the leaderboard page that that score is on.
+						This combines the Save and List approaches from above:</p>
+						
+					<pre>[[Playtomic PlayerLevels] saveAndList:(PlayerLevel*)level
+                           andOptions:(NSDictionary*)options
+                           andHandler:(void(^)(NSArray *scores, int numscores, PResponse *response))handler;</pre>
+
+					<p>You don't specify a 'page', you specify the 'perpage' (default 20) and it will automatically 
+						decide which page to return based on the submitted score's rank. If you submit the 1187th 
+						best score at 30 per page then it will show you page 39, scores #1170 - #1200.</p>
+					<p>Ranks are returned so you are not viewing the top N scores you are viewing the top N scores 
+						from rank X onwards.</p>				
+					
+				</div>
+				
+				<a name="playerlevels"></a>
+				<div class="section">
+					
+					<h2>Level sharing</h2>
+					
+					<p>The level sharing API provides a way to store and retrieve user-generated content for your game. 
+						It can operate anonymously or authenticated via any 3rd party service you're already using.</p>
+
+					<h3>PlayerLevel structure</h3>
+					<p>Saving and listing levels uses this class to represent a level.</p>
+
+					<table class="table table-striped">
+						<tr>
+							<th>Property</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td>name</td>
+							<td>NSString</td>
+							<td>The level name.</td>
+						</tr>
+						<tr>
+							<td>playername</td>
+							<td>NSString</td>
+							<td>The player name.</td>
+						</tr>
+						
+						<tr>
+							<td>playerid</td>
+							<td>NSString</td>
+							<td>Facebook or other userids, used for filtering by friends.</td>
+						</tr>
+						<tr>
+							<td>data</td>
+							<td>NSstring</td>
+							<td>The created level data as a string</td>
+						</tr>
+						<tr>
+							<td>source</td>
+							<td>NSString</td>
+							<td>The website or device the score occurred on</td>
+						</tr>
+						<tr>
+							<td>fields</td>
+							<td>NSDictionary</td>
+							<td>Any additional data you want to (or have) attached to a level.</td>
+						</tr>
+					</table>
+					
+					<h2>Saving levels</h2>
+					<pre>[[Playtomic PlayerLevels] save:(PlayerLevel*)level
+                    andHandler:(void(^)(PlayerLevel *level, PResponse *response))handler]</pre>
+					
+					<p>Example saving level:</p>
+
+<pre>PlayerLevel *level = [[PlayerLevel alloc] init];
+level.name = @"my level";
+level.playername = @"ben";
+level.data = "obj1=cannon&amp;obj1x=120&amp;obj1y=180",
+    
+[[Playtomic PlayerLevels] save:level andHandler:^(PlayerLevel *l, PResponse *response) {
+	if(response.success)
+	{
+		// new levelid is level.levelid;
+	} 
+	else
+	{
+		// save failed because of [response errorMessage] with response.errorcode
+	}
+}];</pre>
+					
+					<h2>Rating levels</h2>
+					<p>Levels can be rated 1 - 10 by players. Rating can be done anonymously with some 
+						protection against repeat voting, or bound to playerids if you specify them.</p>
+						
+					<pre>[[Playtomic PlayerLevels] rate:(NSString*)levelid 
+                     andRating:(int)rating
+                    andHandler:(void(^)(PResponse *response))handler]</pre>
+					
+					<p>Example rating level:</p>
+
+<pre>[[Playtomic PlayerLevels] rate:level.levelid andRating:7 andHandler:^(PResponse *response) {
+    if(response.success) 
+	{
+        // rating succeeded
+    } 
+	else 
+	{
+        // Rating failed because of [response errorMessage] with response.errorcode
+    }
+}];</pre>
+					
+					<h2>Listing levels</h2>
+					<p>	Listing levels can be done by popular or newest, with optional 
+						filtering by date ranges and/or custom fields.</p>
+
+					<pre>[[Playtomic PlayerLevels] list:(NSDictionary*)options 
+                    andHandler:(void (^)(NSArray *levels, int numlevels, PResponse *response))handler]</pre>
+					
+					<h4>Listing options</h4>
+					<table class="table table-striped">
+						<tr>
+							<th>Property</th>
+							<th>Type</th>
+							<th>Description</th>
+						</tr>
+						<tr>
+							<td>mode</td>
+							<td>NSString</td>
+							<td>'newest' or 'popular'.</td>
+						</tr>
+						<tr>
+							<td>datemin</td>
+							<td>NSString</td>
+							<td>'mm/dd/yyyy' for the minimum date the level was created.</td>
+						</tr>
+						<tr>
+							<td>datemax</td>
+							<td>NSDate</td>
+							<td>The maximum date the level was created.</td>
+						</tr>
+						<tr>
+							<td>playerid</td>
+							<td>String</td>
+							<td>Facebook or other userid</td>
+						</tr>
+						<tr>
+							<td>friendslist</td>
+							<td>NSArray</td>
+							<td>Array of friend's playerids</td>
+						</tr>
+						<tr>
+							<td>data</td>
+							<td>Boolean</td>
+							<td>Return the level data with the request (maybe faster to load individually)</td>
+						</tr>
+						<tr>
+							<td>source</td>
+							<td>NSString</td>
+							<td>The website or device the level was created on</td>
+						</tr>
+						<tr>
+							<td>filters</td>
+							<td>NSDictionary</td>
+							<td>Any additional data you want to (or have) attached to a level.</td>
+						</tr>
+						<tr>
+							<th colspan="3">Pagination</th>
+						</tr>
+						<tr>
+							<td>page</td>
+							<td>int</td>
+							<td>Page number to return (default is 1)</td>
+						</tr>
+						<tr>
+							<td>perpage</td>
+							<td>int</td>
+							<td>Results per page (default is 20)</td>
+						</tr>
+					</table>
+	
+					
+					<p>An example listing levels:</p>
+
+<pre>NSMutableDictionary *filters = [[NS MutableDictionary alloc] init];
+[filters setObject:@"hard" forKey:@"difficulty"];
+
+NSMutableDictionary *list = [[NSMutableDictionary alloc] init];
+[list setObject:@"newest" forKey:@"mode"];
+[list setObject:[NSNumber numberWithInt30] forKey:@"perpage"];
+[list setObject:[NSNumber numberWithBool:NO] forKey:@"data"];
+[list setObject:filters forKey:@"filters"];
+    
+[[Playtomic PlayerLevels] list:list andHandler:^(NSArray *levels, int numlevels, PResponse *response) {
+
+    if(response.success) 
+	{
+		for(PlayerLevel *level in levels)
+		{
+			NSLog(@"%@", level.name);
+		}
+    } 
+	else 
+	{
+        // score failed because of [response errorMessage] with response.errorcode
+    }
+	
+}];</pre>
+					
+					<h2>Loading levels</h2>
+					<p>If you do not include the data when you load lists of levels then you can request it seperately.</p>
+
+					<pre>[[Playtomic PlayerLevels] load:(NSString*)levelid 
+                    andHandler:(void(^)(PlayerLevel *level, PResponse *response))handler];</pre>
+					
+					<p>An example loading a single level:</p>
+
+<pre>[[Playtomic PlayerLevels] load:levelid andHandler:^(PlayerLevel *level, PResponse *response) {
+    if(response.success) 
+	{
+		// level loaded
+    } 
+	else 
+	{
+        // score failed because of [response errorMessage] with response.errorcode
+    }
+
+}];</pre>
+	
+				</div>
+				
+				<a name="gamevars"></a>
+				<div class="section">
+					<h2>GameVars</h2>
+					<p>GameVars let you change the value of key variables in your game any time you 
+						want.</p>
+						
+					<h3>Setting them up in your database</h3>
+					<p>In your <a href="https://mongohq.com/">MongoHQ</a> dashboard add a new entry
+						to the "gamevars" collection.</p>
+						
+<pre>{
+	name: "basehitpoints",
+	value: 800
+}</pre>
+						
+					<h2>Loading</h2>
+					<p>They are loaded via:</p>
+					
+					<pre>[[Playtomic GameVars] load:(void (^)(NSDictionary* gamevars, PResponse *response))handler];</pre>
+					
+					<p>You can load variables individually, for instance if you are caching the 
+						GameVars you can check a 'version' GameVar to decide whether to reload 
+						the full collection.</p>
+						
+					<pre>[[Playtomic GameVars] loadWithName:(NSString*)name 
+                        andHandler: (void (^)(NSDictionary* gamevars, PResponse *response))handler];</pre>
+					
+					<p>The callback parameter is your function that receives an NSDictionary that 
+						has properties matching the variables you have configured in your database. 
+						The callback is the same for all or single GameVars.</p>
+						
+<pre>// our variables with default, original values
+int basehitpoints = 100;
+int basegold = 50;
+
+[[Playtomic GameVars] load:^(NSDictionary* gamevars, PResponse* response){
+	
+	if(response.success)
+	{
+		basehitpoints = [[gamevars objectForKey:@"basehitpoints"] integerValue];
+	}
+	else 
+	{
+		// request failed with [response errorMessage] with response.errorcode
+	}
+}];</pre>
+				</div>
+				
+				<a name="geoip"></a>
+				<div class="geoip">
+					<h2>Geolocation</h2>
+					<p>The GeoIP service identifies which country the player is from, 
+						returning their country code and name.</p>
+					<p>It is called via:</p>
+
+					<pre>[[Playtomic GeoIP] lookup:(void (^)(PlayerCountry* country, PResponse *response))handler]</pre>
+					
+					<p>The callback function receives an object that has 'code' and 'name' properties:</p>
+						
+<pre>[[Playtomic GeoIP] lookup:^(PlayerCountry* country, PResponse* response){
+	if(response.success)
+	{
+		// player is in country.name with the 2 digit code country.code
+	}
+	else
+	{
+		// request failed with [response errorMessage] with response.errorcode;
+	}
+}];</pre>
+				</div>
+					
+			</div>
+		</div>
+	</div>
+	
+
+	<footer>
+		<div class="container">
+			&copy; 2013 <a href="http://lvlboost.com/">lvlboost</a>.  Server and client software are released under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.
+		</div>
+	</footer>
+	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-40077834-4', 'playtomic.org');
+	  ga('send', 'pageview');
+
+	</script>
+	
+</body>
+</html>

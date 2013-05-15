@@ -1,0 +1,43 @@
+html, body { padding: 0; margin: 0; }
+h2 { font-size: 18px; line-height: normal; padding: 0; margin: 0 0 8px 0; }
+h3 { font-size: 16px; line-height: normal; padding: 0; margin: 0 0 8px 0; }
+h4 { font-size: 14px; line-height: normal; }
+#sponsor { clear: both; background-color: #000; padding: 10px; color: #CCC; }
+#sponsor, #sponsor a { font-size: 14px; }
+#sponsor a { color: #FFC; }
+
+header { padding: 10px 0; }
+header ul, header li { list-style-type: none; display: inline; }
+header li { display: inline; margin-left: 20px; }
+
+footer { clear: both; background-color: #000; padding: 20px 0; color: #666; margin-top: 20px; }
+footer a { color: #CCC; }
+
+#splash { text-align: center; color: #FFF; background: #000 url(../assets/splash.png) no-repeat; height: 350px; margin-bottom: 20px; }
+#splash h1 { padding-top: 30px; font-size: 36px; font-weight: normal; line-height: 60px; }
+#splash h2 { padding: 30px 0; font-size: 16px; font-weight: normal; }
+
+.row .section { padding: 0 20px 20px 20px; }
+
+#content2 { background-color: #F5F5F5; padding: 20px 40px; border-top: 1px solid #CCC;}
+#content2 pre { background-color: #FFF; }
+
+
+.codeexamples, .codeexamples li { list-style-type: none; text-indent: 0; padding-left: 0; margin-left: 0; }
+
+li pre { margin: 8px 0 16px 0 !important; }
+li ol, li ul { margin: 0 0 16px 12px !important; }
+pre { font-size: 11px !important; line-height: 16px; }
+
+.row { border-bottom: 1px solid #FFF; padding-bottom: 12px; }
+.row1, .row2 { padding: 12px 0px; }
+.row1 { background-color: #FFF; border-top: 1px solid #CCC; }
+.row1 pre { background-color: #F5F5F5; }
+.row2 { background-color: #F5F5F5; border-top: 1px solid #CCC; }
+.row2 pre { background-color: #FFF; }
+
+span.green { color: #390; }
+span.blue { color: #069; }
+span.blue2 { color: #07C; }
+span.blue3 { color: #00F;}
+span.red { color: #900; }

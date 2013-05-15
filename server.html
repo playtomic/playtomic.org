@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Playtomic: Setting up your server</title>
+	<meta name="description" content="Leaderboards and more for unity3d, html5, actionscript and more.">
+	<link href='css/bootstrap/bootstrap.min.css' rel='stylesheet' type='text/css'>
+	<link href='css/custom.css' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	
+	<div id="sponsor">
+		<div class="container">
+			Sponsor this initiative and share your message with game developers everywhere.  <a href="mailto:benlowry@outlook.com">email</a>
+		</div>
+	</div>
+	
+	<header>
+		<div class="container">
+			<a href="http://playtomic.org/"><img src="assets/playtomic.png" alt="Playtomic" title="Playtomic" /></a>
+			<ul>
+				<li><a href="/">Home</a></li>				
+				<li><a href="/server.html">Server setup</a></li>
+				<li><a href="/apis.html">API documentation</a></li>
+				<li><a href="http://lvlboost.com/">Game analytics</a></li>
+			</ul>
+		</div>
+	</header>
+		
+	<div id="content2">
+				
+		<div class="row">
+		
+			
+			<div class="span12">
+				
+				<div class="section">
+
+					<h2>Prerequisites</h2>
+					<p>You need acount hosting for a <a href="http://nodejs.org/">NodeJS</a> application and
+						<a href="http://mongodb.org/">MongoDB</a> database.  We recommend using
+						<a href="http://heroku.com/">Heroku</a> and <a href="http://mongohq.com/">MongoHQ.</a></p>
+					<p>To run the server locally you will have to use <a href="https://npmjs.org/">NPM</a> to install the packages.</p>
+					
+					<h2>The server</h2>
+					<ol>
+						<li>Create an account at <a href="http://heroku.com/">Heroku</a>.  
+							They have a <a href="https://devcenter.heroku.com/articles/quickstart">great quickstart guide here</a>.</li>
+
+						<li>Create an application on your computer for Heroku and download the api server source 
+							from <a href="http://github.com/playtomic/apiserver">Github</a>.</li>
+						<li><p>Upload the application to Heroku via the command line:</p>
+<pre>git add .
+git commit -m "Uploading server"
+git push heroku master</pre>
+							</li>
+						<li><p>Find your application URL via the command line:</p>
+							<pre>heroku apps:info</pre>
+						</li>
+					</ol>
+
+					<h2>The database</h2>
+					<ol>
+						<li><p>Create an account at <a href="https://mongohq.com/">MongoHQ</a> and make 
+							a database.  The free one will be enough to get started.</p></li>
+						<li><p>In the "Collections" tab create collections named: 
+							games, 
+							gamevars, 
+							leaderboard_scores, 
+							leaderboard_bans,
+							playerlevel_levels,
+							playerlevel_bans</p></li>
+						<li><p>When you create a collection it will show you the contents of it
+							with a tab for "Indexes" at the top.  These help your database be fast
+							by keeping data arranged the way it is needed.  Create the following
+							indexes in the 'ensureIndex' typing area.</p>
+							
+							<pre>ensureIndex(<em>{this is your index}</em>, {background: true});</pre> 
+							<ul>
+								<li>gamevars: {publickey: 1, name: 1}</li>
+								<li>leaderboard_scores: {publickey: 1, points: -1}</li>
+								<li>leaderboard_scores: {publickey: 1, date: -1}</li>
+								<li>leaderboard_scores: {publickey: 1, hash: 1}</li>
+								<li>leaderboard_bans: {publickey: 1, hash: 1}</li>
+								<li>playerlevel_levels: {publickey: 1, date: -1}</li>
+								<li>playerlevel_levels: {publickey: 1, rating: -1}</li>
+								<li>playerlevel_levels: {publickey: 1, hash: 1}</li>
+								<li>playerlevel_bans: {publickey: 1, hash: 1}</li>
+							</ul>
+						</li>
+						<li><p>In the "Admin" tab of your database create a new user.</p></li>
+						<li><p>Copy the "URI" from the "Admin" tab and put your user credentials in it,
+							and then in your Heroku application:</p>
+							<pre>heroku config:set playtomic=mongodb://the_uri_you_copied</pre>
+						</li>
+							
+					</ol>
+					
+					<h2>Creating game credentials</h2>
+					<p>You can add game credentials from the MongoHQ dashboard in the 'games' collection:</p>
+					<pre>{ 
+	publickey: "mypublickey", 
+	privatekey: "myprivatekey", 
+	leaderboards: true, 
+	playerlevels: true, 
+	gamevars: true, 
+	geoip: true
+}</pre>
+					<p>To limit access to the API server you can set the above properties to false.</p>
+					
+					<h2>Scaling</h2>
+					<p>This toolkit is designed to scale with eventual consistency.  Each 'dyno' or thread or equivalent for your hosting maintains
+						its own caching and state that is periodically synced against your database or expired.</p>
+					<p>Heroku can be automatically scaled using <a href="http://hirefire.io/">HireFire.io</a> to create and terminate 'dynos' as your load requires.</p>
+					<p>Your MongoHQ database can be manually upgraded at any time through their website.</p>
+
+					<h2>Recommended deployment</h2>
+					<p>If you're not a starving indie the ideal deployment would be:</p>
+					<ul>
+						<li>2+ dynos at Heroku because inactive single-dyno applications hibernate</li>
+						<li>Use your own domain in case you ever move hosting</li>
+						<li>SSL to keep your player's activities private</li>
+						<li>'Small' database plan (or larger) at MongoHQ with <a href="http://aws.amazon.com/s3">Amazon S3</a> backups</li>
+						<li>HireFire configured to add a few more dynos when necessary</li>
+						<li><a href="http://pingdom.com/">Pingdom</a> for uptime monitoring</li>			
+					</ul>
+
+				</div>
+					
+			</div>
+		</div>
+	</div>
+	
+
+	<footer>
+		<div class="container">
+			&copy; 2013 <a href="http://lvlboost.com/">lvlboost</a>.  Server and client software are released under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.
+		</div>
+	</footer>
+	
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-40077834-4', 'playtomic.org');
+	  ga('send', 'pageview');
+	</script>
+	
+</body>
+</html>
