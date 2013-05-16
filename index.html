@@ -47,65 +47,70 @@
 		
 	</div>
 		
-	<div id="content" class="container">
-						
-		<div class="row">
-			
-			<div class="span6">
-				
-				<div class="section">
-					<h2>Developers, take control</h2>
-					<p>Playtomic.org is the new home of the tools 
-						once provided by Playtomic - leaderboards, player levels, gamevars,	geoip - as a simple to host, open source platform for your game 
-						compatible with most gaming platforms.</p>
-					<p>Setting up your server is a simple process and for small games will probably stay under the free limits of the selected hosting providers.</p>
-					<p>It's your game, now it's your backend too.</p>
+	<div id="content">
 					
-				</div>
-				
-			</div>
+		<div class="container">	
 			
-			<div class="span6">
+			<div class="row">
+			
+				<div class="span6">
 				
-				<div class="section">
-					<h2>Game APIs</h2>
-					<p>Playtomic has extensive documentation, compatibility and tests/examples for all major gaming platforms.</p>
-					<ul>
-						<li><a href="/api/as3.html">ActionScript 3</a></li>
-						<li><a href="/api/android.html">Android / Java</a></li>
-						<li><a href="/api/html5.html">HTML5 / JavaScript</a></li>
-						<li><a href="/api/ios.html">iOS / Objective C</a></li>
-						<li><a href="/api/csharp.html">Mono and .NET</a></li>
-						<li><a href="/api/unity3d.html">Unity3d</a></li>		
-					</ul>
+					<div class="section">
+						<h2>Developers, take control</h2>
+						<p>Playtomic.org is the new home of the tools 
+							once provided by Playtomic - leaderboards, player levels, gamevars,	geoip - as a simple to host, open source platform for your game 
+							compatible with most gaming platforms.</p>
+						<p>Setting up your server is a simple process and for small games will probably stay under the free limits of the selected hosting providers.</p>
+						<p>It's your game, now it's your backend too.</p>
+					
+					</div>
+				
 				</div>
+			
+				<div class="span6">
+				
+					<div class="section">
+						<h2>Game APIs</h2>
+						<p>Playtomic has extensive documentation, compatibility and tests/examples for all major gaming platforms.</p>
+						<ul>
+							<li><a href="/api/as3.html">ActionScript 3</a></li>
+							<li><a href="/api/android.html">Android / Java</a></li>
+							<li><a href="/api/html5.html">HTML5 / JavaScript</a></li>
+							<li><a href="/api/ios.html">iOS / Objective C</a></li>
+							<li><a href="/api/csharp.html">Mono and .NET</a></li>
+							<li><a href="/api/unity3d.html">Unity3d</a></li>		
+						</ul>
+					</div>
 								
+				</div>
 			</div>
 		</div>
 		
-		<div class="row row2">
-			<div class="span3">
-				<div class="section">
-					<h2>Leaderboards</h2>
-					<p>Incredibly rich capabilities available to build on.</p>
-				</div>
-			</div>
-			<div class="span9">
-				<div class="section">
-					<h3>Features</h3>
-					<ul>
-						<li>Highest or lowest</li>
-						<li>Custom fields for additional data like characters, kills, or anything else you want</li>
-						<li>Filtering by custom fields to automatically create sub-leaderboards on that data</li>
-						<li>Five simple modes:  TODAY, LAST7DAYS, LAST30DAYS, ALLTIME, NEWEST (a score stream)</li>
-						<li>Filter by friends' ids to make your leaderboards social</li>
-						<li>Filter by player's id to make your leaderboards personal</li>
-						<li>Combine all of the above to make the most powerful leaderboards around!</li>
-					</ul>
+		<div class="row2">
+			<div class="container">
+				<div class="row">
+					<div class="span3">
+						<div class="section">
+							<h2>Leaderboards</h2>
+							<p>Incredibly rich capabilities available to build on.</p>
+						</div>
+					</div>
+					<div class="span9">
+						<div class="section">
+							<h3>Features</h3>
+							<ul>
+								<li>Highest or lowest</li>
+								<li>Custom fields for additional data like characters, kills, or anything else you want</li>
+								<li>Filtering by custom fields to automatically create sub-leaderboards on that data</li>
+								<li>Five simple modes:  TODAY, LAST7DAYS, LAST30DAYS, ALLTIME, NEWEST (a score stream)</li>
+								<li>Filter by friends' ids to make your leaderboards social</li>
+								<li>Filter by player's id to make your leaderboards personal</li>
+								<li>Combine all of the above to make the most powerful leaderboards around!</li>
+							</ul>
 					
-					<h4>Leaderboard example</h4>
-					<p>Imagine a racing game that you and your friends play.  Let's walk through some of the awesome capabilities
-						waiting for you in these leaderboards using the HTML5 API.</p>
+							<h4>Leaderboard example</h4>
+							<p>Imagine a racing game that you and your friends play.  Let's walk through some of the awesome capabilities
+								waiting for you in these leaderboards using the HTML5 API.</p>
 						
 					<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('leaderboard_example').style.display='block'; ">Show the example code</button>
 <pre id="leaderboard_example" style="display: none;"><span class="green">// we just tore up race #10 in our lambo</span>
@@ -209,37 +214,40 @@ Playtomic.Leaderboards.saveAndList(score, <span class="blue3">function</span>(sc
     });
   });  
 });</pre>
-					
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		
-		<div class="row row1">
-			<div class="span3">
-				<div class="section">
-					<h2>PlayerLevels</h2>
-					<p>Cross-platform user created content.</p>
-				</div>
-			</div>
-			<div class="span9">
-				<div class="section">
-					<h3>Features</h3>
-					<ul>
-						<li>Rate creations</li>
-						<li>Custom fields for any meta data you want to include </li>
-						<li>Filtering by custom fields </li>
-						<li>Two simple modes:  POPULAR and NEWEST</li>
-						<li>Fetch lists of levels with heavy data payloads excluded to reduce bandwidth</li>
-						<li>Filter by friends' ids to share content within a player's personal network</li>
-						<li>Filter by player's id to maintain a catalog of the player's creations</li>
-						<li>Create content on tablets or web to share with smaller form factors</li>
-					</ul>
+		<div class="row1">
+			<div class="container">
+				<div class="row">
+					<div class="span3">
+						<div class="section">
+							<h2>PlayerLevels</h2>
+							<p>Cross-platform user created content.</p>
+						</div>
+					</div>
+					<div class="span9">
+						<div class="section">
+							<h3>Features</h3>
+							<ul>
+								<li>Rate creations</li>
+								<li>Custom fields for any meta data you want to include </li>
+								<li>Filtering by custom fields </li>
+								<li>Two simple modes:  POPULAR and NEWEST</li>
+								<li>Fetch lists of levels with heavy data payloads excluded to reduce bandwidth</li>
+								<li>Filter by friends' ids to share content within a player's personal network</li>
+								<li>Filter by player's id to maintain a catalog of the player's creations</li>
+								<li>Create content on tablets or web to share with smaller form factors</li>
+							</ul>
 					
-					<h4>PlayerLevel example</h4>
-					<p>You've created a game where players can design their own levels for other people 
-						to play.  This is how you'd do it with the HTML5 API.</p>
+							<h4>PlayerLevel example</h4>
+							<p>You've created a game where players can design their own levels for other people 
+								to play.  This is how you'd do it with the HTML5 API.</p>
 						
-						<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('playerlevel_example').style.display='block'; ">Show the example code</button>
+								<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('playerlevel_example').style.display='block'; ">Show the example code</button>
 												
 <pre id="playerlevel_example" style="display: none;"><span class="green">// let's save our creation</span>
 <span class="blue3">var</span> level = {
@@ -347,34 +355,39 @@ Playtomic.PlayerLevels.save(level, <span class="blue3">function</span>(l, respon
     });
   });
 });</pre>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		
-		<div class="row row2">
-			<div class="span3">
-				<div class="section">
-					<h2>GameVars</h2>
-					<p>Update your game without republishing</p>
-				</div>
-			</div>
-			<div class="span9">
-				<div class="section">
-					<h3>Features</h3>
-					<ul>
-						<li>Update at any time in your database</li>
-						<li>Tweak difficulty balancing</li>
-						<li>Store game configuration</li>
-						<li>Manage cross-promotions</li>
-						<li>Rotate between advertising partners</li>
-					</ul>
+		<div class="row2">
+			<div class="container">
+		
+				<div class="row">
+					<div class="span3">
+						<div class="section">
+							<h2>GameVars</h2>
+							<p>Update your game without republishing</p>
+						</div>
+					</div>
+					<div class="span9">
+						<div class="section">
+							<h3>Features</h3>
+							<ul>
+								<li>Update at any time in your database</li>
+								<li>Tweak difficulty balancing</li>
+								<li>Store game configuration</li>
+								<li>Manage cross-promotions</li>
+								<li>Rotate between advertising partners</li>
+							</ul>
 					
-					<h4>GameVars example</h4>
-					<p>In our game we are going to store the entire configuration for our enemies.  This data weighs in at
-						47 kilobytes so we are also going to store a 'version' we can cache to skip reloading the same
-						data.</p>
+							<h4>GameVars example</h4>
+							<p>In our game we are going to store the entire configuration for our enemies.  This data weighs in at
+								47 kilobytes so we are also going to store a 'version' we can cache to skip reloading the same
+								data.</p>
 						
-					<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('gamevars_example').style.display='block'; ">Show the example code</button>
+							<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('gamevars_example').style.display='block'; ">Show the example code</button>
 						
 <pre id="gamevars_example" style="display: none;"><span class="green">// first let's set up our default configuration for when the player is disconnected</span>
 <span class="blue3">var</span> config = { 
@@ -447,8 +460,8 @@ Playtomic.GameVars.loadSingle(<span class="blue">"version"</span>, <span class="
   });
 });
 </pre>
-	
-	
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
