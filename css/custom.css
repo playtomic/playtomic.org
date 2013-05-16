@@ -10,7 +10,7 @@ header { padding: 10px 0; }
 header ul, header li { list-style-type: none; display: inline; }
 header li { display: inline; margin-left: 20px; }
 
-footer { clear: both; background-color: #000; padding: 20px 0; color: #666; margin-top: 20px; }
+footer { clear: both; background-color: #000; padding: 20px 0; color: #666; }
 footer a { color: #CCC; }
 
 #splash { text-align: center; color: #FFF; background: #000 url(../assets/splash.png) no-repeat top center; height: 350px; margin-bottom: 20px; }
