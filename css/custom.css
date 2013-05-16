@@ -14,7 +14,7 @@ footer { clear: both; background-color: #000; padding: 20px 0; color: #666; marg
 footer a { color: #CCC; }
 
 #splash { text-align: center; color: #FFF; background: #000 url(../assets/splash.png) no-repeat; height: 350px; margin-bottom: 20px; }
-#splash h1 { padding-top: 30px; font-size: 36px; font-weight: normal; line-height: 60px; }
+#splash h1 { padding-top: 20px; font-size: 36px; font-weight: normal; line-height: 40px; }
 #splash h2 { padding: 30px 0; font-size: 16px; font-weight: normal; }
 
 .row .section { padding: 0 20px 20px 20px; }
