@@ -30,10 +30,10 @@ li ol, li ul { margin: 0 0 16px 12px !important; }
 pre { font-size: 11px !important; line-height: 16px; }
 
 .firstrow { border-top: 1px solid #CCC !important; }
-.row1, .row2 { padding: 12px 0px; }
-.row1 { background-color: #EEE; border-top: 1px solid #FFF; border-bottom: 1px solid #CCC; }
+.row1, .row2 { padding: 12px 0px; border-top: 1px solid #FFF; border-bottom: 1px solid #CCC; background-position: bottom center !important; background-repeat: no-repeat !important; }
+.row1 { background: #EEE url(../assets/row2.png); }
 .row1 pre { background-color: #F5F5F5; }
-.row2 { background-color: #F5F5F5; border-top: 1px solid #FFF; border-bottom: 1px solid #CCC; }
+.row2 { background: #F5F5F5 url(../assets/row1.png);  }
 .row2 pre { background-color: #FFF; }
 
 span.green { color: #390; }
