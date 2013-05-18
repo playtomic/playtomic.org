@@ -116,7 +116,7 @@
 					<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('leaderboard_example').style.display='block'; ">Show the example code</button>
 <pre id="leaderboard_example" style="display: none;"><span class="green">// we just tore up race #10 in our lambo</span>
 <span class="blue3">var</span> score = {
-  name: <span class="blue">"fred"</span>,
+  playername: <span class="blue">"fred"</span>,
   playerid: <span class="blue">"my_id"</span>, <span class="green">// optional facebook, apple, google, device, whatever you want</span>
   points: <span class="red">243</span>, <span class="green">// seconds</span>
   allowduplicates: <span class="blue2">false</span>, <span class="green">// only save the player's best score</span>
@@ -143,7 +143,7 @@ Playtomic.Leaderboards.saveAndList(score, <span class="blue3">function</span>(sc
   
   <span class="blue3">for</span>(i=<span class="red">0</span>; i&lt;scores.length; i++) {
     console.log(scores[i].rank + <span class="blue">"   "</span> + scores[i].points + <span class="blue">"   "</span> + 
-                scores[i].name + <span class="blue">" driving "</span> + scores[i].fields.car);
+                scores[i].playername + <span class="blue">" driving "</span> + scores[i].fields.car);
   }
   
   <span class="green">// let's drill down further and just look at that car</span>
@@ -165,7 +165,7 @@ Playtomic.Leaderboards.saveAndList(score, <span class="blue3">function</span>(sc
     console.log(<span class="blue">"Best times for Lamborghini Gallardos on race #10"</span>);
   
     <span class="blue3">for</span>(i=<span class="red">0</span>; i&lt;scores.length; i++) {
-      console.log(scores[i].rank + <span class="blue">"   "</span> + scores[i].points + <span class="blue">"   "</span> + scores[i].name);
+      console.log(scores[i].rank + <span class="blue">"   "</span> + scores[i].points + <span class="blue">"   "</span> + scores[i].playername);
     }
     
     <span class="green">// let's drill down further and make this about my personal bests</span>
@@ -208,7 +208,7 @@ Playtomic.Leaderboards.saveAndList(score, <span class="blue3">function</span>(sc
         console.log(<span class="blue">"Latest scores from my friends"</span>);
   
         <span class="blue3">for</span>(i=<span class="red">0</span>; i&lt;scores.length; i++) {
-          console.log(scores[i].points + <span class="blue">"   "</span> + scores[i].name + 
+          console.log(scores[i].points + <span class="blue">"   "</span> + scores[i].playername + 
                       <span class="blue">" driving "</span> + scores[i].fields.car + <span class="blue">" on race "</span> + scores[i].fields.race);
         }
       });

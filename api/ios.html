@@ -102,7 +102,7 @@
 							<th>Description</th>
 						</tr>
 						<tr>
-							<td>name</td>
+							<td>playername</td>
 							<td>NSString</td>
 							<td>The player name.  This can be by the player or provided by any 3rd party</td>
 						</tr>
@@ -171,7 +171,7 @@
 						
 <pre>// basic score
 PlayerScore *score = [[PlayerScore alloc] init];
-score.name = @"ben";
+score.playername = @"ben";
 score.points = 173000;
 score.table = @"highscores";
 score.allowduplicates = true;
@@ -193,7 +193,7 @@ NSMutableDictionary *fields = [[NSMutableDictionary] alloc] init];
 [fields setObject:[NSNumber numberWithInt:18] forKey:@"kills"];
 	
 PlayerScore *score2 = [[PlayerScore alloc] init];
-score2.name = @"ben";
+score2.playername = @"ben";
 score2.points = 173000;
 score2.table = @"highscores";
 score2.allowduplicates = true;

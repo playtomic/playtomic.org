@@ -109,8 +109,8 @@
 							<th>Description</th>
 						</tr>
 						<tr>
-							<td>getName</td>
-							<td>setName</td>
+							<td>getPlayerName</td>
+							<td>setPlayerName</td>
 							<td>String</td>
 							<td>The player name.  This can be by the player or provided by any 3rd party</td>
 						</tr>
@@ -193,7 +193,7 @@
 						
 <pre>PlayerScore score = new PlayerScore();
 score.setTable("table");
-score.setName("fred");
+score.setPlayerName("fred");
 score.setPoints(20000);
 
 Leaderboards.save (score, new LeaderboardSaveHandler() {
@@ -212,7 +212,7 @@ Leaderboards.save (score, new LeaderboardSaveHandler() {
 // a more advanced score
 PlayerScore score2 = new PlayerScore();
 score2.setTable("table");
-score2.setName("fred");
+score2.setPlayerName("fred");
 score2.setPlayerId("fred@testuri.com");
 score2.setPoints(20000);
 score2.setField("custom", "field");
