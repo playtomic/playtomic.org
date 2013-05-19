@@ -49,76 +49,78 @@
 	</header>
 		
 	<div id="content2">
-				
-		<div class="row">
 		
-			
-			<div class="span12">
+		<div class="container">
 				
-				<div class="section">
+			<div class="row">
+		
+				<div class="span12">
+				
+					<div class="section">
 
-					<h2>The database</h2>
-					<ol>
-						<li><p>Create an account at <a href="https://mongohq.com/">MongoHQ</a> and make 
-							a database.  The free one will be enough to get started.</p></li>
-						<li><p>In the "Admin" tab of your database create a new user.</p></li>
+						<h2>The database</h2>
+						<ol>
+							<li><p>Create an account at <a href="https://mongohq.com/">MongoHQ</a> and make 
+								a database.  The free one will be enough to get started.</p></li>
+							<li><p>In the "Admin" tab of your database create a new user.</p></li>
 
-					</ol>
+						</ol>
 					
-					<h2>The server</h2>
-					<ol>
-						<li>Create an account at <a href="http://heroku.com/">Heroku</a>.  
-							They have a <a href="https://devcenter.heroku.com/articles/quickstart">great quickstart guide here</a>.</li>
+						<h2>The server</h2>
+						<ol>
+							<li>Create an account at <a href="http://heroku.com/">Heroku</a>.  
+								They have a <a href="https://devcenter.heroku.com/articles/quickstart">great quickstart guide here</a>.</li>
 
-						<li>Create an application on your computer for Heroku and download the api server source 
-							from <a href="http://github.com/playtomic/apiserver">Github</a>.</li>
-						<li><p>In your MongoHQ dashboard copy the "URI" from the "Admin" tab and put your user credentials in it,
-							and then in your Heroku application:</p>
-							<pre>heroku config:set playtomic=mongodb://the_uri_you_copied</pre>
-						</li>
-						<li><p>Upload the application to Heroku via the command line:</p>
-<pre>git add .
-git commit -m "Uploading server"
-git push heroku master</pre>
+							<li>Create an application on your computer for Heroku and download the api server source 
+								from <a href="http://github.com/playtomic/apiserver">Github</a>.</li>
+							<li><p>In your MongoHQ dashboard copy the "URI" from the "Admin" tab and put your user credentials in it,
+								and then in your Heroku application:</p>
+								<pre>heroku config:set playtomic=mongodb://the_uri_you_copied</pre>
 							</li>
-						<li><p>Find your application URL via the command line:</p>
-							<pre>heroku apps:info</pre>
-						</li>
-					</ol>
+							<li><p>Upload the application to Heroku via the command line:</p>
+	<pre>git add .
+	git commit -m "Uploading server"
+	git push heroku master</pre>
+								</li>
+							<li><p>Find your application URL via the command line:</p>
+								<pre>heroku apps:info</pre>
+							</li>
+						</ol>
 					
-					<h2>Creating game credentials</h2>
-					<p>You can add game credentials from the MongoHQ dashboard in the 'games' collection.  The collection will be 
-						created for you automatically the first time you upload to Heroku.</p>
-					<pre>{ 
-	publickey: "mypublickey", 
-	privatekey: "myprivatekey", 
-	leaderboards: true, 
-	playerlevels: true, 
-	gamevars: true, 
-	geoip: true
-}</pre>
-					<p>To limit access to the API server you can set the above properties to false.</p>
+						<h2>Creating game credentials</h2>
+						<p>You can add game credentials from the MongoHQ dashboard in the 'games' collection.  The collection will be 
+							created for you automatically the first time you upload to Heroku.</p>
+						<pre>{ 
+		publickey: "mypublickey", 
+		privatekey: "myprivatekey", 
+		leaderboards: true, 
+		playerlevels: true, 
+		gamevars: true, 
+		geoip: true
+	}</pre>
+						<p>To limit access to the API server you can set the above properties to false.</p>
 					
-					<h2>Scaling</h2>
-					<p>This toolkit is designed to scale 'horizontally' by using eventual consistency, that means the more resources you assign it on Heroku
-						the more capacity you can handle.  Each 'dyno' or thread or equivalent for your hosting maintains its own caching and state that is 
-						periodically synced against your database or expired.</p>
-					<p>Heroku can be automatically scaled using <a href="http://hirefire.io/">HireFire.io</a> to create and terminate 'dynos' as your load requires.</p>
-					<p>Your MongoHQ database can be manually upgraded at any time through their website.</p>
+						<h2>Scaling</h2>
+						<p>This toolkit is designed to scale 'horizontally' by using eventual consistency, that means the more resources you assign it on Heroku
+							the more capacity you can handle.  Each 'dyno' or thread or equivalent for your hosting maintains its own caching and state that is 
+							periodically synced against your database or expired.</p>
+						<p>Heroku can be automatically scaled using <a href="http://hirefire.io/">HireFire.io</a> to create and terminate 'dynos' as your load requires.</p>
+						<p>Your MongoHQ database can be manually upgraded at any time through their website.</p>
 
-					<h2>Recommended deployment</h2>
-					<p>If you're not a starving indie the ideal deployment would be:</p>
-					<ul>
-						<li>2+ dynos at Heroku because inactive single-dyno applications hibernate</li>
-						<li>Use your own domain in case you ever move hosting</li>
-						<li>SSL to keep your player's activities private</li>
-						<li>'Small' database plan (or larger) at MongoHQ with <a href="http://aws.amazon.com/s3">Amazon S3</a> backups</li>
-						<li>HireFire configured to add a few more dynos when necessary</li>
-						<li><a href="http://pingdom.com/">Pingdom</a> for uptime monitoring</li>			
-					</ul>
+						<h2>Recommended deployment</h2>
+						<p>If you're not a starving indie the ideal deployment would be:</p>
+						<ul>
+							<li>2+ dynos at Heroku because inactive single-dyno applications hibernate</li>
+							<li>Use your own domain in case you ever move hosting</li>
+							<li>SSL to keep your player's activities private</li>
+							<li>'Small' database plan (or larger) at MongoHQ with <a href="http://aws.amazon.com/s3">Amazon S3</a> backups</li>
+							<li>HireFire configured to add a few more dynos when necessary</li>
+							<li><a href="http://pingdom.com/">Pingdom</a> for uptime monitoring</li>			
+						</ul>
 
+					</div>
+					
 				</div>
-					
 			</div>
 		</div>
 	</div>
