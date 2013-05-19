@@ -78,9 +78,9 @@
 								<pre>heroku config:set playtomic=mongodb://the_uri_you_copied</pre>
 							</li>
 							<li><p>Upload the application to Heroku via the command line:</p>
-	<pre>git add .
-	git commit -m "Uploading server"
-	git push heroku master</pre>
+<pre>git add .
+git commit -m "Uploading server"
+git push heroku master</pre>
 								</li>
 							<li><p>Find your application URL via the command line:</p>
 								<pre>heroku apps:info</pre>
@@ -90,14 +90,14 @@
 						<h2>Creating game credentials</h2>
 						<p>You can add game credentials from the MongoHQ dashboard in the 'games' collection.  The collection will be 
 							created for you automatically the first time you upload to Heroku.</p>
-						<pre>{ 
-		publickey: "mypublickey", 
-		privatekey: "myprivatekey", 
-		leaderboards: true, 
-		playerlevels: true, 
-		gamevars: true, 
-		geoip: true
-	}</pre>
+<pre>{ 
+	publickey: "mypublickey", 
+	privatekey: "myprivatekey", 
+	leaderboards: true, 
+	playerlevels: true, 
+	gamevars: true, 
+	geoip: true
+}</pre>
 						<p>To limit access to the API server you can set the above properties to false.</p>
 					
 						<h2>Scaling</h2>
