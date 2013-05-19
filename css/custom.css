@@ -7,8 +7,10 @@ h4 { font-size: 14px; line-height: normal; }
 #sponsor a { color: #FFC; }
 
 header { padding: 10px 0; }
+header ul { position: absolute; margin-top: 20px; margin-left: 20px; }
 header ul, header li { list-style-type: none; display: inline; }
-header li { display: inline; margin-left: 20px; }
+header li { display: inline; margin-right: 20px; }
+header li.follow { margin-right: 0 !important; }
 
 footer { clear: both; background-color: #000; padding: 20px 0; color: #666; }
 footer a { color: #CCC; }
@@ -41,3 +43,51 @@ span.blue { color: #069; }
 span.blue2 { color: #07C; }
 span.blue3 { color: #00F;}
 span.red { color: #900; }
+
+/* github follow button via http://www.bicknoyle.com/twitter-style-github-follow-button/ */
+.github-follow-button {
+  display: inline-block;
+  height: 20px;
+  *height: 18px;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 0 5px 0 19px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #CCCCCC;
+  border-radius: 3px 3px 3px 3px;
+  font-size: 11px;
+  line-height:18px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: bold;
+  text-decoration:none;
+  color: #333333;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+  vertical-align: top;
+  text-align: left;
+  cursor: pointer;
+  background-color: #F8F8F8;
+  background-image: -moz-linear-gradient(center top , #FFFFFF, #DEDEDE);
+  background-image: -webkit-gradient(linear,left top,left bottom,from(#FFFFFF),to(#DEDEDE));
+  background-image: linear-gradient(center top , #FFFFFF, #DEDEDE);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF',endColorstr='#DEDEDE')
+}
+.github-follow-button:hover {
+  border-color:#BBBBBB;
+  background-image: -moz-linear-gradient(center top , #F8F8F8, #D9D9D9);
+  background-image: -webkit-gradient(linear,left top,left bottom,from(#F8F8F8),to(#D9D9D9));
+  background-image: linear-gradient(center top , #F8F8F8, #D9D9D9);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F8F8F8',endColorstr='#D9D9D9')
+}
+.github-follow-button img {
+  height: 13px;
+  width: 13px;
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  margin-top: -6px;
+  border:none;
+}
