@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Playtomic: open source tools for games</title>
-	<meta name="description" content="Leaderboards and more for unity3d, html5, actionscript and more.">
+	<meta name="description" content="Achievements, leaderboards and more for unity3d, html5, actionscript and more.">
 	<link href='css/bootstrap/bootstrap.min.css' rel='stylesheet' type='text/css'>
 	<link href='css/custom.css' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
@@ -51,7 +51,7 @@
 		
 		<div class="container">
 			
-			<h1>Powerful leaderboards, user levels and<br />dynamic content updates.</h1>
+			<h1>Powerful leaderboards, achievements, user levels<br />and dynamic content updates.</h1>
 			<h2>Open source.  Self hosted.  Battle tested.  Massively scalable.  Cross platform.  Free.</h2>
 			
 			<a class="btn btn-primary btn-large" href="http://igg.me/at/playtomic">Let's grow this platform at IndieGoGo</a>
@@ -106,7 +106,169 @@
 			</div>
 		</div>
 		
-		<div class="row2 firstrow">
+		<div class="row1 firstrow">
+			<div class="container">
+				<div class="row">
+					<div class="span3">
+						<div class="section">
+							<h2>Achievements</h2>
+							<p>Cross-platform, versatile and flexible achievements system.</p>
+						</div>
+					</div>
+					<div class="span9">
+						<div class="section">
+							<h3>Features</h3>
+							<ul>
+								<li>Award once, overwrite, or allowduplicates</li>
+								<li>Filter by device or website</li>
+								<li>Filter by custom fields like difficulty to differentiate between different levels of achievement</li>
+								<li>Include own and friends' status when retrieving lists</li>
+								<li>Filter by own and friends' ids to make everything social</li>
+								<li>View awarded achievements as a stream of updates</li>								
+								<li>Group the achievement stream to show only the most recent for each player</li>
+							</ul>
+							
+							<h4>Achievements example</h4>
+							<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('achievement_example').style.display='block'; ">Show the example code</button>
+<pre id="achievement_example" style="display: none;"><span class="green">// let's start with listing</span>
+<span class="blue3">var</span> options = {
+  playerid: <span class="blue">"my_id"</span> <span class="green">// optional from facebook or google or twitter or apple or whatever</span>
+}
+
+Playtomic.Achievements.list(options, function(achievements, response){ 
+
+    <span class="blue3">if</span>(!response.success) {
+      <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
+    }
+  
+   <span class="green">/* 
+    * now we have our achievement list, it will be something like this:
+    * [
+    *  { 
+    *    achievement: "did something awesome" 
+    *  },
+    *  { 
+    *    achievement: "killed the boss", 
+    *    player: {  // when the specified player has the achievement we have a 'player' object
+    *               // with the data, when we include our friends we get an
+    *               // array called 'friends' of objects the same as this
+    *      playerid: "my_id", 
+    *      playername: "fred", 
+    *      date: new Date(), 
+    *      rdate: "3 days ago", 
+    *      fields: { 
+    *        difficulty: "easy" 
+    *      } 
+    *    } 
+    *  }
+    * ]
+    */</span>
+  
+  <span class="green">// now let's make it more interesting by including our friends</span>
+  options.friendslist = [ <span class="blue">"an"</span>, <span class="blue">"array"</span>, <span class="blue">"of"</span>, <span class="blue">"friends"</span>, <span class="blue">"ids"</span>];
+
+  Playtomic.Achievements.list(options, <span class="blue3">function</span>(achievements, response){ 
+      <span class="blue3">if</span>(!response.success) {
+        <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
+      }
+    
+    <span class="blue3">for</span>(<span class="blue3">var</span> i=<span class="red">0</span>; i&lt;achievements.length; i++) {
+      <span class="blue3">var</span> message = achievements[i].achievement;
+      
+      <span class="blue3">if</span>(achievements[i].player) {
+        message += <span class="blue">", awarded to player on "</span> + achievements[i].player.date;
+      }
+      
+      <span class="blue3">if</span>(achievements[i].friends) {
+        
+        <span class="blue3">var</span> friends = <span class="blue">""</span>;
+        
+        <span class="blue3">if</span>(achievements[i].friends.length &gt; 3) { 
+          friends = achievements[i].friends[<span class="red">0</span>].playername + <span class="blue">", "</span> + 
+                    achievements[i].friends[<span class="red">1</span>].playername + <span class="blue">", "</span> + 
+                    achievements[i].friends[<span class="red">2</span>].playername + <span class="blue">" and "</span> +   
+                    (achievements[i].friends.length - <span class="red">3</span>) + <span class="blue">" more"</span>;
+        } else {
+          <span class="blue3">for</span>(<span class="blue3">var</span> j=<span class="red">0</span>; j&lt;achievements[i].friends.length; j++) {
+            friends += (j > <span class="red">0</span> ? <span class="blue">","</span> : <span class="blue">""</span>) + achievements[i].friends[j].playername;
+          }
+        }
+        
+        message += <span class="blue">", awarded to "</span> + achievements[i].friends.length + <span class="blue">" friends: "</span> + friends;
+      }
+      
+      console.log(message);
+      <span class="green">// output: killed the boss, awarded to player on May 10 2013, 
+      // awarded to 7 friends: tom, dick, harry and 4 more</span>
+    }
+    
+    <span class="green">// let's view the achievements chronologically by me</span>
+    options = { 
+      playerid: <span class="blue">"my_id"</span>,
+    }
+    
+    Playtomic.Achievements.stream(options, <span class="blue3">function</span>(achievements, numachievements, response) {
+        <span class="blue3"><span class="blue3">if</span></span>(!response.success) {
+          <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
+        }
+      
+      console.log(<span class="blue">"I have "</span> + numachievements + <span class="blue">" achievements, 
+                  here are the latest"</span>);
+      
+      <span class="blue3">for</span>(<span class="blue3">var</span> i=<span class="red">0</span>; i&lt;achievements.length; i++) {
+        console.log(achievements[i].awarded.achievement + <span class="blue">" on "</span> + achievements[i].date + 
+                    <span class="blue">" ("</span> + achievements[i].fields.d<span class="blue3">if</span>ficulty + <span class="blue">")"</span>);
+      }
+      
+      <span class="green">// and now let's view me and my friends with one-update-per-person</span>
+      options.friendslist =  [<span class="blue">"2"</span>, <span class="blue">"3"</span>, <span class="blue">"4"</span>, <span class="blue">"5"</span>];
+      options.group = <span class="blue2">true</span>; <span class="green">// this triggers making it the most recent for each person</span>
+      
+      Playtomic.Achievements.stream(options, <span class="blue3">function</span>(achievements, numachievements, response) {
+        <span class="blue3"><span class="blue3">if</span></span>(!response.success) {
+          <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
+        }
+      
+        console.log(<span class="blue">"My friends and I have "</span> + numachievements + <span class="blue">" achievements, here are the latest"</span>);
+      
+        <span class="blue3">for</span>(<span class="blue3">var</span> i=<span class="red">0</span>; i&lt;achievements.length; i++) {
+          console.log(achievements[i].awarded.achievement + <span class="blue">" to "</span> + achievements[i].playername + 
+		              <span class="blue">" on "</span> + achievements[i].date + <span class="blue">" ("</span> + achievements[i].fields.d<span class="blue3">if</span>ficulty + <span class="blue">")"</span>;
+          <span class="green">// output: killed the boss, awarded to ben on May 14 2013 (easy)</span>
+          <span class="green">// output: killed the boss, awarded to tom on May 10 2013 (hard)</span>
+        }
+        
+        <span class="green">// and now let's make it just the hard achievements</span>
+        options.filter = {
+          difficulty: <span class="blue">"hard"</span>
+        }
+        
+        Playtomic.Achievements.stream(options, <span class="blue3">function</span>(achievements, numachievements, response) {
+            <span class="blue3"><span class="blue3">if</span></span>(!response.success) {
+              <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
+            }
+      
+          console.log(<span class="blue">"My friends and I have "</span> + numachievements + <span class="blue">" hard achievements, here are the latest"</span>);
+      
+          <span class="blue3">for</span>(<span class="blue3">var</span> i=<span class="red">0</span>; i&lt;achievements.length; i++) {
+            console.log(achievements[i].awarded.achievement + <span class="blue">" to "</span> + achievements[i].playername + 
+                        <span class="blue">" on "</span> + achievements[i].date + 
+                        <span class="blue">" ("</span> + achievements[i].fields.difficulty + <span class="blue">")"</span>);
+            <span class="green">// output: killed the boss, awarded to tom on May 10 2013 (hard)</span>
+          }
+        });
+      });
+    });
+  });
+});</pre>
+			
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row2">
 			<div class="container">
 				<div class="row">
 					<div class="span3">
