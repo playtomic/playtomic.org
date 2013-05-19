@@ -44,6 +44,8 @@ span.blue2 { color: #07C; }
 span.blue3 { color: #00F;}
 span.red { color: #900; }
 
+.span9 h3 { font-size: 14px; }
+
 /* github follow button via http://www.bicknoyle.com/twitter-style-github-follow-button/ */
 .github-follow-button {
   display: inline-block;

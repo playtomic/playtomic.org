@@ -58,8 +58,9 @@
 					<h2>API Sections</h2>
 					<ul>
 						<li><a href="#settingup">Setting up</a></li>
+						<li><a href="#achievements">Achievements</a></li>
 						<li><a href="#leaderboards">Leaderboards</a></li>
-						<li><a href="#playerlevels">Player levels</a></li>
+						<li><a href="#playerlevels">PlayerLevels</a></li>
 						<li><a href="#gamevars">GameVars</a></li>
 						<li><a href="#geoip">GeoIP</a></li>
 					</ul>
@@ -80,7 +81,7 @@
 					</ul>
 				</div>
 			
-			</div>
+			</div>			
 			
 			<div class="span9">
 				
@@ -104,6 +105,320 @@
 					<p>Each API has an extensive test library in the source code that demonstrates how to use every part in a variety of ways.</p>
 					
 				</div>
+				
+		        <a name="achievements"></a>
+		        <div class="section">
+		          <h2>Achievements</h2>
+		          <p>The Achievements API gives you two powerful ways to add social, cross-platform achievements
+		            to your game.</p>
+		          <p>Achievements have to be configured in your database first in the 'achievements' collection with the structure:</p>
+		          <pre>{ achievement: "the name", achievementkey: "secret key used when awarding" }</pre>
+		          <p>You can include any additional properties you want and have them returned in your game such as image urls, descriptions etc.</p>
+            
+		          <h3>PlayerAchievement</h3>
+		          <table class="table table-striped">
+		            <tr>
+		              <th>Property</th>
+		              <th>Type</th>
+		              <th>Description</th>
+		            </tr>
+		            <tr>
+		              <td>playername</td>
+		              <td>String</td>
+		              <td>The player name.  This can be by the player or provided by any 3rd party</td>
+		            </tr>
+		            <tr>
+		              <td>playerid</td>
+		              <td>String</td>
+		              <td>Facebook or other userids, used for filtering by friends.</td>
+		            </tr>
+		            <tr>
+		              <td>achievement</td>
+		              <td>String</td>
+		              <td>The name of the achievement.</td>
+		            </tr>
+		            <tr>
+		              <td>source</td>
+		              <td>String</td>
+		              <td>The website or device the score occurred on</td>
+		            </tr>
+		            <tr>
+		              <td>fields</td>
+		              <td>Hashtable</td>
+		              <td>Any additional data you want to (or have) attached to an achievement
+		                like difficulty - that would mean for each achievement you automatically
+		                have 'easy', 'normal', 'hard' and can differentiate between them
+		                when retrieving the achievements.</td>
+		            </tr>
+		            <tr>
+		              <th colspan="3">Properties set by the API server</th>
+		            </tr>
+		            <tr>
+		              <td>player</td>
+		              <td>PlayerAward</td>
+		              <td>When listing if a playerid is provided their details are included 
+		                here when they have the achievement</td>
+		            </tr>
+		            <tr>
+		              <td>friends</td>
+		              <td>List&lt;PlayerAward&gt;</td>
+		              <td>When listing if a friendslist is provided any friends who have
+		                the achievement are included in this collection.</td>
+		            </tr>
+		            <tr>
+		              <th colspan="3">Saving details</th>
+		            </tr>
+		            <tr>
+		              <td>achievementkey</td>
+		              <td>String</td>
+		              <td>The secret key used when saving achievements by players</td>
+		            </tr>
+		            <tr>
+		              <td>overwrite</td>
+		              <td>Boolean</td>
+		              <td>If the player already has the achievement save over it</td>
+		            </tr>
+		            <tr>
+		              <td>allowduplicates</td>
+		              <td>Boolean</td>
+		              <td>If the player already has the achievement give it again</td>
+		            </tr>
+		          </table>
+          
+		          <h2>Saving achievements</h2>
+		          <p>To save an achievement you must know the achievement name and key and they must match what 
+		            you configure in your database.  This means if you want you can provide separate keys for
+		            each achievement so players can't easily cheat.</p>
+            
+		          <pre>Playtomic.Achievements.save(achievement, callback);</pre>
+                    
+		          <p>A full example:</p>
+<pre>var achievement = new PlayerAchievement {
+  achievement = "Punched Tass",
+  achievementkey = "abcdefgh",
+  playerid = "1",
+  playername = "ben",
+  fields = new Hashtable { 
+    difficulty = "easy"
+  }
+}
+
+Playtomic.Achievements.Save(achievement, r => {
+
+  if(response.success) {
+    // note that we could still have a failure errorcode here when the player
+    // already has an achievement
+  }
+  else {
+    // response failed because of response.errormessage
+  }
+
+})</pre>
+
+		          <h2>Listing achievements</h2>
+		          <p>Achievement lists can be requested that include just the achievement information or also incorporate 
+		            the player and friends.</p>
+		          <pre>Playtomic.Achievements.list(options, callback);</pre>
+      
+		          <h3>Listing options</h3>
+		          <table class="table table-striped">
+		            <tr>
+		              <th>Property</th>
+		              <th>Type</th>
+		              <th>Description</th>
+		            </tr>
+		            <tr>
+		              <td>playerid</td>
+		              <td>String</td>
+		              <td>Facebook or other userids, used for filtering by friends.</td>
+		            </tr>
+		            <tr>
+		              <td>friendslist</td>
+		              <td>ArrayList</td>
+		              <td>Friends' playerids</td>
+		            </tr>
+		            <tr>
+		              <td>filters</td>
+		              <td>Hashtable</td>
+		              <td>Any additional filtering information from the 'fields'</td>
+		            </tr>
+		          </table>
+          
+		          <p>Some examples:</p>
+<pre>// just the achievements
+Playtomic.Achievements.List(null, (achievements, response) => {
+  if(response.success) {
+    for(var i=0; i&lt;achievements.length; i++) {
+      Debug.Log(JSON.JsonEncode(achievements[i].achievement));
+      // will output { achievement: "Punched Tass" }
+    }
+  }
+});  
+
+// my friends and i
+var options = new Hashtable {
+  playerid = "1",
+  friendslist = new ArrayList(new [] { "2", "3", "4" })
+};
+
+Playtomic.Achievements.List(options, (achievements, response) => {
+  if(response.success) {
+    for(var i:int=0; i&lt;achievements.length; i++) {  
+      Debug.Log(JSON.JsonEncode(achievements[i])); 
+      //{ 
+      //  achievement: "Punched Tass", 
+      //  player: { 
+      //    playerid: "1",
+      //    playername: "ben",
+      //    date: Date(),
+      //    rdate: "Just now",
+      //    fields: { 
+      //      difficulty: "easy"
+      //    }
+      //  },
+      //  friends: [
+      //    {
+      //      // same as player object but for any friends with the achievement
+      //    }
+      //  ]
+      //}
+    }
+  }
+});</pre>
+
+		          <h2>Activity stream</h2>
+		          <p>You can also get achievements represented as an activity stream of each award.</p>
+		          <pre>Playtomic.Achievements.stream(options, callback);</pre>
+          
+		          <h3>Streaming options</h3>
+		          <table class="table table-striped">
+		            <tr>
+		              <th>Property</th>
+		              <th>Type</th>
+		              <th>Description</th>
+		            </tr>
+		            <tr>
+		              <td>group</td>
+		              <td>Boolean</td>
+		              <td>If 'true' each person is only included once with their most recent
+		                award.  If false it will include every award.</td>
+		            </tr>
+		            <tr>
+		              <td>playerid</td>
+		              <td>String</td>
+		              <td>Facebook or other userids, used for filtering by friends.</td>
+		            </tr>
+		            <tr>
+		              <td>friendslist</td>
+		              <td>ArrayList</td>
+		              <td>Friends' playerids</td>
+		            </tr>
+		            <tr>
+		              <td>filters</td>
+		              <td>Hashtable</td>
+		              <td>Any additional filtering information from the 'fields'</td>
+		            </tr>
+		            <tr>
+		              <td>page</td>
+		              <td>int</td>
+		              <td>Page number to return (default is 1)</td>
+		            </tr>
+		            <tr>
+		              <td>perpage</td>
+		              <td>int</td>
+		              <td>Results per page (default is 20)</td>
+		            </tr>
+		            <tr>
+		              <td>mode</td>
+		              <td>string</td>
+		              <td>today, last7days, last30days</td>
+		            </tr>
+		            <tr>
+		              <td>source</td>
+		              <td>string</td>
+		              <td>Device or website if you save that information</td>
+		            </tr>
+		          </table>
+				  
+				  <h3>PlayerAward</h3>
+				  <p>When you 'stream' the messages are returned in this format.  This is the same
+					  format used when you include player or friend information in 'list'.</p>
+			  
+				<table class="table table-striped">
+					<tr>
+						<td>playername</td>
+						<td>String</td>
+						<td>The player name.  This can be by the player or provided by any 3rd party</td>
+					</tr>
+					<tr>
+						<td>playerid</td>
+						<td>String</td>
+						<td>Facebook or other userids, used for filtering by friends.</td>
+					</tr>
+					<tr>
+						<td>date</td>
+						<td>Date</td>
+						<td>The date of the the achievement was awarded</td>
+					</tr>
+					<tr>
+						<td>rdate</td>
+						<td>String</td>
+						<td>The relative date of the achievement was awarded eg "7 minutes ago"</td>
+					</tr>
+					<tr>
+						<td>source</td>
+						<td>string</td>
+						<td>Device or website if you save that information</td>
+					</tr>
+					<tr>
+						<td>fields</td>
+						<td>Hashtable</td>
+						<td>Any additional data you want to (or have) attached to an achievement
+						like difficulty - that would mean for each achievement you automatically
+						have 'easy', 'normal', 'hard' and can differentiate between them
+						when retrieving the achievements.</td>
+					</tr>
+				</table>
+          
+		          <p>Example streams</p>
+
+<pre>// show all the hard achievements by my friends and i as a stream
+var options = new Hashtable {
+  playerid = "1",
+  friendslist = new ArrayList(new [] { "2", "3", "4", "5" }),
+  group = true,
+  filters = { 
+    difficulty = "hard"
+  }
+}
+
+Playtomic.Achievements.Stream(options, (achievements, numachievements, response) => {
+
+  if(response.success) {
+
+        Debug.Log(achievements.Count + " achievements returned out of " + numachievements);
+
+        for(var i=0; i&lt;achievements.length; i++) {
+            Debug.Log(JSON.JsonEncode(achievements[i]));
+            // { 
+            //  playerid: "1", 
+            //  playername: "ben", 
+            //  date: Date(), 
+            //  rdate: "Just now", 
+            //  fields: {
+            //     difficulty: "hard" } 
+            //  },
+            //  awarded: { 
+            //    achievement: "Punched tass"
+            //  }
+            // }
+        }
+  } else {
+    // request failed because of response.errormessage
+  }
+});</pre>
+          
+		        </div>
 				
 				<a name="leaderboards"></a>
 				<div class="section">

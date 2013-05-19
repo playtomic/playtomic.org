@@ -1,221 +1,539 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Playtomic: C# API documentation</title>
-	<meta name="description" content="Free, open source, self-hosted leaderboards and more for C#, Windows 8, Windows Phone and Mono Touch games.">
-	<link href='../css/bootstrap/bootstrap.min.css' rel='stylesheet' type='text/css'>
-	<link href='../css/custom.css' rel='stylesheet' type='text/css'>
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
-	<link rel="icon" href="/favicon.ico" type="image/icon" />
+  <meta charset="utf-8">
+  <title>Playtomic: C# API documentation</title>
+  <meta name="description" content="Free, open source, self-hosted leaderboards and more for C#, Windows 8, Windows Phone and Mono Touch games.">
+  <link href='../css/bootstrap/bootstrap.min.css' rel='stylesheet' type='text/css'>
+  <link href='../css/custom.css' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="icon" href="/favicon.ico" type="image/icon" />
 </head>
 <body>
-	
-	<div id="sponsor">
-		<div class="container">
-			Sponsor this initiative and share your message with game developers everywhere.  <a href="mailto:benlowry@outlook.com">email</a>
-		</div>
-	</div>
-	
-	<header>
-		<div class="container">
-			<a href="http://playtomic.org/"><img src="../assets/playtomic.png" alt="Playtomic" title="Playtomic" /></a>
-			<ul>
-				<li><a href="/">Home</a></li>	
-				<li><a href="http://igg.me/at/playtomic">Contribute</a></li>			
-				<li><a href="/server.html">Server setup</a></li>
-				<li><a href="/apis.html">API documentation</a></li>
-				<li><a href="http://lvlboost.com/">Game analytics</a></li>
-				<li class="follow">
-					<a href="http://igg.me/at/playtomic" target="_blank" class="github-follow-button">
-					  <img src="/assets/indiegogo.png" alt=""/>
-					  Donate
-					</a>
-				</li>
-				<li class="follow">
-					<a href="https://github.com/playtomic" target="_blank" class="github-follow-button">
-					  <img src="/assets/github.png" alt=""/>
-					  Github
-					</a>
-				</li>
-				<li class="follow">
-					<a href="https://twitter.com/playtomic" target="_blank" class="github-follow-button">
-					  <img src="/assets/twitter.png" alt=""/>
-					  Twitter
-					</a>
-				</li>
-			</ul>
-		</div>
-	</header>
-		
-	<div id="content2">
-				
-		<div class="row">
-			
-			<div class="span3">
-		
-				<div class="docnav">
-					<h2>API Sections</h2>
-					<ul>
-						<li><a href="#settingup">Setting up</a></li>
-						<li><a href="#leaderboards">Leaderboards</a></li>
-						<li><a href="#playerlevels">Player levels</a></li>
-						<li><a href="#gamevars">GameVars</a></li>
-						<li><a href="#geoip">GeoIP</a></li>
-					</ul>
-				
-					<h2>API documentation</h2>
-					<ul>
-						<li><a href="as3.html">ActionScript 3</a></li>
-						<li><a href="android.html">Android / Java</a></li>
-						<li><a href="html5.html">HTML5 / JavaScript</a></li>
-						<li><a href="ios.html">iOS / Objective C</a></li>
-						<li><a href="csharp.html">Mono and .NET</a></li>
-						<li><a href="unity3d.html">Unity3d</a></li>
-					</ul>
-					
-					<h2>Supplements</h2>
-					<ul>
-						<li><a href="errorcodes.html">Error codes</a></li>
-					</ul>
-				</div>
-			
-			</div>
-			
-			<div class="span9">
-				
-				<a name="settingup"></a>
-				<div class="section">
-					
-					<h1>Mono and .NET C# API</h1>
-					
-					<h2>Compatibility</h2>
-					<p>This API has been tested in both Visual Studio and Xamarin Studio and should be compatible with Mono Touch, Windows 8, Windows Phone
-						and anything else compatible with C# 4.0.</p>
-					<p>Except for the initialization it is syntactically identical to the <a href="unity3d.html">Unity3d</a> API.</p>
-					
-					<h2>Downloading the API</h2>
-					<p>You can either <a href="https://github.com/playtomic/gameapi-csharp/archive/master.zip">download the zip</a> or if you're a git user <a href="https://github.com/playtomic/gameapi-csharp">clone the repository</a>.</p>
+  
+  <div id="sponsor">
+    <div class="container">
+      Sponsor this initiative and share your message with game developers everywhere.  <a href="mailto:benlowry@outlook.com">email</a>
+    </div>
+  </div>
+  
+  <header>
+    <div class="container">
+      <a href="http://playtomic.org/"><img src="../assets/playtomic.png" alt="Playtomic" title="Playtomic" /></a>
+      <ul>
+        <li><a href="/">Home</a></li>  
+        <li><a href="http://igg.me/at/playtomic">Contribute</a></li>      
+        <li><a href="/server.html">Server setup</a></li>
+        <li><a href="/apis.html">API documentation</a></li>
+        <li><a href="http://lvlboost.com/">Game analytics</a></li>
+        <li class="follow">
+          <a href="http://igg.me/at/playtomic" target="_blank" class="github-follow-button">
+            <img src="/assets/indiegogo.png" alt=""/>
+            Donate
+          </a>
+        </li>
+        <li class="follow">
+          <a href="https://github.com/playtomic" target="_blank" class="github-follow-button">
+            <img src="/assets/github.png" alt=""/>
+            Github
+          </a>
+        </li>
+        <li class="follow">
+          <a href="https://twitter.com/playtomic" target="_blank" class="github-follow-button">
+            <img src="/assets/twitter.png" alt=""/>
+            Twitter
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+    
+  <div id="content2">
+        
+    <div class="row">
+      
+      <div class="span3">
+    
+        <div class="docnav">
+          <h2>API Sections</h2>
+          <ul>
+            <li><a href="#settingup">Setting up</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#leaderboards">Leaderboards</a></li>
+            <li><a href="#playerlevels">PlayerLevels</a></li>
+            <li><a href="#gamevars">GameVars</a></li>
+            <li><a href="#geoip">GeoIP</a></li>
+          </ul>
+        
+          <h2>API documentation</h2>
+          <ul>
+            <li><a href="as3.html">ActionScript 3</a></li>
+            <li><a href="android.html">Android / Java</a></li>
+            <li><a href="html5.html">HTML5 / JavaScript</a></li>
+            <li><a href="ios.html">iOS / Objective C</a></li>
+            <li><a href="csharp.html">Mono and .NET</a></li>
+            <li><a href="unity3d.html">Unity3d</a></li>
+          </ul>
+          
+          <h2>Supplements</h2>
+          <ul>
+            <li><a href="errorcodes.html">Error codes</a></li>
+          </ul>
+        </div>
+      
+      </div>
+      
+      <div class="span9">
+        
+        <a name="settingup"></a>
+        <div class="section">
+          
+          <h1>Mono and .NET C# API</h1>
+          
+          <h2>Compatibility</h2>
+          <p>This API has been tested in both Visual Studio and Xamarin Studio and should be compatible with Mono Touch, Windows 8, Windows Phone
+            and anything else compatible with C# 4.0.</p>
+          <p>Except for the initialization it is syntactically identical to the <a href="unity3d.html">Unity3d</a> API.</p>
+          
+          <h2>Downloading the API</h2>
+          <p>You can either <a href="https://github.com/playtomic/gameapi-csharp/archive/master.zip">download the zip</a> or if you're a git user <a href="https://github.com/playtomic/gameapi-csharp">clone the repository</a>.</p>
 
-					<h2>Initializing the API</h2>
-					<p>Before using the API you must initialize it with your public and private keys.  Your	keys need to be created in your database.</p>
-						
-					<pre>Playtomic.Initialize.SetCredentials(publickey, privatekey, apiurl);</pre>
-					<p>Your apiurl will be in the format http://your-application-name.herokuapp.com/ or similar.</p>
-				
-					<h2>Examples</h2>
-					<p>Each API has an extensive test library in the source code that demonstrates how to use every part in a variety of ways.</p>
-						
-				</div>
-				
-				<a name="leaderboards"></a>
-				<div class="section">
-					
-					<h2>Leaderboards</h2>
-					<p>The Leaderboards API gives you very flexible high and low score leaderboards. They can be 
-						created in your game dynamically or set up in the edit leaderboards page.</p>
+          <h2>Initializing the API</h2>
+          <p>Before using the API you must initialize it with your public and private keys.  Your  keys need to be created in your database.</p>
+            
+          <pre>Playtomic.Initialize.SetCredentials(publickey, privatekey, apiurl);</pre>
+          <p>Your apiurl will be in the format http://your-application-name.herokuapp.com/ or similar.</p>
+        
+          <h2>Examples</h2>
+          <p>Each API has an extensive test library in the source code that demonstrates how to use every part in a variety of ways.</p>
+            
+        </div>
+        
+            <a name="achievements"></a>
+            <div class="section">
+              <h2>Achievements</h2>
+              <p>The Achievements API gives you two powerful ways to add social, cross-platform achievements
+                to your game.</p>
+              <p>Achievements have to be configured in your database first in the 'achievements' collection with the structure:</p>
+              <pre>{ achievement: "the name", achievementkey: "secret key used when awarding" }</pre>
+              <p>You can include any additional properties you want and have them returned in your game such as image urls, descriptions etc.</p>
+            
+              <h3>PlayerAchievement</h3>
+              <table class="table table-striped">
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>playername</td>
+                  <td>String</td>
+                  <td>The player name.  This can be by the player or provided by any 3rd party</td>
+                </tr>
+                <tr>
+                  <td>playerid</td>
+                  <td>String</td>
+                  <td>Facebook or other userids, used for filtering by friends.</td>
+                </tr>
+                <tr>
+                  <td>achievement</td>
+                  <td>String</td>
+                  <td>The name of the achievement.</td>
+                </tr>
+                <tr>
+                  <td>source</td>
+                  <td>String</td>
+                  <td>The website or device the score occurred on</td>
+                </tr>
+                <tr>
+                  <td>fields</td>
+                  <td>Hashtable</td>
+                  <td>Any additional data you want to (or have) attached to an achievement
+                    like difficulty - that would mean for each achievement you automatically
+                    have 'easy', 'normal', 'hard' and can differentiate between them
+                    when retrieving the achievements.</td>
+                </tr>
+                <tr>
+                  <th colspan="3">Properties set by the API server</th>
+                </tr>
+                <tr>
+                  <td>player</td>
+                  <td>PlayerAward</td>
+                  <td>When listing if a playerid is provided their details are included 
+                    here when they have the achievement</td>
+                </tr>
+                <tr>
+                  <td>friends</td>
+                  <td>List&lt;PlayerAward&gt;</td>
+                  <td>When listing if a friendslist is provided any friends who have
+                    the achievement are included in this collection.</td>
+                </tr>
+                <tr>
+                  <th colspan="3">Saving details</th>
+                </tr>
+                <tr>
+                  <td>achievementkey</td>
+                  <td>String</td>
+                  <td>The secret key used when saving achievements by players</td>
+                </tr>
+                <tr>
+                  <td>overwrite</td>
+                  <td>Boolean</td>
+                  <td>If the player already has the achievement save over it</td>
+                </tr>
+                <tr>
+                  <td>allowduplicates</td>
+                  <td>Boolean</td>
+                  <td>If the player already has the achievement give it again</td>
+                </tr>
+              </table>
+          
+              <h2>Saving achievements</h2>
+              <p>To save an achievement you must know the achievement name and key and they must match what 
+                you configure in your database.  This means if you want you can provide separate keys for
+                each achievement so players can't easily cheat.</p>
+            
+              <pre>Playtomic.Achievements.save(achievement, callback);</pre>
+                    
+              <p>A full example:</p>
+<pre>var achievement = new PlayerAchievement {
+  achievement = "Punched Tass",
+  achievementkey = "abcdefgh",
+  playerid = "1",
+  playername = "ben",
+  fields = new Hashtable { 
+    difficulty = "easy"
+  }
+}
 
-					<h2>Score structure</h2>
-					<table class="table table-striped">
-						<tr>
-							<th>Property</th>
-							<th>Type</th>
-							<th>Description</th>
-						</tr>
-						<tr>
-							<td>playername</td>
-							<td>String</td>
-							<td>The player name.  This can be by the player or provided by any 3rd party</td>
-						</tr>
-						<tr>
-							<td>playerid</td>
-							<td>String</td>
-							<td>Facebook or other userids, used for filtering by friends.</td>
-						</tr>
-						<tr>
-							<td>points</td>
-							<td>long</td>
-							<td>The player's score</td>
-						</tr>
-						<tr>
-							<td>source</td>
-							<td>String</td>
-							<td>The website or device the score occurred on</td>
-						</tr>
-						<tr>
-							<td>fields</td>
-							<td>Hashtable</td>
-							<td>Any additional data you want to (or have) attached to a score.</td>
-						</tr>
-						<tr>
-							<th colspan="3">Properties set by the API server</th>
-						</tr>
-						<tr>
-							<td>date</td>
-							<td>Date</td>
-							<td>The date of the score</td>
-						</tr>
-						<tr>
-							<td>rdate</td>
-							<td>String</td>
-							<td>The relative date of the score eg "7 minutes ago"</td>
-						</tr>
-						<tr>
-							<td>rank</td>
-							<td>int</td>
-							<td>The rank based on your listing parameters.</td>
-						</tr>
-						<tr>
-							<th colspan="3">Table detais</th>
-						</tr>
-						<tr>
-							<td>table</td>
-							<td>String</td>
-							<td>The name of the score table</td>
-						</tr>
-						<tr>
-							<td>highest</td>
-							<td>Boolean</td>
-							<td>The sort ordering by highest or lowest</td>
-						</tr>
-						<tr>
-							<td>allowduplicates</td>
-							<td>bool</td>
-							<td>Create duplicates, or override or reject scores if they're not the best</td>
-						</tr>
-					</table>
+Playtomic.Achievements.Save(achievement, r => {
 
-						<h2>Submitting scores</h2>
-						<p>Score submission is handled by:</p>
-						<pre>Playtomic.Leaderboards.Save(score, Action&lt;PResponse&gt; callback);</pre>
-						
+  if(response.success) {
+    // note that we could still have a failure errorcode here when the player
+    // already has an achievement
+  }
+  else {
+    // response failed because of response.errormessage
+  }
+
+})</pre>
+
+              <h2>Listing achievements</h2>
+              <p>Achievement lists can be requested that include just the achievement information or also incorporate 
+                the player and friends.</p>
+              <pre>Playtomic.Achievements.list(options, callback);</pre>
+      
+              <h3>Listing options</h3>
+              <table class="table table-striped">
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>playerid</td>
+                  <td>String</td>
+                  <td>Facebook or other userids, used for filtering by friends.</td>
+                </tr>
+                <tr>
+                  <td>friendslist</td>
+                  <td>ArrayList</td>
+                  <td>Friends' playerids</td>
+                </tr>
+                <tr>
+                  <td>filters</td>
+                  <td>Hashtable</td>
+                  <td>Any additional filtering information from the 'fields'</td>
+                </tr>
+              </table>
+          
+              <p>Some examples:</p>
+<pre>// just the achievements
+Playtomic.Achievements.list(null, (achievements, response) => {
+  if(response.success) {
+    var json = new JavaScriptSerializer();
+    for(var i=0; i&lt;achievements.length; i++) {
+      Console.WriteLine(json.Serialize(achievements[i].achievement));
+      // will output { achievement: "Punched Tass" }
+    }
+  }
+});  
+
+// my friends and i
+var options = new Hashtable {
+  playerid = "1",
+  friendslist = new ArrayList(new [] { "2", "3", "4" })
+};
+
+Playtomic.Achievements.List(options, (achievements, response) => {
+  if(response.success) {
+    var json = new JavaScriptSerializer();
+    for(var i:int=0; i&lt;achievements.length; i++) {  
+      Console.WriteLine(json.Serialize(achievements[i])); 
+      //{ 
+      //  achievement: "Punched Tass", 
+      //  player: { 
+      //    playerid: "1",
+      //    playername: "ben",
+      //    date: Date(),
+      //    rdate: "Just now",
+      //    fields: { 
+      //      difficulty: "easy"
+      //    }
+      //  },
+      //  friends: [
+      //    {
+      //      // same as player object but for any friends with the achievement
+      //    }
+      //  ]
+      //}
+    }
+  }
+});</pre>
+
+              <h2>Activity stream</h2>
+              <p>You can also get achievements represented as an activity stream of each award.</p>
+              <pre>Playtomic.Achievements.stream(options, callback);</pre>
+          
+              <h3>Streaming options</h3>
+              <table class="table table-striped">
+                <tr>
+                  <th>Property</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                  <td>group</td>
+                  <td>Boolean</td>
+                  <td>If 'true' each person is only included once with their most recent
+                    award.  If false it will include every award.</td>
+                </tr>
+                <tr>
+                  <td>playerid</td>
+                  <td>String</td>
+                  <td>Facebook or other userids, used for filtering by friends.</td>
+                </tr>
+                <tr>
+                  <td>friendslist</td>
+                  <td>ArrayList</td>
+                  <td>Friends' playerids</td>
+                </tr>
+                <tr>
+                  <td>filters</td>
+                  <td>Hashtable</td>
+                  <td>Any additional filtering information from the 'fields'</td>
+                </tr>
+                <tr>
+                  <td>page</td>
+                  <td>int</td>
+                  <td>Page number to return (default is 1)</td>
+                </tr>
+                <tr>
+                  <td>perpage</td>
+                  <td>int</td>
+                  <td>Results per page (default is 20)</td>
+                </tr>
+                <tr>
+                  <td>mode</td>
+                  <td>string</td>
+                  <td>today, last7days, last30days</td>
+                </tr>
+                <tr>
+                  <td>source</td>
+                  <td>string</td>
+                  <td>Device or website if you save that information</td>
+                </tr>
+              </table>
+          
+          <h3>PlayerAward</h3>
+          <p>When you 'stream' the messages are returned in this format.  This is the same
+            format used when you include player or friend information in 'list'.</p>
+        
+        <table class="table table-striped">
+          <tr>
+            <td>playername</td>
+            <td>String</td>
+            <td>The player name.  This can be by the player or provided by any 3rd party</td>
+          </tr>
+          <tr>
+            <td>playerid</td>
+            <td>String</td>
+            <td>Facebook or other userids, used for filtering by friends.</td>
+          </tr>
+          <tr>
+            <td>date</td>
+            <td>Date</td>
+            <td>The date of the the achievement was awarded</td>
+          </tr>
+          <tr>
+            <td>rdate</td>
+            <td>String</td>
+            <td>The relative date of the achievement was awarded eg "7 minutes ago"</td>
+          </tr>
+          <tr>
+            <td>source</td>
+            <td>string</td>
+            <td>Device or website if you save that information</td>
+          </tr>
+          <tr>
+            <td>fields</td>
+            <td>Hashtable</td>
+            <td>Any additional data you want to (or have) attached to an achievement
+            like difficulty - that would mean for each achievement you automatically
+            have 'easy', 'normal', 'hard' and can differentiate between them
+            when retrieving the achievements.</td>
+          </tr>
+        </table>
+          
+              <p>Example streams</p>
+
+<pre>// show all the hard achievements by my friends and i as a stream
+var options = new Hashtable {
+  playerid = "1",
+  friendslist = new ArrayList(new [] { "2", "3", "4", "5" }),
+  group = true,
+  filters = { 
+    difficulty = "hard"
+  }
+}
+
+Playtomic.Achievements.Stream(options, (achievements, numachievements, response) => {
+
+  if(response.success) {
+
+        Console.WriteLine(achievements.Count + " achievements returned out of " + numachievements);
+    var json = new JavaScriptSerializer();
+
+        for(var i=0; i&lt;achievements.length; i++) {
+            Console.WriteLine(json.Serialize(achievements[i]));
+            // { 
+            //  playerid: "1", 
+            //  playername: "ben", 
+            //  date: Date(), 
+            //  rdate: "Just now", 
+            //  fields: {
+            //     difficulty: "hard" } 
+            //  },
+            //  awarded: { 
+            //    achievement: "Punched tass"
+            //  }
+            // }
+        }
+  } else {
+    // request failed because of response.errormessage
+  }
+});</pre>
+          
+            </div>
+        
+        <a name="leaderboards"></a>
+        <div class="section">
+          
+          <h2>Leaderboards</h2>
+          <p>The Leaderboards API gives you very flexible high and low score leaderboards. They can be 
+            created in your game dynamically or set up in the edit leaderboards page.</p>
+
+          <h2>Score structure</h2>
+          <table class="table table-striped">
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>playername</td>
+              <td>String</td>
+              <td>The player name.  This can be by the player or provided by any 3rd party</td>
+            </tr>
+            <tr>
+              <td>playerid</td>
+              <td>String</td>
+              <td>Facebook or other userids, used for filtering by friends.</td>
+            </tr>
+            <tr>
+              <td>points</td>
+              <td>long</td>
+              <td>The player's score</td>
+            </tr>
+            <tr>
+              <td>source</td>
+              <td>String</td>
+              <td>The website or device the score occurred on</td>
+            </tr>
+            <tr>
+              <td>fields</td>
+              <td>Hashtable</td>
+              <td>Any additional data you want to (or have) attached to a score.</td>
+            </tr>
+            <tr>
+              <th colspan="3">Properties set by the API server</th>
+            </tr>
+            <tr>
+              <td>date</td>
+              <td>Date</td>
+              <td>The date of the score</td>
+            </tr>
+            <tr>
+              <td>rdate</td>
+              <td>String</td>
+              <td>The relative date of the score eg "7 minutes ago"</td>
+            </tr>
+            <tr>
+              <td>rank</td>
+              <td>int</td>
+              <td>The rank based on your listing parameters.</td>
+            </tr>
+            <tr>
+              <th colspan="3">Table detais</th>
+            </tr>
+            <tr>
+              <td>table</td>
+              <td>String</td>
+              <td>The name of the score table</td>
+            </tr>
+            <tr>
+              <td>highest</td>
+              <td>Boolean</td>
+              <td>The sort ordering by highest or lowest</td>
+            </tr>
+            <tr>
+              <td>allowduplicates</td>
+              <td>bool</td>
+              <td>Create duplicates, or override or reject scores if they're not the best</td>
+            </tr>
+          </table>
+
+            <h2>Submitting scores</h2>
+            <p>Score submission is handled by:</p>
+            <pre>Playtomic.Leaderboards.Save(score, Action&lt;PResponse&gt; callback);</pre>
+            
 <pre>void SubmitScore()
 {
-	// basic score
+  // basic score
     var score = new PlayerScore {
-		playername = "ben",
-		points = 173000,
-		table = "highscores",
-		allowduplicates = true
-	};
-	
+    playername = "ben",
+    points = 173000,
+    table = "highscores",
+    allowduplicates = true
+  };
+  
     Playtomic.Leaderboards.Save(score, SubmitComplete); 
 
     // another score
     var score2 = new PlayerScore {
-		playername = "ben",
-		points = 173000,
-		table = "highscores",
-		allowduplicates = true,
-		source = root.loaderInfo.loaderURL,
-		fields = new Hashtable 
-			{
-				{"character", "barbarian"},
-				{"level", 7},
-				{"kills", 18}
-			}
-	};
-	
+    playername = "ben",
+    points = 173000,
+    table = "highscores",
+    allowduplicates = true,
+    source = root.loaderInfo.loaderURL,
+    fields = new Hashtable 
+      {
+        {"character", "barbarian"},
+        {"level", 7},
+        {"kills", 18}
+      }
+  };
+  
     Playtomic.Leaderboards.Save(score2, SubmitComplete);
 }
 
@@ -223,96 +541,96 @@ void SubmitComplete(PResponse response)
 {
     if(response.success)
     {
-        Debug.Log("Score saved!");		
+        Debug.Log("Score saved!");    
     }
     else
     {
         // submission failed because of response.errormessage with response.errorcode
     }
 }</pre>
-					
-					<h2>Showing scores</h2>
-					<p>Scores are loaded via a simple method that returns an array of 
-					scores to your function where you can display the data in your leaderboard.</p>
-					
-					<pre>Playtomic.Leaderboards.List(Hashtable options, Action&lt;List&lt;PlayerScore&gt;, int, PResponse&gt; callback);</pre>
-					
-					<table class="table table-striped">
-						<tr>
-							<th>Property</th>
-							<th>Type</th>
-							<th>Description</th>
-						</tr>
-						<tr>
-							<td>table</td>
-							<td>String</td>
-							<td>The name of the score table</td>
-						</tr>
-						<tr>
-							<td>highest</td>
-							<td>Boolean</td>
-							<td>The sort ordering by highest or lowest</td>
-						</tr>
-						<tr>
-							<td>allowduplicates</td>
-							<td>Boolean</td>
-							<td>Reject scores if they're not the player's best (default false) or allow multiple scores per player</td>
-						</tr>
-						<tr>
-							<td>filters</td>
-							<td>Hashtable</dt>
-							<td>Additional properties to filter by from the 'save' fields</td>
-						</tr>
-						<tr>
-							<td>source</td>
-							<td>String</td>
-							<td>The website or device the score occurred on</td>
-						</tr>
-						<tr>
-							<td>friendslist</td>
-							<td>ArrayList</td>
-							<td>Array of friend's playerids</td>
-						</tr>
-						<tr>
-							<td>playerid</td>
-							<td>String</td>
-							<td>A specific playerid</td>
-						</tr>
-						<tr>
-							<td>excludeplayerid</td>
-							<td>Boolean</td>
-							<td>For excluding the playerid as a filter when SaveAndListing</td>
-						</tr>
-						<tr>
-							<td>mode</td>
-							<td>String</td>
-							<td>Time limits, 'last7days', 'last30days', 'alltime' (default), 'today' and 'newest' which returns latest unsorted scores.</td>
-						</tr>
-						<tr>
-							<th colspan="3">Pagination</th>
-						</tr>
-						<tr>
-							<td>page</td>
-							<td>int</td>
-							<td>Page number to return (default is 1)</td>
-						</tr>
-						<tr>
-							<td>perpage</td>
-							<td>int</td>
-							<td>Results per page (default is 20)</td>
-						</tr>
-					</table>
-					
+          
+          <h2>Showing scores</h2>
+          <p>Scores are loaded via a simple method that returns an array of 
+          scores to your function where you can display the data in your leaderboard.</p>
+          
+          <pre>Playtomic.Leaderboards.List(Hashtable options, Action&lt;List&lt;PlayerScore&gt;, int, PResponse&gt; callback);</pre>
+          
+          <table class="table table-striped">
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>table</td>
+              <td>String</td>
+              <td>The name of the score table</td>
+            </tr>
+            <tr>
+              <td>highest</td>
+              <td>Boolean</td>
+              <td>The sort ordering by highest or lowest</td>
+            </tr>
+            <tr>
+              <td>allowduplicates</td>
+              <td>Boolean</td>
+              <td>Reject scores if they're not the player's best (default false) or allow multiple scores per player</td>
+            </tr>
+            <tr>
+              <td>filters</td>
+              <td>Hashtable</dt>
+              <td>Additional properties to filter by from the 'save' fields</td>
+            </tr>
+            <tr>
+              <td>source</td>
+              <td>String</td>
+              <td>The website or device the score occurred on</td>
+            </tr>
+            <tr>
+              <td>friendslist</td>
+              <td>ArrayList</td>
+              <td>Array of friend's playerids</td>
+            </tr>
+            <tr>
+              <td>playerid</td>
+              <td>String</td>
+              <td>A specific playerid</td>
+            </tr>
+            <tr>
+              <td>excludeplayerid</td>
+              <td>Boolean</td>
+              <td>For excluding the playerid as a filter when SaveAndListing</td>
+            </tr>
+            <tr>
+              <td>mode</td>
+              <td>String</td>
+              <td>Time limits, 'last7days', 'last30days', 'alltime' (default), 'today' and 'newest' which returns latest unsorted scores.</td>
+            </tr>
+            <tr>
+              <th colspan="3">Pagination</th>
+            </tr>
+            <tr>
+              <td>page</td>
+              <td>int</td>
+              <td>Page number to return (default is 1)</td>
+            </tr>
+            <tr>
+              <td>perpage</td>
+              <td>int</td>
+              <td>Results per page (default is 20)</td>
+            </tr>
+          </table>
+          
 <pre>void ShowScores()
 {
-	// table options
-	var table = new Hashtable {
-		{"table", "highscores"},
-		{"page", 1},
-		{"perpage", 10},
-		{"highest", true}
-	};
-	
+  // table options
+  var table = new Hashtable {
+    {"table", "highscores"},
+    {"page", 1},
+    {"perpage", 10},
+    {"highest", true}
+  };
+  
     Playtomic.Leaderboards.List(table, ListComplete);
 }
 
@@ -335,86 +653,86 @@ void ListComplete(List&lt;PlayerScore&gt; scores, int numscores, PResponse respo
         // score listing failed because of response.errormessage with response.errorcode
     }
 }</pre>
-					
-					<h2>Save and list</h2>
-					<p>You can submit scores and at the same time return the leaderboard page that that score is on.
-						This combines the Save and List approaches from above:</p>
-						
-					<pre>Playtomic.Leaderboards.SaveAndList(PlayerScore score, Action&lt;List&lt;PlayerScore&gt;, int, PResponse&gt; callback)</pre>
+          
+          <h2>Save and list</h2>
+          <p>You can submit scores and at the same time return the leaderboard page that that score is on.
+            This combines the Save and List approaches from above:</p>
+            
+          <pre>Playtomic.Leaderboards.SaveAndList(PlayerScore score, Action&lt;List&lt;PlayerScore&gt;, int, PResponse&gt; callback)</pre>
 
-					<p>Note:  If you pass a 'playerid' to be saved you can exclude it from filtering the returned
-						scores via the additional option, excludeplayerid = true</p>
-						
-					<p>You don't specify a 'page', you specify the 'perpage' (default 20) and it will automatically 
-						decide which page to return based on the submitted score's rank. If you submit the 1187th 
-						best score at 30 per page then it will show you page 39, scores #1170 - #1200.</p>
-					<p>Ranks are returned so you are not viewing the top N scores you are viewing the top N scores 
-						from rank X onwards.</p>				
-					
-				</div>
-				
-				<a name="playerlevels"></a>
-				<div class="section">
-					
-					<h2>Level sharing</h2>
-					
-					<p>The level sharing API provides a way to store and retrieve user-generated content for your game. 
-						It can operate anonymously or authenticated via any 3rd party service you're already using.</p>
+          <p>Note:  If you pass a 'playerid' to be saved you can exclude it from filtering the returned
+            scores via the additional option, excludeplayerid = true</p>
+            
+          <p>You don't specify a 'page', you specify the 'perpage' (default 20) and it will automatically 
+            decide which page to return based on the submitted score's rank. If you submit the 1187th 
+            best score at 30 per page then it will show you page 39, scores #1170 - #1200.</p>
+          <p>Ranks are returned so you are not viewing the top N scores you are viewing the top N scores 
+            from rank X onwards.</p>        
+          
+        </div>
+        
+        <a name="playerlevels"></a>
+        <div class="section">
+          
+          <h2>Level sharing</h2>
+          
+          <p>The level sharing API provides a way to store and retrieve user-generated content for your game. 
+            It can operate anonymously or authenticated via any 3rd party service you're already using.</p>
 
-					<h3>Level structure</h3>
-					<p>Saving and listing levels uses this class to represent a level.</p>
+          <h3>Level structure</h3>
+          <p>Saving and listing levels uses this class to represent a level.</p>
 
-					<table class="table table-striped">
-						<tr>
-							<th>Property</th>
-							<th>Type</th>
-							<th>Description</th>
-						</tr>
-						<tr>
-							<td>name</td>
-							<td>String</td>
-							<td>The level name.</td>
-						</tr>
-						<tr>
-							<td>playername</td>
-							<td>String</td>
-							<td>The player name.</td>
-						</tr>
-						
-						<tr>
-							<td>playerid</td>
-							<td>String</td>
-							<td>Facebook or other userids, used for filtering by friends.</td>
-						</tr>
-						<tr>
-							<td>data</td>
-							<td>string</td>
-							<td>The created level data as a string</td>
-						</tr>
-						<tr>
-							<td>source</td>
-							<td>String</td>
-							<td>The website or device the score occurred on</td>
-						</tr>
-						<tr>
-							<td>fields</td>
-							<td>Hashtable</td>
-							<td>Any additional data you want to (or have) attached to a level.</td>
-						</tr>
-					</table>
-					
-					<h2>Saving levels</h2>
-					<pre>PlayerLevels.Save(PlayerLevel level, Action&lt;PlayerLevel, PResponse&gt;);</pre>
-					<p>Example saving level:</p>
+          <table class="table table-striped">
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>name</td>
+              <td>String</td>
+              <td>The level name.</td>
+            </tr>
+            <tr>
+              <td>playername</td>
+              <td>String</td>
+              <td>The player name.</td>
+            </tr>
+            
+            <tr>
+              <td>playerid</td>
+              <td>String</td>
+              <td>Facebook or other userids, used for filtering by friends.</td>
+            </tr>
+            <tr>
+              <td>data</td>
+              <td>string</td>
+              <td>The created level data as a string</td>
+            </tr>
+            <tr>
+              <td>source</td>
+              <td>String</td>
+              <td>The website or device the score occurred on</td>
+            </tr>
+            <tr>
+              <td>fields</td>
+              <td>Hashtable</td>
+              <td>Any additional data you want to (or have) attached to a level.</td>
+            </tr>
+          </table>
+          
+          <h2>Saving levels</h2>
+          <pre>PlayerLevels.Save(PlayerLevel level, Action&lt;PlayerLevel, PResponse&gt;);</pre>
+          <p>Example saving level:</p>
 
 <pre>void SaveLevel()
 {
     var level = new PlayerLevel {
-		name = "My level",
-		data = "obj1=cannon&amp;obj1x=120&amp;obj1y=180",
-		playername = "Ben"
-	}
-	
+    name = "My level",
+    data = "obj1=cannon&amp;obj1x=120&amp;obj1y=180",
+    playername = "Ben"
+  }
+  
     Playtomic.PlayerLevels.Save(level, SaveComplete);
 }
 
@@ -429,14 +747,14 @@ void SaveComplete(PlayerLevel level, PResponse response)
         // failed because of response.errormessage with response.errorcode
     }
 }</pre>
-					
-					<h2>Rating levels</h2>
-					<p>Levels can be rated 1 - 10 by players. Rating can be done anonymously with some 
-						protection against repeat voting, or bound to playerids if you specify them.</p>
-						
-					<pre>Playtomic.PlayerLevels.Rate(string levelid, int rating, Action&lt;PResponse&gt; callback);</pre>
-					
-					<p>Example rating level:</p>
+          
+          <h2>Rating levels</h2>
+          <p>Levels can be rated 1 - 10 by players. Rating can be done anonymously with some 
+            protection against repeat voting, or bound to playerids if you specify them.</p>
+            
+          <pre>Playtomic.PlayerLevels.Rate(string levelid, int rating, Action&lt;PResponse&gt; callback);</pre>
+          
+          <p>Example rating level:</p>
 
 <pre>void Rate()
 {
@@ -454,91 +772,91 @@ void RateComplete(PResponse response)
         // Rating failed because of response.errormessage with response.errorcode
     }
 }</pre>
-					
-					<h2>Listing levels</h2>
-					<p>	Listing levels can be done by popular or newest, with optional 
-						filtering by date ranges and/or custom fields.</p>
+          
+          <h2>Listing levels</h2>
+          <p>  Listing levels can be done by popular or newest, with optional 
+            filtering by date ranges and/or custom fields.</p>
 
-					<pre>Playtomic.PlayerLevels.List(Hashtable options, Action&lt;List&lt;PlayerLevel&gt;, int, PResponse&gt; callback);</pre>
-					
-					<h4>Listing options</h4>
-					<table class="table table-striped">
-						<tr>
-							<th>Property</th>
-							<th>Type</th>
-							<th>Description</th>
-						</tr>
-						<tr>
-							<td>mode</td>
-							<td>String</td>
-							<td>'newest' or 'popular'.</td>
-						</tr>
-						<tr>
-							<td>datemin</td>
-							<td>String</td>
-							<td>'mm/dd/yyyy' for the minimum date the level was created.</td>
-						</tr>
-						<tr>
-							<td>datemax</td>
-							<td>String</td>
-							<td>'mm/dd/yyyy' for the maximum date the level was created.</td>
-						</tr>
-						<tr>
-							<td>playerid</td>
-							<td>String</td>
-							<td>Facebook or other userid</td>
-						</tr>
-						<tr>
-							<td>friendslist</td>
-							<td>ArrayList</td>
-							<td>Array of friend's playerids</td>
-						</tr>
-						<tr>
-							<td>data</td>
-							<td>Boolean</td>
-							<td>Return the level data with the request (maybe faster to load individually)</td>
-						</tr>
-						<tr>
-							<td>source</td>
-							<td>String</td>
-							<td>The website or device the level was created on</td>
-						</tr>
-						<tr>
-							<td>filters</td>
-							<td>Hashtable</td>
-							<td>Any additional data you want to (or have) attached to a level.</td>
-						</tr>
-						<tr>
-							<th colspan="3">Pagination</th>
-						</tr>
-						<tr>
-							<td>page</td>
-							<td>int</td>
-							<td>Page number to return (default is 1)</td>
-						</tr>
-						<tr>
-							<td>perpage</td>
-							<td>int</td>
-							<td>Results per page (default is 20)</td>
-						</tr>
-					</table>
-	
-					
-					<p>An example listing levels:</p>
+          <pre>Playtomic.PlayerLevels.List(Hashtable options, Action&lt;List&lt;PlayerLevel&gt;, int, PResponse&gt; callback);</pre>
+          
+          <h4>Listing options</h4>
+          <table class="table table-striped">
+            <tr>
+              <th>Property</th>
+              <th>Type</th>
+              <th>Description</th>
+            </tr>
+            <tr>
+              <td>mode</td>
+              <td>String</td>
+              <td>'newest' or 'popular'.</td>
+            </tr>
+            <tr>
+              <td>datemin</td>
+              <td>String</td>
+              <td>'mm/dd/yyyy' for the minimum date the level was created.</td>
+            </tr>
+            <tr>
+              <td>datemax</td>
+              <td>String</td>
+              <td>'mm/dd/yyyy' for the maximum date the level was created.</td>
+            </tr>
+            <tr>
+              <td>playerid</td>
+              <td>String</td>
+              <td>Facebook or other userid</td>
+            </tr>
+            <tr>
+              <td>friendslist</td>
+              <td>ArrayList</td>
+              <td>Array of friend's playerids</td>
+            </tr>
+            <tr>
+              <td>data</td>
+              <td>Boolean</td>
+              <td>Return the level data with the request (maybe faster to load individually)</td>
+            </tr>
+            <tr>
+              <td>source</td>
+              <td>String</td>
+              <td>The website or device the level was created on</td>
+            </tr>
+            <tr>
+              <td>filters</td>
+              <td>Hashtable</td>
+              <td>Any additional data you want to (or have) attached to a level.</td>
+            </tr>
+            <tr>
+              <th colspan="3">Pagination</th>
+            </tr>
+            <tr>
+              <td>page</td>
+              <td>int</td>
+              <td>Page number to return (default is 1)</td>
+            </tr>
+            <tr>
+              <td>perpage</td>
+              <td>int</td>
+              <td>Results per page (default is 20)</td>
+            </tr>
+          </table>
+  
+          
+          <p>An example listing levels:</p>
 
 <pre>void List()
 {
-	var listoptions = new Hashtable {
-		{"mode, "newest"},
-		{"data, false},
-		{"perpage, 30},
-		{"filters, new Hashtable 
-			{
-				difficulty: "hard"
-			}
-		}
-	};
-	
+  var listoptions = new Hashtable {
+    {"mode, "newest"},
+    {"data, false},
+    {"perpage, 30},
+    {"filters, new Hashtable 
+      {
+        difficulty: "hard"
+      }
+    }
+  };
+  
     Playtomic.PlayerLevels.List(listoptions, ListLoaded);
 }
 
@@ -556,13 +874,13 @@ void ListLoaded(List&lt;PlayerLevel&gt; levels, int numlevels, PResponse respons
         // Level list failed to load because of response.errormessage with response.errorcode
     }
 }</pre>
-					
-					<h2>Loading levels</h2>
-					<p>If you do not include the data when you load lists of levels then you can request it seperately.</p>
+          
+          <h2>Loading levels</h2>
+          <p>If you do not include the data when you load lists of levels then you can request it seperately.</p>
 
-					<pre>Playtomic.PlayerLevels.Load(string levelid, Action&lt;PlayerLevel, PResponse&gt; callback)</pre>
-					
-					<p>An example loading a single level:</p>
+          <pre>Playtomic.PlayerLevels.Load(string levelid, Action&lt;PlayerLevel, PResponse&gt; callback)</pre>
+          
+          <p>An example loading a single level:</p>
 
 <pre>void Load(string levelid)
 {
@@ -580,39 +898,39 @@ void LoadComplete(PlayerLevel level, PResponse response)
         // level failed to load because of response.errormessage with response.errorcode
     }
 }</pre>
-					
-				</div>
-				
-				<a name="gamevars"></a>
-				<div class="section">
-					<h2>GameVars</h2>
-					<p>GameVars let you change the value of key variables in your game any time you 
-						want.</p>
-						
-					<h3>Setting them up in your database</h3>
-					<p>In your <a href="https://mongohq.com/">MongoHQ</a> dashboard add a new entry
-						to the "gamevars" collection.</p>
-						
+          
+        </div>
+        
+        <a name="gamevars"></a>
+        <div class="section">
+          <h2>GameVars</h2>
+          <p>GameVars let you change the value of key variables in your game any time you 
+            want.</p>
+            
+          <h3>Setting them up in your database</h3>
+          <p>In your <a href="https://mongohq.com/">MongoHQ</a> dashboard add a new entry
+            to the "gamevars" collection.</p>
+            
 <pre>{
-	name: "basehitpoints",
-	value: 800
+  name: "basehitpoints",
+  value: 800
 }</pre>
-						
-					<h2>Loading</h2>
-					<p>They are loaded via:</p>
-					
-					<pre>Playtmoic.GameVars.Load(Action&lt;Hashtable, PResponse&gt; callback);</pre>
-					
-					<p>You can load variables individually, for instance if you are caching the 
-						GameVars you can check a 'version' GameVar to decide whether to reload 
-						the full collection.</p>
-						
-					<pre>Playtomic.GameVars.LoadSingle("name", Action&lt;Hashtable, PResponse&gt; callback);</pre>
-					
-					<p>The callback parameter is your function that receives an object that 
-						has properties matching the variables you have configured in your database. 
-						The callback is the same for all or single GameVars.</p>
-						
+            
+          <h2>Loading</h2>
+          <p>They are loaded via:</p>
+          
+          <pre>Playtmoic.GameVars.Load(Action&lt;Hashtable, PResponse&gt; callback);</pre>
+          
+          <p>You can load variables individually, for instance if you are caching the 
+            GameVars you can check a 'version' GameVar to decide whether to reload 
+            the full collection.</p>
+            
+          <pre>Playtomic.GameVars.LoadSingle("name", Action&lt;Hashtable, PResponse&gt; callback);</pre>
+          
+          <p>The callback parameter is your function that receives an object that 
+            has properties matching the variables you have configured in your database. 
+            The callback is the same for all or single GameVars.</p>
+            
 <pre>// our variables with default, original values
 int basehitpoints = 100;
 int basegold = 50;
@@ -639,21 +957,21 @@ void GameVarsLoaded(Hashtable vars, PResponse response)
         // request failed because of response.errormessage with response.errorcode
     }
 }</pre>
-				</div>
-				
-				<a name="geoip"></a>
-				<div class="geoip">
-					<h2>Geolocation</h2>
-					<p>The GeoIP service identifies which country the player is from, 
-						returning their country code and name.</p>
-					<p>It is called via:</p>
+        </div>
+        
+        <a name="geoip"></a>
+        <div class="geoip">
+          <h2>Geolocation</h2>
+          <p>The GeoIP service identifies which country the player is from, 
+            returning their country code and name.</p>
+          <p>It is called via:</p>
 
-					<pre>Playtomic.GeoIP.Lookup(Action&lt;PlayerCountry, PResponse&gt; callback);</pre>
-					
-					<p>The callback function receives an object that has 'code' and 'name' properties:</p>
-						
+          <pre>Playtomic.GeoIP.Lookup(Action&lt;PlayerCountry, PResponse&gt; callback);</pre>
+          
+          <p>The callback function receives an object that has 'code' and 'name' properties:</p>
+            
 <pre>Playtomic.GeoIP.Lookup(SetPlayerCountry);
-	
+  
 void SetPlayerCountry(PlayerCountry country, PResponse response)
 {
     if(response.success)
@@ -666,29 +984,29 @@ void SetPlayerCountry(PlayerCountry country, PResponse response)
         // request failed because of response.errormessage with response.errorcode
     }
 }</pre>
-				</div>
-					
-			</div>
-		</div>
-	</div>
-	
+        </div>
+          
+      </div>
+    </div>
+  </div>
+  
 
-	<footer>
-		<div class="container">
-			&copy; 2013 Ben Lowry.  Server and client software are released under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.
-		</div>
-	</footer>
-	
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <footer>
+    <div class="container">
+      &copy; 2013 Ben Lowry.  Server and client software are released under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.
+    </div>
+  </footer>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	  ga('create', 'UA-40077834-4', 'playtomic.org');
-	  ga('send', 'pageview');
+    ga('create', 'UA-40077834-4', 'playtomic.org');
+    ga('send', 'pageview');
 
-	</script>
-	
+  </script>
+  
 </body>
 </html>
