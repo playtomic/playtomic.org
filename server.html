@@ -57,11 +57,14 @@
 				
 				<div class="section">
 
-					<h2>Prerequisites</h2>
-					<p>You need acount hosting for a <a href="http://nodejs.org/">NodeJS</a> application and
-						<a href="http://mongodb.org/">MongoDB</a> database.  We recommend using
-						<a href="http://heroku.com/">Heroku</a> and <a href="http://mongohq.com/">MongoHQ.</a></p>
+					<h2>The database</h2>
+					<ol>
+						<li><p>Create an account at <a href="https://mongohq.com/">MongoHQ</a> and make 
+							a database.  The free one will be enough to get started.</p></li>
+						<li><p>In the "Admin" tab of your database create a new user.</p></li>
 
+					</ol>
+					
 					<h2>The server</h2>
 					<ol>
 						<li>Create an account at <a href="http://heroku.com/">Heroku</a>.  
@@ -69,6 +72,10 @@
 
 						<li>Create an application on your computer for Heroku and download the api server source 
 							from <a href="http://github.com/playtomic/apiserver">Github</a>.</li>
+						<li><p>In your MongoHQ dashboard copy the "URI" from the "Admin" tab and put your user credentials in it,
+							and then in your Heroku application:</p>
+							<pre>heroku config:set playtomic=mongodb://the_uri_you_copied</pre>
+						</li>
 						<li><p>Upload the application to Heroku via the command line:</p>
 <pre>git add .
 git commit -m "Uploading server"
@@ -78,46 +85,10 @@ git push heroku master</pre>
 							<pre>heroku apps:info</pre>
 						</li>
 					</ol>
-
-					<h2>The database</h2>
-					<ol>
-						<li><p>Create an account at <a href="https://mongohq.com/">MongoHQ</a> and make 
-							a database.  The free one will be enough to get started.</p></li>
-						<li><p>In the "Collections" tab create collections named: 
-							games, 
-							gamevars, 
-							leaderboard_scores, 
-							leaderboard_bans,
-							playerlevel_levels,
-							playerlevel_bans</p></li>
-						<li><p>When you create a collection it will show you the contents of it
-							with a tab for "Indexes" at the top.  These help your database be fast
-							by keeping data arranged the way it is needed.  Create the following
-							indexes in the 'ensureIndex' typing area.</p>
-							
-							<pre>ensureIndex(<em>{this is your index}</em>, {background: true});</pre> 
-							<ul>
-								<li>gamevars: {publickey: 1, name: 1}</li>
-								<li>leaderboard_scores: {publickey: 1, points: -1}</li>
-								<li>leaderboard_scores: {publickey: 1, date: -1}</li>
-								<li>leaderboard_scores: {publickey: 1, hash: 1}</li>
-								<li>leaderboard_bans: {publickey: 1, hash: 1}</li>
-								<li>playerlevel_levels: {publickey: 1, date: -1}</li>
-								<li>playerlevel_levels: {publickey: 1, rating: -1}</li>
-								<li>playerlevel_levels: {publickey: 1, hash: 1}</li>
-								<li>playerlevel_bans: {publickey: 1, hash: 1}</li>
-							</ul>
-						</li>
-						<li><p>In the "Admin" tab of your database create a new user.</p></li>
-						<li><p>Copy the "URI" from the "Admin" tab and put your user credentials in it,
-							and then in your Heroku application:</p>
-							<pre>heroku config:set playtomic=mongodb://the_uri_you_copied</pre>
-						</li>
-							
-					</ol>
 					
 					<h2>Creating game credentials</h2>
-					<p>You can add game credentials from the MongoHQ dashboard in the 'games' collection:</p>
+					<p>You can add game credentials from the MongoHQ dashboard in the 'games' collection.  The collection will be 
+						created for you automatically the first time you upload to Heroku.</p>
 					<pre>{ 
 	publickey: "mypublickey", 
 	privatekey: "myprivatekey", 
@@ -129,8 +100,9 @@ git push heroku master</pre>
 					<p>To limit access to the API server you can set the above properties to false.</p>
 					
 					<h2>Scaling</h2>
-					<p>This toolkit is designed to scale with eventual consistency.  Each 'dyno' or thread or equivalent for your hosting maintains
-						its own caching and state that is periodically synced against your database or expired.</p>
+					<p>This toolkit is designed to scale 'horizontally' by using eventual consistency, that means the more resources you assign it on Heroku
+						the more capacity you can handle.  Each 'dyno' or thread or equivalent for your hosting maintains its own caching and state that is 
+						periodically synced against your database or expired.</p>
 					<p>Heroku can be automatically scaled using <a href="http://hirefire.io/">HireFire.io</a> to create and terminate 'dynos' as your load requires.</p>
 					<p>Your MongoHQ database can be manually upgraded at any time through their website.</p>
 
