@@ -221,7 +221,7 @@ Playtomic.Achievements.list(options, function(achievements, response){
       
       <span class="blue3">for</span>(<span class="blue3">var</span> i=<span class="red">0</span>; i&lt;achievements.length; i++) {
         console.log(achievements[i].awarded.achievement + <span class="blue">" on "</span> + achievements[i].date + 
-                    <span class="blue">" ("</span> + achievements[i].fields.d<span class="blue3">if</span>ficulty + <span class="blue">")"</span>);
+                    <span class="blue">" ("</span> + achievements[i].fields.difficulty + <span class="blue">")"</span>);
       }
       
       <span class="green">// and now let's view me and my friends with one-update-per-person</span>
@@ -237,7 +237,7 @@ Playtomic.Achievements.list(options, function(achievements, response){
       
         <span class="blue3">for</span>(<span class="blue3">var</span> i=<span class="red">0</span>; i&lt;achievements.length; i++) {
           console.log(achievements[i].awarded.achievement + <span class="blue">" to "</span> + achievements[i].playername + 
-		              <span class="blue">" on "</span> + achievements[i].date + <span class="blue">" ("</span> + achievements[i].fields.d<span class="blue3">if</span>ficulty + <span class="blue">")"</span>;
+		              <span class="blue">" on "</span> + achievements[i].date + <span class="blue">" ("</span> + achievements[i].fields.difficulty + <span class="blue">")"</span>;
           <span class="green">// output: killed the boss, awarded to ben on May 14 2013 (easy)</span>
           <span class="green">// output: killed the boss, awarded to tom on May 10 2013 (hard)</span>
         }
