@@ -12,6 +12,8 @@ header ul, header li { list-style-type: none; display: inline; }
 header li { display: inline; margin-right: 20px; }
 header li.follow { margin-right: 0 !important; }
 
+.logo, .logo img { width: 253px; height: 58px; display: block; float: left; }
+
 footer { clear: both; background-color: #000; padding: 20px 0; color: #666; }
 footer a { color: #CCC; }
 
