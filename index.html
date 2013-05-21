@@ -50,15 +50,15 @@
 		
 		<div class="container">
 			
-			<h1>Powerful leaderboards, achievements, user levels<br />and dynamic content updates.</h1>
+			<h1>Leaderboards, achievements, user levels<br />dynamic content, in-game newsletter subscription.</h1>
 			<h2>Open source.  Self hosted.  Battle tested.  Massively scalable.  Cross platform.  Free.</h2>
 			
 			<a class="btn btn-primary btn-large" href="http://igg.me/at/playtomic">Let's grow this platform at IndieGoGo</a>
 
 			<div style="margin-top: 30px;" class="input-append">
 				<form action="http://playtomic.us7.list-manage1.com/subscribe/post?u=a8b78ebd725f7404b424a92e9&amp;id=db73e3b0da" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-					<input class="span2" type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required />
-					<input class="btn btn-success" type="submit" value="Newsletter" name="subscribe" id="mc-embedded-subscribe" class="button" />
+					<input class="span2" type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Get news and updates" required />
+					<input class="btn btn-success" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" />
 				</form>
 			</div>
 
@@ -77,7 +77,7 @@
 					<div class="section">
 						<h2>Developers, take control of your backend</h2>
 						<p>Playtomic.org is the new home of the tools 
-							once provided by Playtomic - achievements, leaderboards, player levels, gamevars, geoip - as a simple to host, open source platform for your game 
+							once provided by Playtomic - achievements, leaderboards, player levels, gamevars, geoip and in-game newsletter subscription - as a simple to host, open source platform for your game 
 							compatible with most gaming platforms.</p>
 						<p>Setting up your server is a simple process and for small games will probably stay under the free limits of the selected hosting providers.</p>
 						<p>It's your game, now it's your backend too.</p>
@@ -109,7 +109,7 @@
 				</div>
 			</div>
 		</div>
-		
+				
 		<div class="row1 firstrow">
 			<div class="container">
 				<div class="row">
@@ -277,6 +277,60 @@ Playtomic.Achievements.list(options, function(achievements, response){
 				<div class="row">
 					<div class="span3">
 						<div class="section">
+							<h2>Newsletters</h2>
+							<p>Build your mailing list in-game</p>
+						</div>
+					</div>
+					<div class="span9">
+						<div class="section">
+							<h3>Features</h3>
+							<ul>
+								<li>Built on top of the very powerful <a href="http://mailchimp.com/">MailChimp</a> API</li>
+								<li>Players don't have to leave your game</li>
+								<li>Free for up to 2,000 players with 12,000 emails per month</li>
+								<li>Pay as you go and subscription options available</li>
+							</ul>
+							
+							<p>On the server side you can turn double opt-in off and disable updating a player's records
+								if they re-submit their information.</p>
+							
+							<h4>Subscription example</h4>
+							<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('newsletter_example').style.display='block'; ">Show the example code</button>
+<pre id="newsletter_example" style="display: none;"><span class="blue3">var</span> subscription = {
+	email: <span class="blue">"test@exampleuri.com"</span>, <span class="green">// the only mandatory field</span>
+	firstname: <span class="blue">"fred"</span>, 
+	lastname: <span class="blue">"bloggs"</span>, 
+	fields: { 
+		FIRSTPLAYED: <span class="blue">"2013-05-20"</span>,
+		PLATFORM: <span class="blue">"as3-web"</span>,
+		GAMEVERSION: <span class="red">1.08</span>,
+		RESOLUTION: <span class="blue">"800x400"</span>
+	}
+};
+
+<span class="green">// note that these example MERGE fields must be created in your MailChimp</span>
+<span class="green">// dashboard, they do not exist by default.</span>
+
+Playtomic.Newsletters.subscribe(subscription, <span class="blue3">function</span>(response) {
+
+    <span class="blue3">if</span>(response.success) {
+    }
+    <span class="blue3">else</span> {
+      <span class="green">// response failed because of response.errormessage</span>
+    }
+});</pre>
+	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row1">
+			<div class="container">
+				<div class="row">
+					<div class="span3">
+						<div class="section">
 							<h2>Leaderboards</h2>
 							<p>Incredibly rich capabilities available to build on.</p>
 						</div>
@@ -406,7 +460,7 @@ Playtomic.Leaderboards.saveAndList(score, <span class="blue3">function</span>(sc
 			</div>
 		</div>
 		
-		<div class="row1">
+		<div class="row2">
 			<div class="container">
 				<div class="row">
 					<div class="span3">
@@ -547,7 +601,7 @@ Playtomic.PlayerLevels.save(level, <span class="blue3">function</span>(l, respon
 			</div>
 		</div>
 		
-		<div class="row2">
+		<div class="row1">
 			<div class="container">
 		
 				<div class="row">

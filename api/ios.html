@@ -60,6 +60,7 @@
             <li><a href="#settingup">Setting up</a></li>
 			<li><a href="#achievements">Achievements</a></li>
             <li><a href="#leaderboards">Leaderboards</a></li>
+			<li><a href="#newsletters">Newsletters</a></li>
             <li><a href="#playerlevels">PlayerLevels</a></li>
             <li><a href="#gamevars">GameVars</a></li>
             <li><a href="#geoip">GeoIP</a></li>
@@ -103,6 +104,69 @@
           <h2>Examples</h2>
           <p>Each API has an extensive test library in the source code that demonstrates how to use every part in a variety of ways.</p>
         </div>
+		
+				<a name="newsletters"></a>
+				<div class="section">
+			
+					<h2>Newsletter subscription</h2>
+					<p>Please note this requires additional setup <a href="/server.html">you can read about here</a>.</p>
+					<p>You can subscribe players to your newsletter mailinglist.  By default this uses double-opt in so 
+						when a player registers for it they are sent an email and then confirm their intention.</p>
+					<p>You can collect additional data with your subscriptions but you must set it up first at <a href="http://mailchimp.com/">MailChimp</a>.</p>
+			
+					<pre>Playtomic.Newsletter.subscribe(options, callback);
+		
+		            <h3>Subscription options NSMutableDictionary</h3>
+		            <table class="table table-striped">
+		              <tr>
+		                <th>Property</th>
+			              <th>Type</th>
+		                <th>Description</th>
+		              </tr>
+		              <tr>
+			              <td>email</td>
+		                <td>NSString</td>
+		                <td>The player's email address</td>
+		              </tr>
+		              <tr>
+			              <td>firstname</td>
+		                <td>NSString</td>
+		                <td>The player's first name</td>
+		              </tr>
+		              <tr>
+			              <td>lastname</td>
+		                <td>NSString</td>
+		                <td>The player's last name</td>
+		              </tr>
+					  <tr>
+						  <td>fields</td>
+						  <td>NSMutableDictionary</td>
+						  <td>Container for custom MERGE tag name and values defined in your MailChimp list.</td>
+		              <tr>
+					  </table>
+				  
+			<h3>Subscribing a player</h3>
+<pre>
+NSMutableDictionary *fields = [[NSMutableDictionary alloc] init];
+[options setObject:@"ipad" forKey:@"version"];
+	
+NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
+[options setObject:@"email@testuri.com" forKey:@"email"];
+[options setObject:fields forKey:@"fields"];
+
+// note that these example MERGE fields must be created in your MailChimp
+// dashboard, they do not exist by default.
+
+[[Playtomic Newsletter] subscribe:options andHandler:^(PResponse* response){
+
+    if(response.success) {
+    }
+    else {
+      // response failed because of response.errormessage
+    }
+});</pre>
+				
+					</div>
         
               <a name="achievements"></a>
               <div class="section">

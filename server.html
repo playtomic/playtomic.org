@@ -98,6 +98,25 @@ git push heroku master</pre>
 }</pre>
 						<p>To limit access to the API server you can set the above properties to false.</p>
 					
+						<h2>Newsletters</h2>
+						<p>If you want to use the in-game newsletter subscriptions you'll have to do a few things to set up.  We're using <a href="http://mailchimp.com/">MailChimp</a> 
+							in our API server so:</p>
+						<ol>
+							<li>Create your account, it's free for up to 2,000 subscribers and 12,000 emails per month after which
+								you can either pay monthly or only when you want to send newsletters</li>
+							<li>Create a List and take note of the List ID, you can access it in the list's settings</li>
+							<li>Define any custom fields, called MERGE TAGS, that you want to collect such as the 
+								api, the game version, the date the player first played in the "List fields and |MERGE| tags" section</li>
+							<li>Create an API key in your account settings</li>
+						</ol>
+			
+						<p>Once you've done all of that you need to configure the server with your data:</p>
+						<pre>heroku config:set mailchimp=your_api_key mailchimp_listid=your_list_id</pre>
+						<p>You can also disable the default double opt-in requirement that emails players a confirmation before subscribing them by:</p>
+						<pre>heroku config:set mailchimp_doubleoptin=false</pre>
+						<p>By default if a player subscribes 2x their information will update but if you would like to prevent that:</p>
+						<pre>heroku config:set mailchimp_allowupdates=false</pre>
+
 						<h2>Scaling</h2>
 						<p>This toolkit is designed to scale 'horizontally' by using eventual consistency, that means the more resources you assign it on Heroku
 							the more capacity you can handle.  Each 'dyno' or thread or equivalent for your hosting maintains its own caching and state that is 
@@ -115,7 +134,7 @@ git push heroku master</pre>
 							<li>HireFire configured to add a few more dynos when necessary</li>
 							<li><a href="http://pingdom.com/">Pingdom</a> for uptime monitoring</li>			
 						</ul>
-
+						
 					</div>
 					
 				</div>
