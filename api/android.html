@@ -186,7 +186,7 @@ Playtomic.Newsletters.subscribe(playerinfo, new NewsletterSubscribeHandler() {
               <p>The Achievements API gives you two powerful ways to add social, cross-platform achievements
                 to your game.</p>
               <p>Achievements have to be configured in your database first in the 'achievements' collection with the structure:</p>
-              <pre>{ achievement: "the name", achievementkey: "secret key used when awarding" }</pre>
+              <pre>{ achievement: "the name", achievementkey: "secret key used when awarding", publickey: "yourgamekey" }</pre>
               <p>You can include any additional properties you want and have them returned in your game such as image urls, descriptions etc.</p>
             
               <h3>PlayerAchievement (extends JSONObject)</h3>
