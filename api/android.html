@@ -574,10 +574,21 @@ Playtomic.Achievements.stream(options, new AchievementStreamHandler() {
               <td>Any additional data you want to (or have) attached to a score.</td>
             </tr>
             <tr>
+              <td>getFilters</td>
+              <td>--</td>
+              <td>JSONObject</td>
+              <td>Used for fields you are filtering by when SaveAndList'ing'</td>
+            </tr>
+            <tr>
               <td colspan="2">setField(String, Object)</td>
               <td>void</td>
               <td>Attach a property and value to your custom fields.</td>
             </tr>
+            <tr>
+              <td colspan="2">setFilter(String, Object)</td>
+              <td>void</td>
+              <td>Attach a property and value to your custom filters.</td>
+            </tr>	
             <tr>
               <th colspan="4">Properties set by the API server</th>
             </tr>
@@ -598,6 +609,12 @@ Playtomic.Achievements.stream(options, new AchievementStreamHandler() {
               <td>--</td>
               <td>int</td>
               <td>The rank based on your listing parameters.</td>
+            </tr>
+            <tr>
+              <td>getSubmitted</td>
+              <td>--</td>
+              <td>Boolean</td>
+              <td>True only for the successfully saved score when saveAndList'ing'</td>
             </tr>
             <tr>
               <th colspan="4">Table detais</th>

@@ -531,6 +531,11 @@ Playtomic.Achievements.stream(options, function(achievements:Array, numachieveme
 							<td>Any additional data you want to (or have) attached to a score.</td>
 						</tr>
 						<tr>
+							<td>filters</td>
+							<td>object</td>
+							<td>USed to filter by fields when saveAndList'ing data.</td>
+						</tr>
+						<tr>
 							<th colspan="3">Properties set by the API server</th>
 						</tr>
 						<tr>
@@ -547,6 +552,11 @@ Playtomic.Achievements.stream(options, function(achievements:Array, numachieveme
 							<td>rank</td>
 							<td>int</td>
 							<td>The rank based on your listing parameters.</td>
+						</tr>
+						<tr>
+							<td>submitted</td>
+							<td>Boolean</td>
+							<td>True only for the successfully saved score when saveAndList'ing'</td>
 						</tr>
 						<tr>
 							<th colspan="3">Table detais</th>
