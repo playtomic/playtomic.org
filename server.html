@@ -72,6 +72,25 @@
 
 							<li>Create an application on your computer for Heroku and download the api server source 
 								from <a href="http://github.com/playtomic/apiserver">Github</a>.</li>
+							<li>For step-by-step instructions getting started with Heroku <a href="#" onclick="document.getElementById('heroku').style.display='';">click here</a>.
+							
+								<div id="heroku" style="display: none;">
+									<ul>
+										<li>First go to <a href="http://heroku.com/">Heroku</a> and register and create your account.</li>
+										<li>When you've installed their <a href="https://devcenter.heroku.com/articles/quickstart">toolkit</a> you're ready to go:
+											<ol>
+												<li>Go to a command prompt (start -> run -> cmd) or terminal</li>
+												<li>cd to the directory you want, you can paste this from explorer. EG: C:\Users\Ben\work or ~/work on my Mac</li>
+												<li>make a directory for the app: md playtomic</li>
+												<li>change into the directory: cd playtomic</li>
+												<li>create your heroku application: heroku apps:create</li>
+												<li>unzip the server from github into this folder</li>
+											</ol>
+										</li>
+									</ul>
+								</div>
+								
+							</li>
 							<li><p>In your MongoHQ dashboard copy the "URI" from the "Admin" tab and put your user credentials in it,
 								and then in your Heroku application:</p>
 								<pre>heroku config:set playtomic=mongodb://the_uri_you_copied</pre>
