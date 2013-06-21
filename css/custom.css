@@ -12,6 +12,14 @@ header ul, header li { list-style-type: none; display: inline; }
 header li { display: inline; margin-right: 20px; }
 header li.follow { margin-right: 0 !important; }
 
+small { text-indent: 10px; display: none; }
+small a { color: #777; text-decoration: underline; margin-right: 6px; }
+small, small a { font-size: 11px; text-transform: uppercase; color: #777; }
+td:hover small { display: inline; }
+.apitable { table-layout: fixed; }
+.apitable .big { width: 70%; }
+.apitable h6 { margin: 0px; }
+
 .logo, .logo img { width: 253px; height: 58px; display: block; float: left; }
 
 footer { clear: both; background-color: #000; padding: 20px 0; color: #666; }
