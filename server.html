@@ -102,6 +102,8 @@ git push heroku master</pre>
 								</li>
 							<li><p>Find your application URL via the command line:</p>
 								<pre>heroku apps:info</pre>
+								<p>Add it to your application so it can ping itself periodically to prevent hibernation:</p>
+								<pre>heroku config:set url=https://a-heroku-application.herokuapp.com</pre>
 							</li>
 						</ol>
 					
