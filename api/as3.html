@@ -13,7 +13,7 @@
 
 	<div id="sponsor">
 		<div class="container">
-			Need support you can't find on Stackoverflow or programming communities you use?  I'm busy but you can <a href="mailto:benlowry@outlook.com">contact me</a>!
+			Sponsor this initiative and share your message with game developers everywhere.  <a href="mailto:benlowry@outlook.com">email</a>
 		</div>
 	</div>
 	
@@ -23,6 +23,13 @@
 			<ul>	
 				<li><a href="/server.html">Server setup</a></li>
 				<li><a href="/apis.html">API documentation</a></li>
+				<li><a href="http://lvlboost.com/">Game analytics</a></li>
+				<li class="follow">
+					<a href="http://igg.me/at/playtomic" target="_blank" class="github-follow-button">
+					  <img src="/assets/indiegogo.png" alt=""/>
+					  Donate
+					</a>
+				</li>
 				<li class="follow">
 					<a href="https://github.com/playtomic" target="_blank" class="github-follow-button">
 					  <img src="/assets/github.png" alt=""/>
@@ -63,7 +70,6 @@
 					<ul>
 						<li><a href="as3.html">ActionScript 3</a></li>
 						<li><a href="android.html">Android / Java</a></li>
-						<li><a href="openfl.html">Haxe / OpenFL</a></li>
 						<li><a href="html5.html">HTML5 / JavaScript</a></li>
 						<li><a href="ios.html">iOS / Objective C</a></li>
 						<li><a href="csharp.html">Mono and .NET</a></li>
@@ -84,7 +90,6 @@
 				<div class="section">
 					
 					<h1>Flash / ActionScript 3 API</h1>
-					<p>Issues with this document?  Submit a pull request to the <a href="https://github.com/playtomic/playtomic.org/">website repository please</a>.</p>
 					
 					<h2>Downloading the API</h2>
 					<p>You can either <a href="https://github.com/playtomic/gameapi-as3/archive/master.zip">download the zip</a> or if you're a git user <a href="https://github.com/playtomic/gameapi-as3">clone the repository</a>.</p>
@@ -847,23 +852,7 @@ function rateComplete(response:Object):void
 						<tr>
 							<td>mode</td>
 							<td>String</td>
-				              <td><ul>
-				                    <li>
-				                        alltime<br />
-				                        <em>The most popular levels based on all time ratings</em></li>
-				                    <li>
-				                        newest<br />
-				                        <em>The most recently created levels</em>
-				                    </li>
-				                    <li>
-				                        recentaverage<br />
-				                        <em>Average calculated across just the last 100 votes a level received</em>
-				                    </li>
-				                    <li>
-				                        todayaverage | yesterdayaverage | last7daysaverage | last30daysaverage | last90daysaverage<br />
-				                        <em>Aggregated rating averages on / in the specified timeframe</em>
-				                    </li>
-				              </td>
+							<td>'newest' or 'popular'.</td>
 						</tr>
 						<tr>
 							<td>datemin</td>

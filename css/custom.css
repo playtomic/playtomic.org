@@ -17,7 +17,7 @@ header li.follow { margin-right: 0 !important; }
 footer { clear: both; background-color: #000; padding: 20px 0; color: #666; }
 footer a { color: #CCC; }
 
-#splash { text-align: center; color: #FFF; background: #000 url(../assets/splash.png) no-repeat top center; height: 220px; margin-bottom: 20px; }
+#splash { text-align: center; color: #FFF; background: #000 url(../assets/splash.png) no-repeat top center; height: 350px; margin-bottom: 20px; }
 #splash h1 { padding-top: 20px; font-size: 36px; font-weight: normal; line-height: 40px; }
 #splash h2 { padding: 30px 0; font-size: 16px; font-weight: normal; }
 
