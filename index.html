@@ -8,13 +8,6 @@
 	<link href='css/custom.css' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
 	<link rel="icon" href="assets/favicon.ico" type="image/icon" />
-	<script>
-	function showCode(button, section) {
-		button.style.display = "none"; 
-		document.getElementById(section + "_example").style.display = "block"; 
-		document.getElementById(section + "_shortcuts").style.display = "block";
-	}
-	</script>
 </head>
 <body>
 	
@@ -30,10 +23,9 @@
 			<ul>
 				<li><a href="/server.html">Server setup</a></li>
 				<li><a href="/apis.html">API documentation</a></li>
-				<li><a href="/forums.html">Forums</a></li>
 				<li><a href="http://lvlboost.com/">Game analytics</a></li>
 				<li class="follow">
-					<a href="http://igg.me/at/playtomic2/x/3298796" target="_blank" class="github-follow-button">
+					<a href="http://igg.me/at/playtomic" target="_blank" class="github-follow-button">
 					  <img src="/assets/indiegogo.png" alt=""/>
 					  Donate
 					</a>
@@ -58,13 +50,14 @@
 		
 		<div class="container">
 			
-			<h1>Free, open source, self-hosted tools<br />for game developers</h1>
+			<h1>Leaderboards, achievements, user levels,<br />dynamic content, in-game newsletter subscriptions</h1>
+			<h2>Open source.  Scalable.  Free.</h2>
 			
-			<a class="btn btn-primary btn-large" href="http://igg.me/at/playtomic2/x/3298796">Help add game analytics to the suite</a>
+			<a class="btn btn-primary btn-large" href="http://igg.me/at/playtomic">Let's grow this platform at IndieGoGo</a>
 
-			<div class="newsletter input-append">
+			<div style="margin-top: 30px;" class="input-append">
 				<form action="http://playtomic.us7.list-manage1.com/subscribe/post?u=a8b78ebd725f7404b424a92e9&amp;id=db73e3b0da" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-					<input class="span2" type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Get news and updates" required />
+					<input class="span3" type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Get news and updates" required />
 					<input class="btn btn-success" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" />
 				</form>
 			</div>
@@ -83,17 +76,16 @@
 				
 					<div class="section">
 						<h2>Developers, take control of your backend</h2>
-						<p>Playtomic.org is a free, open source, multi-platform suite of tools for game developers.  
-							Setting up your server is very easy and it's compatible with most programming languages.</p>
+						<p>Playtomic.org is the new home of the tools 
+							once provided by Playtomic - achievements, leaderboards, player levels, gamevars, geoip and in-game newsletter subscription - as a simple to host, open source platform for your game 
+							compatible with most gaming platforms.</p>
+						<p>Setting up your server is very easy and for small games will probably stay under the free limits of the selected hosting providers.</p>
 						<p>It's your game, now it's your backend too.</p>
-	
-						<h2>Contribute</h2>
-						<p>We're running an <a href="http://igg.me/at/playtomic2/x/3298796">IndieGoGo campaign</a> to fund additional development of Playtomic.  If you want to 
-							see cool stuff like analytics, saved games, user management etc added then contribute or spread the word!</p>
-						<p><a href="http://igg.me/at/playtomic2/x/3298796" target="_blank" class="github-follow-button">
+					
+						<a href="http://igg.me/at/playtomic" target="_blank" class="github-follow-button">
 						  <img src="/assets/indiegogo.png" alt=""/>
 						  Contribute on IndieGoGo
-						</a></p>
+						</a>
 						
 					</div>
 				
@@ -102,29 +94,22 @@
 				<div class="span6">
 				
 					<div class="section">
-																
-						<h2>Supported platforms</h2>
+						<h2>Game APIs</h2>
 						<p>Playtomic has extensive documentation, compatibility and tests/examples for all major gaming platforms.</p>
-
-						<p><a class="btn" href="apis.html">API documentation</a></p>
-						
-						<h2>Examples</h2>
-						<p>To demonstrate the flexibility here are some examples of what you can do with the different APIs.</p>
-						<div class="btn-group">
-							<a class="btn btn-small" href="#leaderboards">Leaderboards</a>
-							<a class="btn btn-small" href="#achievements">Achievements</a>
-							<a class="btn btn-small" href="#playerlevels">User content</a>
-							<a class="btn btn-small" href="#gamevars">Dynamic content</a>
-							<a class="btn btn-small" href="#newsletters">Newsletters</a>
-						</div>	
-						
+						<ul>
+							<li><a href="/api/as3.html">ActionScript 3</a></li>
+							<li><a href="/api/android.html">Android / Java</a></li>
+							<li><a href="/api/html5.html">HTML5 / JavaScript</a></li>
+							<li><a href="/api/ios.html">iOS / Objective C</a></li>
+							<li><a href="/api/csharp.html">Mono and .NET</a></li>
+							<li><a href="/api/unity3d.html">Unity3d</a></li>		
+						</ul>
 					</div>
 								
 				</div>
 			</div>
 		</div>
 				
-		<a name="achievements"></a>
 		<div class="row1 firstrow">
 			<div class="container">
 				<div class="row">
@@ -148,7 +133,7 @@
 							</ul>
 							
 							<h4>Achievements example</h4>
-							<button class="btn btn-small" onclick="showCode(this, 'achievement');">Show the example code</button>
+							<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('achievement_example').style.display='block'; ">Show the example code</button>
 <pre id="achievement_example" style="display: none;"><span class="green">// let's start with listing</span>
 <span class="blue3">var</span> options = {
   playerid: <span class="blue">"my_id"</span> <span class="green">// optional from facebook or google or twitter or apple or whatever</span>
@@ -280,21 +265,6 @@ Playtomic.Achievements.list(options, function(achievements, response){
     });
   });
 });</pre>
-
-							<div id="achievement_shortcuts"  class="btn-toolbar" style="display: none;">	
-								<div class="btn-group">
-									<a class="btn btn-mini" href="apis.html">Documentation</a>
-									<a class="btn btn-mini" href="server.html">Server setup</a>
-								</div>
-								<div class="btn-group">
-									<a class="btn btn-mini" href="#leaderboards">Leaderboards</a>
-									<a class="btn btn-mini" href="#achievements">Achievements</a>
-									<a class="btn btn-mini" href="#playerlevels">User content</a>
-									<a class="btn btn-mini" href="#gamevars">Dynamic content</a>
-									<a class="btn btn-mini" href="#newsletters">Newsletters</a>
-								</div>
-							</div>	
-
 			
 						</div>
 					</div>
@@ -302,7 +272,6 @@ Playtomic.Achievements.list(options, function(achievements, response){
 			</div>
 		</div>
 		
-		<a name="newsletters"></a>
 		<div class="row2">
 			<div class="container">
 				<div class="row">
@@ -326,7 +295,7 @@ Playtomic.Achievements.list(options, function(achievements, response){
 								if they re-submit their information.</p>
 							
 							<h4>Subscription example</h4>
-							<button class="btn btn-small" onclick="showCode(this, 'newsletter')">Show the example code</button>
+							<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('newsletter_example').style.display='block'; ">Show the example code</button>
 <pre id="newsletter_example" style="display: none;"><span class="blue3">var</span> subscription = {
 	email: <span class="blue">"test@exampleuri.com"</span>, <span class="green">// the only mandatory field</span>
 	firstname: <span class="blue">"fred"</span>, 
@@ -350,20 +319,6 @@ Playtomic.Newsletters.subscribe(subscription, <span class="blue3">function</span
       <span class="green">// response failed because of response.errormessage</span>
     }
 });</pre>
-
-							<div id="newsletter_shortcuts"  class="btn-toolbar" style="display: none;">	
-								<div class="btn-group">
-									<a class="btn btn-mini" href="apis.html">Documentation</a>
-									<a class="btn btn-mini" href="server.html">Server setup</a>
-								</div>
-								<div class="btn-group">
-									<a class="btn btn-mini" href="#leaderboards">Leaderboards</a>
-									<a class="btn btn-mini" href="#achievements">Achievements</a>
-									<a class="btn btn-mini" href="#playerlevels">User content</a>
-									<a class="btn btn-mini" href="#gamevars">Dynamic content</a>
-									<a class="btn btn-mini" href="#newsletters">Newsletters</a>
-								</div>
-							</div>	
 	
 						</div>
 					</div>
@@ -371,7 +326,6 @@ Playtomic.Newsletters.subscribe(subscription, <span class="blue3">function</span
 			</div>
 		</div>
 		
-		<a name="leaderboards"></a>
 		<div class="row1">
 			<div class="container">
 				<div class="row">
@@ -398,7 +352,7 @@ Playtomic.Newsletters.subscribe(subscription, <span class="blue3">function</span
 							<p>Imagine a racing game that you and your friends play.  Let's walk through some of the awesome capabilities
 								waiting for you in these leaderboards using the HTML5 API.</p>
 						
-					<button class="btn btn-small" onclick="showCode(this, 'leaderboard');">Show the example code</button>
+					<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('leaderboard_example').style.display='block'; ">Show the example code</button>
 <pre id="leaderboard_example" style="display: none;"><span class="green">// we just tore up race #10 in our lambo</span>
 <span class="blue3">var</span> score = {
   playername: <span class="blue">"fred"</span>,
@@ -500,28 +454,12 @@ Playtomic.Leaderboards.saveAndList(score, <span class="blue3">function</span>(sc
     });
   });  
 });</pre>
-
-							<div id="leaderboard_shortcuts"  class="btn-toolbar" style="display: none;">	
-								<div class="btn-group">
-									<a class="btn btn-mini" href="apis.html">Documentation</a>
-									<a class="btn btn-mini" href="server.html">Server setup</a>
-								</div>
-								<div class="btn-group">
-									<a class="btn btn-mini" href="#leaderboards">Leaderboards</a>
-									<a class="btn btn-mini" href="#achievements">Achievements</a>
-									<a class="btn btn-mini" href="#playerlevels">User content</a>
-									<a class="btn btn-mini" href="#gamevars">Dynamic content</a>
-									<a class="btn btn-mini" href="#newsletters">Newsletters</a>
-								</div>
-							</div>	
-
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		<a name="playerlevels"></a>
 		<div class="row2">
 			<div class="container">
 				<div class="row">
@@ -549,7 +487,7 @@ Playtomic.Leaderboards.saveAndList(score, <span class="blue3">function</span>(sc
 							<p>You've created a game where players can design their own levels for other people 
 								to play.  This is how you'd do it with the HTML5 API.</p>
 						
-								<button class="btn btn-small" onclick="showCode(this, 'playerlevel');">Show the example code</button>
+								<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('playerlevel_example').style.display='block'; ">Show the example code</button>
 												
 <pre id="playerlevel_example" style="display: none;"><span class="green">// let's save our creation</span>
 <span class="blue3">var</span> level = {
@@ -657,27 +595,12 @@ Playtomic.PlayerLevels.save(level, <span class="blue3">function</span>(l, respon
     });
   });
 });</pre>
-
-							<div id="playerlevel_shortcuts"  class="btn-toolbar" style="display: none;">	
-								<div class="btn-group">
-									<a class="btn btn-mini" href="apis.html">Documentation</a>
-									<a class="btn btn-mini" href="server.html">Server setup</a>
-								</div>
-								<div class="btn-group">
-									<a class="btn btn-mini" href="#leaderboards">Leaderboards</a>
-									<a class="btn btn-mini" href="#achievements">Achievements</a>
-									<a class="btn btn-mini" href="#playerlevels">User content</a>
-									<a class="btn btn-mini" href="#gamevars">Dynamic content</a>
-									<a class="btn btn-mini" href="#newsletters">Newsletters</a>
-								</div>
-							</div>	
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		<a name="gamevars"></a>
 		<div class="row1">
 			<div class="container">
 		
@@ -704,7 +627,7 @@ Playtomic.PlayerLevels.save(level, <span class="blue3">function</span>(l, respon
 								47 kilobytes so we are also going to store a 'version' we can cache to skip reloading the same
 								data.</p>
 						
-							<button class="btn btn-small" onclick="showCode(this, 'gamevars');">Show the example code</button>
+							<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('gamevars_example').style.display='block'; ">Show the example code</button>
 						
 <pre id="gamevars_example" style="display: none;"><span class="green">// first let's set up our default configuration for when the player is disconnected</span>
 <span class="blue3">var</span> config = { 
@@ -762,7 +685,7 @@ Playtomic.GameVars.loadSingle(<span class="blue">"version"</span>, <span class="
       
       <span class="green">// and update our local config, you could do this in a variety of ways depending on</span>
       <span class="green">// if you are storing one giant GameVar with the entire config:</span>
-      config = gamevars.config;
+      config = gamevars;
         
       <span class="green">// or doing each section as a separate GameVar</span>
       config.version = gamevars.version;
@@ -777,22 +700,6 @@ Playtomic.GameVars.loadSingle(<span class="blue">"version"</span>, <span class="
   });
 });
 </pre>
-
-							<div id="gamevars_shortcuts"  class="btn-toolbar" style="display: none;">	
-								<div class="btn-group">
-									<a class="btn btn-mini" href="apis.html">Documentation</a>
-									<a class="btn btn-mini" href="server.html">Server setup</a>
-								</div>
-								<div class="btn-group">
-									<a class="btn btn-mini" href="#leaderboards">Leaderboards</a>
-									<a class="btn btn-mini" href="#achievements">Achievements</a>
-									<a class="btn btn-mini" href="#playerlevels">User content</a>
-									<a class="btn btn-mini" href="#gamevars">Dynamic content</a>
-									<a class="btn btn-mini" href="#newsletters">Newsletters</a>
-								</div>
-							</div>	
-
-
 						</div>
 					</div>
 				</div>

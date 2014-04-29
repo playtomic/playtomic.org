@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>Playtomic: Setting up your server</title>
-	<meta name="description" content="Playtomic API server setup and configuration instructions.">
+	<meta name="description" content="Leaderboards and more for unity3d, html5, actionscript and more.">
 	<link href='css/bootstrap/bootstrap.min.css' rel='stylesheet' type='text/css'>
-	<link href='css/custom.css?refresh' rel='stylesheet' type='text/css'>
+	<link href='css/custom.css' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
 	<link rel="icon" href="assets/favicon.ico" type="image/icon" />
 </head>
@@ -23,10 +23,9 @@
 			<ul>
 				<li><a href="/server.html">Server setup</a></li>
 				<li><a href="/apis.html">API documentation</a></li>
-				<li><a href="/forums.html">Forums</a></li>
 				<li><a href="http://lvlboost.com/">Game analytics</a></li>
 				<li class="follow">
-					<a href="http://igg.me/at/playtomic2/x/3298796" target="_blank" class="github-follow-button">
+					<a href="http://igg.me/at/playtomic" target="_blank" class="github-follow-button">
 					  <img src="/assets/indiegogo.png" alt=""/>
 					  Donate
 					</a>
@@ -72,25 +71,6 @@
 
 							<li>Create an application on your computer for Heroku and download the api server source 
 								from <a href="http://github.com/playtomic/apiserver">Github</a>.</li>
-							<li>For step-by-step instructions getting started with Heroku <a href="#" onclick="document.getElementById('heroku').style.display='';">click here</a>.
-							
-								<div id="heroku" style="display: none;">
-									<ul>
-										<li>First go to <a href="http://heroku.com/">Heroku</a> and register and create your account.</li>
-										<li>When you've installed their <a href="https://devcenter.heroku.com/articles/quickstart">toolkit</a> you're ready to go:
-											<ol>
-												<li>Go to a command prompt (start -> run -> cmd) or terminal</li>
-												<li>cd to the directory you want, you can paste this from explorer. EG: C:\Users\Ben\work or ~/work on my Mac</li>
-												<li>make a directory for the app: md playtomic</li>
-												<li>change into the directory: cd playtomic</li>
-												<li>create your heroku application: heroku apps:create</li>
-												<li>unzip the server from github into this folder</li>
-											</ol>
-										</li>
-									</ul>
-								</div>
-								
-							</li>
 							<li><p>In your MongoHQ dashboard copy the "URI" from the "Admin" tab and put your user credentials in it,
 								and then in your Heroku application:</p>
 								<pre>heroku config:set playtomic=mongodb://the_uri_you_copied</pre>
@@ -102,8 +82,6 @@ git push heroku master</pre>
 								</li>
 							<li><p>Find your application URL via the command line:</p>
 								<pre>heroku apps:info</pre>
-								<p>Add it to your application so it can ping itself periodically to prevent hibernation:</p>
-								<pre>heroku config:set url=https://a-heroku-application.herokuapp.com</pre>
 							</li>
 						</ol>
 					
@@ -116,11 +94,9 @@ git push heroku master</pre>
 	leaderboards: true, 
 	playerlevels: true, 
 	gamevars: true, 
-	geoip: true,
-	achievements: true,
-	newsletter: true
+	geoip: true
 }</pre>
-						<p>To limit access to the API server you can set any of the sections to false.  If they are not specified they are true.</p>
+						<p>To limit access to the API server you can set the above properties to false.</p>
 					
 						<h2>Newsletters</h2>
 						<p>If you want to use the in-game newsletter subscriptions you'll have to do a few things to set up.  We're using <a href="http://mailchimp.com/">MailChimp</a> 

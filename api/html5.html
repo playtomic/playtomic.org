@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Playtomic HTML5 API for leaderboards, achievements, user levels for HTML5 games</title>
-  <meta name="description" content="Free, open source, self-hosted achievements, newsletters, leaderboards and more for HTML5 games.">
+  <title>Playtomic: HTML5 API documentation</title>
+  <meta name="description" content="Free, open source, self-hosted leaderboards and more for HTML5 games.">
   <link href='../css/bootstrap/bootstrap.min.css' rel='stylesheet' type='text/css'>
   <link href='../css/custom.css' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
@@ -23,10 +23,9 @@
       <ul>    
         <li><a href="/server.html">Server setup</a></li>
         <li><a href="/apis.html">API documentation</a></li>
-				<li><a href="/forums.html">Forums</a></li>
         <li><a href="http://lvlboost.com/">Game analytics</a></li>
         <li class="follow">
-          <a href="http://igg.me/at/playtomic2/x/3298796" target="_blank" class="github-follow-button">
+          <a href="http://igg.me/at/playtomic" target="_blank" class="github-follow-button">
             <img src="/assets/indiegogo.png" alt=""/>
             Donate
           </a>
@@ -93,8 +92,7 @@
           <h1>HTML5 / JavaScript API</h1>
           
           <h2>Downloading the API</h2>
-          <p>You can either <a download="playtomic-html5.zip" href="https://github.com/playtomic/gameapi-html5/archive/master.zip">download the zip</a> 
-			  or if you're a git user <a href="https://github.com/playtomic/gameapi-html5">clone the repository</a>.</p>
+          <p>You can either <a href="https://github.com/playtomic/gameapi-html5/archive/master.zip">download the zip</a> or if you're a git user <a href="https://github.com/playtomic/gameapi-html5">clone the repository</a>.</p>
 
           <h2>Initializing the API</h2>
           <p>Before using the API you must initialize it with your public and private keys.  Your  keys need to be created in your database.</p>
@@ -180,7 +178,7 @@ Playtomic.Newsletters.subscribe(subscription, function(response) {
           <p>The Achievements API gives you two powerful ways to add social, cross-platform achievements
             to your game.</p>
           <p>Achievements have to be configured in your database first in the 'achievements' collection with the structure:</p>
-          <pre>{ achievement: "the name", achievementkey: "secret key used when awarding", publickey: "yourgamekey" }</pre>
+          <pre>{ achievement: "the name", achievementkey: "secret key used when awarding" }</pre>
           <p>You can include any additional properties you want and have them returned in your game such as image urls, descriptions etc.</p>
             
           <h3>Achievement structure</h3>
@@ -529,11 +527,6 @@ Playtomic.Achievements.stream(options, function(achievements, numachievements, r
               <td>Object</td>
               <td>Any additional data you want to (or have) attached to a score.</td>
             </tr>
-			<tr>
-				<td>filters</td>
-				<td>Object</td>
-				<td>USed to filter by fields when saveAndList'ing data.</td>
-			</tr>
             <tr>
               <th colspan="3">Properties set by the API server</th>
             </tr>
@@ -552,11 +545,6 @@ Playtomic.Achievements.stream(options, function(achievements, numachievements, r
               <td>int</td>
               <td>The rank based on your listing parameters.</td>
             </tr>
-			<tr>
-				<td>submitted</td>
-				<td>Boolean</td>
-				<td>True only for the successfully saved score when saveAndList'ing'</td>
-			</tr>
             <tr>
               <th colspan="3">Table detais</th>
             </tr>
@@ -951,9 +939,8 @@ function loadComplete(level, response) {
             to the "gamevars" collection.</p>
             
 <pre>{
-	name: "basehitpoints",
-	value: 800,
-  	publickey: "Your game key"
+  name: "basehitpoints",
+  value: 800
 }</pre>
             
           <h2>Loading</h2>

@@ -12,24 +12,14 @@ header ul, header li { list-style-type: none; display: inline; }
 header li { display: inline; margin-right: 20px; }
 header li.follow { margin-right: 0 !important; }
 
-small { text-indent: 10px; display: none; }
-small a { color: #777; text-decoration: underline; margin-right: 6px; }
-small, small a { font-size: 11px; text-transform: uppercase; color: #777; }
-td:hover small { display: inline; }
-.apitable { table-layout: fixed; }
-.apitable .big { width: 70%; }
-.apitable h6 { margin: 0px; }
-
 .logo, .logo img { width: 253px; height: 58px; display: block; float: left; }
 
 footer { clear: both; background-color: #000; padding: 20px 0; color: #666; }
 footer a { color: #CCC; }
 
-#splash { text-align: center; color: #FFF; background: #000 url(../assets/splash.jpg) no-repeat top center; height: 300px; margin-bottom: 20px; }
-#splash h1 { padding-top: 24px; font-size: 36px; font-weight: normal; line-height: 50px; margin-bottom: 20px; text-shadow: 0px -1px #000; }
-#splash h2 { padding: 30px 0 12px 0; font-size: 16px; font-weight: normal; }
-#splash p { font-size: 20px !important; text-shadow: 0px -1px #000; margin-bottom: 30px; }
-#splash .newsletter { margin-top: 30px; }
+#splash { text-align: center; color: #FFF; background: #000 url(../assets/splash.png) no-repeat top center; height: 350px; margin-bottom: 20px; }
+#splash h1 { padding-top: 20px; font-size: 36px; font-weight: normal; line-height: 40px; }
+#splash h2 { padding: 30px 0; font-size: 16px; font-weight: normal; }
 
 .row .section { padding: 0 20px 20px 20px; }
 
