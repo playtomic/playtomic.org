@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-    <title>Playtomic Flash API for leaderboards, achievements, user levels for Flash games</title>
-	<meta name="description" content="Free, open source, self-hosted achievements, newsletters, leaderboards and more for Flash games.">
+	<title>Playtomic: OpenFL (Haxe) API documentation</title>
+	<meta name="description" content="Free, open source, self-hosted leaderboards and more for OpenFL / Haxe games.">
 	<link href='../css/bootstrap/bootstrap.min.css' rel='stylesheet' type='text/css'>
-	<link href='../css/custom.css?refresh' rel='stylesheet' type='text/css'>
+	<link href='../css/custom.css' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
 	<link rel="icon" href="/favicon.ico" type="image/icon" />
 </head>
@@ -23,17 +23,6 @@
 			<ul>	
 				<li><a href="/server.html">Server setup</a></li>
 				<li><a href="/apis.html">API documentation</a></li>
-<<<<<<< HEAD
-				<li><a href="/forums.html">Forums</a></li>
-				<li><a href="http://lvlboost.com/">Game analytics</a></li>
-				<li class="follow">
-					<a href="http://igg.me/at/playtomic2/x/3298796" target="_blank" class="github-follow-button">
-					  <img src="/assets/indiegogo.png" alt=""/>
-					  Donate
-					</a>
-				</li>
-=======
->>>>>>> master
 				<li class="follow">
 					<a href="https://github.com/playtomic" target="_blank" class="github-follow-button">
 					  <img src="/assets/github.png" alt=""/>
@@ -94,12 +83,11 @@
 				<a name="settingup"></a>
 				<div class="section">
 					
-					<h1>Flash / ActionScript 3 API</h1>
+					<h1>OpenFL / Haxe API</h1>
 					<p>Issues with this document?  Submit a pull request to the <a href="https://github.com/playtomic/playtomic.org/">website repository please</a>.</p>
 					
 					<h2>Downloading the API</h2>
-					<p>You can either <a download="playtomic-as3.zip" href="https://github.com/playtomic/gameapi-as3/archive/master.zip">download the zip</a> 
-						or if you're a git user <a href="https://github.com/playtomic/gameapi-as3">clone the repository</a>.</p>
+					<p>You can either <a href="https://github.com/playtomic/gameapi-haxe/archive/master.zip">download the zip</a> or if you're a git user <a href="https://github.com/playtomic/gameapi-haxe">clone the repository</a>.</p>
 
 					<h2>Initializing the API</h2>
 					<p>Before using the API you must initialize it with your public and private keys.  Your	keys need to be created in your database.</p>
@@ -156,7 +144,7 @@
 					  </table>
 				  
 			<h3>Subscribing a player</h3>
-<pre>var subscription:Object = {
+<pre>var subscription = {
 	email: "test@exampleuri.com",
 	firstname: "fred",
 	lastname: "bloggs",
@@ -171,7 +159,7 @@
 // note that these example MERGE fields must be created in your MailChimp
 // dashboard, they do not exist by default.
 
-Playtomic.Newsletters.subscribe(subscription, function(response:Response):void {
+Playtomic.Newsletters.subscribe(subscription, function(response:Response):Void {
 
     if(response.success) {
     }
@@ -188,7 +176,7 @@ Playtomic.Newsletters.subscribe(subscription, function(response:Response):void {
 		          <p>The Achievements API gives you two powerful ways to add social, cross-platform achievements
 		            to your game.</p>
 		          <p>Achievements have to be configured in your database first in the 'achievements' collection with the structure:</p>
-		          <pre>{ achievement: "the name", achievementkey: "secret key used when awarding", publickey: "yourgamekey" }</pre>
+		          <pre>{ achievement: "the name", achievementkey: "secret key used when awarding" }</pre>
 		          <p>You can include any additional properties you want and have them returned in your game such as image urls, descriptions etc.</p>
             
 		          <h3>Achievement structure</h3>
@@ -269,7 +257,7 @@ Playtomic.Newsletters.subscribe(subscription, function(response:Response):void {
 		          <pre>Playtomic.Achievements.save(achievement, callback);</pre>
                     
 		          <p>A full example:</p>
-<pre>var achievement:Object = {
+<pre>var achievement = {
   achievement: "Punched Tass",
   achievementkey: "abcdefgh",
   playerid: "1",
@@ -279,7 +267,7 @@ Playtomic.Newsletters.subscribe(subscription, function(response:Response):void {
   }
 }
 
-Playtomic.Achievements.save(achievement, function(response:Response):void {
+Playtomic.Achievements.save(achievement, function(response:Response):Void {
 
   if(response.success) {
     // note that we could still have a failure errorcode here when the player
@@ -322,9 +310,9 @@ Playtomic.Achievements.save(achievement, function(response:Response):void {
           
 		          <p>Some examples:</p>
 <pre>// just the achievements
-Playtomic.Achievements.list({}, function(achievements:Array, response:Response):void {
+Playtomic.Achievements.list({}, function(achievements:Array, response:Response):Void {
   if(response.success) {
-    for(var i:int=0; i&lt;achievements.length; i++) {
+  	for(i in 0 ... achievements.length) {
       trace(JSON.stringify(achievements[i]));
       // will output something { achievement: "Punched Tass" }
     }
@@ -332,14 +320,14 @@ Playtomic.Achievements.list({}, function(achievements:Array, response:Response):
 });  
 
 // my friends and i
-var options:Object = {
+var options = {
   playerid: "1",
   friendslist: ["2", "3", "4"]
 };
 
-Playtomic.Achievements.list(options, function(achievements:Array, response:Response):void {
+Playtomic.Achievements.list(options, function(achievements:Array, response:Response):Void {
   if(response.success) {
-    for(var i:int=0; i&lt;achievements.length; i++) {
+    for(i in 0 ... achievements.length) {
       trace(JSON.stringify(achievements[i])); 
       //{ 
       //  achievement: "Punched Tass", 
@@ -459,7 +447,7 @@ Playtomic.Achievements.list(options, function(achievements:Array, response:Respo
 		          <p>Example streams</p>
 
 <pre>// show all the hard achievements by my friends and i as a stream
-var options:Object = {
+var options = {
   playerid: "1",
   friendslist: ["2", "3", "4", "5"],
   group: true,
@@ -468,13 +456,13 @@ var options:Object = {
   }
 }
 
-Playtomic.Achievements.stream(options, function(achievements:Array, numachievements:int, response:Response):void {
+Playtomic.Achievements.stream(options, function(achievements:Array, numachievements:Int, response:Response):Void {
 
   if(response.success) {
 
         trace(achievements.length + " achievements returned out of " + numachievements);
 
-        for(var i=0; i&lt;achievements.length; i++) {
+        for(i in 0 ... achievements.length) {
             console.log(JSON.stringify(achievements[i]));
             // { 
             //  playerid: "1", 
@@ -536,11 +524,6 @@ Playtomic.Achievements.stream(options, function(achievements:Array, numachieveme
 							<td>Any additional data you want to (or have) attached to a score.</td>
 						</tr>
 						<tr>
-							<td>filters</td>
-							<td>object</td>
-							<td>USed to filter by fields when saveAndList'ing data.</td>
-						</tr>
-						<tr>
 							<th colspan="3">Properties set by the API server</th>
 						</tr>
 						<tr>
@@ -557,11 +540,6 @@ Playtomic.Achievements.stream(options, function(achievements:Array, numachieveme
 							<td>rank</td>
 							<td>int</td>
 							<td>The rank based on your listing parameters.</td>
-						</tr>
-						<tr>
-							<td>submitted</td>
-							<td>Boolean</td>
-							<td>True only for the successfully saved score when saveAndList'ing'</td>
 						</tr>
 						<tr>
 							<th colspan="3">Table detais</th>
@@ -585,12 +563,12 @@ Playtomic.Achievements.stream(options, function(achievements:Array, numachieveme
 
 						<h2>Submitting scores</h2>
 						<p>Score submission is handled by:</p>
-						<pre>Leaderboards.save(score:Object, callback:Function=null);</pre>
+						<pre>Leaderboards.save(score, callback:Function=null);</pre>
 						
-<pre>function submitScore(e:MouseEvent):void
+<pre>function submitScore(e:MouseEvent):Void
 {
 	// basic score
-    var score:Object = {
+    var score = {
 		playername: "ben",
 		points: 173000,
 		table: "highscores",
@@ -600,7 +578,7 @@ Playtomic.Achievements.stream(options, function(achievements:Array, numachieveme
     Leaderboards.save(score, submitComplete); 
 
     // another score
-    var score2:Object = {
+    var score2 = {
 		playername: "ben",
 		points: 173000,
 		table: "highscores",
@@ -616,8 +594,7 @@ Playtomic.Achievements.stream(options, function(achievements:Array, numachieveme
     Leaderboards.save(score2, submitComplete);
 }
 
-function submitComplete(response:Object):void
-{
+function submitComplete(response):Void {
     if(response.success)
     {
         trace("Score saved!");		
@@ -633,7 +610,7 @@ function submitComplete(response:Object):void
 					<p>Scores are loaded via a simple method that returns an array of 
 					scores to your function where you can display the data in your leaderboard.</p>
 					
-					<pre>Leaderboards.list(options:Object, callback:Function);</pre>
+					<pre>Leaderboards.list(options, callback:Function);</pre>
 			
 					<table class="table table-striped">
 						<tr>
@@ -701,10 +678,10 @@ function submitComplete(response:Object):void
 						</tr>
 					</table>
 					
-<pre>function showScores(e:MouseEvent):void
+<pre>function showScores(e:MouseEvent):Void
 {
 	// table options
-	var table:Object = {
+	var table = {
 		table: "highscores",
 		page: 1,
 		perpage: 10,
@@ -714,15 +691,14 @@ function submitComplete(response:Object):void
     Leaderboards.list(table, listComplete);
 }
 
-function listComplete(scores:Array, numscores:int, response:Object):void
+function listComplete(scores:Array, numscores:Int, response):Void
 {
     if(response.success)
     {
         trace(scores.length + " scores returned out of " + numscores);
 
-        for(var i:int=0; i&lt;scores.length; i++)
-        {
-            var score:Object = scores[i];
+        for(i in 0 ... scores.length) {
+            var score = scores[i];
             trace(" - " + score.name + " got " + score.points + " on " + score.sdate);
 
             // including custom data?  score.fields.property
@@ -738,7 +714,7 @@ function listComplete(scores:Array, numscores:int, response:Object):void
 					<p>You can submit scores and at the same time return the leaderboard page that that score is on.
 						This combines the Save and List approaches from above:</p>
 						
-					<pre>Leaderboards.saveAndList(score:Object, callback:Function)</pre>
+					<pre>Leaderboards.saveAndList(score, callback:Function)</pre>
 					
 					<p>Note:  If you pass a 'playerid' to be saved you can exclude it from filtering the returned
 						scores via the additional option, excludeplayerid = true</p>
@@ -802,12 +778,12 @@ function listComplete(scores:Array, numscores:int, response:Object):void
 					</table>
 					
 					<h2>Saving levels</h2>
-					<pre>PlayerLevels.save(level:Object, callback:Function=null);</pre>
+					<pre>PlayerLevels.save(level, callback:Function=null);</pre>
 					<p>Example saving level:</p>
 
-<pre>function saveLevel(e:MouseEvent):void
+<pre>function saveLevel(e:MouseEvent):Void
 {
-    var level:Object = {
+    var level = {
 		name: "My level",
 		data: "obj1=cannon&amp;obj1x=120&amp;obj1y=180",
 		playername: "Ben"
@@ -816,7 +792,7 @@ function listComplete(scores:Array, numscores:int, response:Object):void
     PlayerLevels.save(level, saveComplete);
 }
 
-function saveComplete(level:Object, response:Object):void
+function saveComplete(level, response):Void
 {
     if(response.success)
     {
@@ -832,16 +808,16 @@ function saveComplete(level:Object, response:Object):void
 					<p>Levels can be rated 1 - 10 by players. Rating can be done anonymously with some 
 						protection against repeat voting, or bound to playerids if you specify them.</p>
 						
-					<pre>PlayerLevels.rate(levelid:String, rating:int, callback:Function=null);</pre>
+					<pre>PlayerLevels.rate(levelid:String, rating:Int, callback:Function=null);</pre>
 					
 					<p>Example rating level:</p>
 
-<pre>function rate(e:MouseEvent):void
+<pre>function rate(e:MouseEvent):Void
 {
     PlayerLevels.rate(level.levelid, 8, rateComplete);
 }
 
-function rateComplete(response:Object):void
+function rateComplete(response):Void
 {
     if(response.success)
     {
@@ -857,7 +833,7 @@ function rateComplete(response:Object):void
 					<p>	Listing levels can be done by popular or newest, with optional 
 						filtering by date ranges and/or custom fields.</p>
 
-					<pre>PlayerLevels.list(options:Object, callback:Function);</pre>
+					<pre>PlayerLevels.list(options, callback:Function);</pre>
 					
 					<h4>Listing options</h4>
 					<table class="table table-striped">
@@ -940,9 +916,9 @@ function rateComplete(response:Object):void
 					
 					<p>An example listing levels:</p>
 
-<pre>function list(e:MouseEvent):void
+<pre>function list(e:MouseEvent):Void
 {
-	var listoptions:Object = {
+	var listoptions = {
 		mode: "newest",
 		data: false,
 		perpage: 30,
@@ -954,12 +930,11 @@ function rateComplete(response:Object):void
     PlayerLevels.list(listoptions, listLoaded);
 }
 
-function listLoaded(levels:Array, numlevels:int, response:Object):void
+function listLoaded(levels:Array, numlevels:Int, response):Void
 {
     if(response.success)
     {
-        for(var i:int=0; i&lt;levels.length; i++)
-        {
+    	for(i in 0 ... levels.length) {
             trace(" - " + levels[i].levelid + ": " + levels[i].name);
         }
     }
@@ -976,12 +951,12 @@ function listLoaded(levels:Array, numlevels:int, response:Object):void
 					
 					<p>An example loading a single level:</p>
 
-<pre>function load(e:MouseEvent):void
+<pre>function load(e:MouseEvent):Void
 {
     PlayerLevels.load(level.levelid, loadComplete);
 }
 
-function loadComplete(level:Object, response:Object):void
+function loadComplete(level, response):Void
 {
     if(response.success)
     {
@@ -1007,8 +982,7 @@ function loadComplete(level:Object, response:Object):void
 						
 <pre>{
 	name: "basehitpoints",
-	value: 800,
-  	publickey: "Your game key"
+	value: 800
 }</pre>
 						
 					<h2>Loading</h2>
@@ -1027,10 +1001,10 @@ function loadComplete(level:Object, response:Object):void
 						The callback is the same for all or single GameVars.</p>
 						
 <pre>// our variables with default, original values
-var basehitpoints:int = 100;
-var basegold:int = 50;
+var basehitpoints:Int = 100;
+var basegold:Int = 50;
 
-function InitialiseGame():void
+function InitialiseGame():Void
 {
     // load GameVars
     GameVars.load(gameVarsLoaded);
@@ -1039,7 +1013,7 @@ function InitialiseGame():void
     // carry on initializing your game
 }
 
-function gameVarsLoaded(vars:Object, response:Object):void
+function gameVarsLoaded(vars, response):Void
 {
     if(response.success)
     {
@@ -1067,7 +1041,7 @@ function gameVarsLoaded(vars:Object, response:Object):void
 						
 <pre>GeoIP.lookup(setPlayerCountry);
 	
-function setPlayerCountry(country:Object, response:Object):void
+function setPlayerCountry(country, response):Void
 {
     if(response.success)
     {
