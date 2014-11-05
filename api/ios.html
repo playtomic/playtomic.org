@@ -16,12 +16,13 @@
       Need support you can't find on Stackoverflow or programming communities you use?  I'm busy but you can <a href="mailto:benlowry@outlook.com">contact me</a>!
     </div>
   </div>
-  
+
   <header>
     <div class="container">
       <a href="http://playtomic.org/" class="logo"><img src="../assets/playtomic.png" alt="Playtomic" title="Playtomic" /></a>
       <ul>
         <li><a href="/serveresponse.html">Server setup</a></li>
+        <li><a href="/games.html">Game setup</a></li>
         <li><a href="/apis.html">API documentation</a></li>
         <li class="follow">
           <a href="https://github.com/playtomic" target="_blank" class="github-follow-button">
@@ -38,15 +39,15 @@
       </ul>
     </div>
   </header>
-    
+
   <div id="content2">
-	  
+
 		<div class="container">
-        
+
     <div class="row">
-      
+
       <div class="span2">
-    
+
         <div class="docnav">
           <h2>API Sections</h2>
           <ul>
@@ -58,7 +59,7 @@
             <li><a href="#gamevars">GameVars</a></li>
             <li><a href="#geoip">GeoIP</a></li>
           </ul>
-        
+
           <h2>API documentation</h2>
           <ul>
             <li><a href="as3.html">ActionScript 3</a></li>
@@ -69,48 +70,48 @@
             <li><a href="csharp.html">Mono and .NET</a></li>
             <li><a href="unity3d.html">Unity3d</a></li>
           </ul>
-          
+
           <h2>Supplements</h2>
           <ul>
             <li><a href="errorcodes.html">Error codes</a></li>
           </ul>
         </div>
-      
+
       </div>
-      
+
       <div class="span10">
-        
+
         <a name="settingup"></a>
         <div class="section">
-          
+
           <h1>iOS API</h1>
           <p>Issues with this document?  Submit a pull request to the <a href="https://github.com/playtomic/playtomic.org/">website repository please</a>.</p>
-          
+
           <h2>Downloading the API</h2>
           <p>You can either <a href="https://github.com/playtomic/gameapi-ios/archive/masteresponse.zip">download the zip</a> or if you're a git user <a href="https://github.com/playtomic/gameapi-ios">clone the repository</a>.</p>
 
           <h2>Initializing the API</h2>
           <p>Before using the API you must initialize it with your public and private keys.  Your  keys need to be created in your database.</p>
-          <pre>[Playtomic initWithPublicKey:@"testpublickey" 
-               andPrivateKey:@"testprivatekey" 
+          <pre>[Playtomic initWithPublicKey:@"testpublickey"
+               andPrivateKey:@"testprivatekey"
                    andAPIURL:@"http://127.0.0.1:3000/"];</pre>
           <p>Your apiurl will be in the format http://your-application-name.herokuapp.com/ or similar.</p>
-          
+
           <h2>Examples</h2>
           <p>Each API has an extensive test library in the source code that demonstrates how to use every part in a variety of ways.</p>
         </div>
-		
+
 				<a name="newsletters"></a>
 				<div class="section">
-			
+
 					<h2>Newsletter subscription</h2>
 					<p>Please note this requires additional setup <a href="/server.html">you can read about here</a>.</p>
-					<p>You can subscribe players to your newsletter mailinglist.  By default this uses double-opt in so 
+					<p>You can subscribe players to your newsletter mailinglist.  By default this uses double-opt in so
 						when a player registers for it they are sent an email and then confirm their intention.</p>
 					<p>You can collect additional data with your subscriptions but you must set it up first at <a href="http://mailchimp.com/">MailChimp</a>.</p>
-			
+
 					<pre>[[Playtomic Newsletter] subscribe:options andHandler:handler];</pre>
-		
+
 		            <h3>Subscription options NSMutableDictionary</h3>
 		            <table class="table table-striped">
 		              <tr>
@@ -139,12 +140,12 @@
 						  <td>Container for custom MERGE tag name and values defined in your MailChimp list.</td>
 		              <tr>
 					  </table>
-				  
+
 			<h3>Subscribing a player</h3>
 <pre>
 NSMutableDictionary *fields = [[NSMutableDictionary alloc] init];
 [options setObject:@"ipad" forKey:@"version"];
-	
+
 NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
 [options setObject:@"email@testuri.com" forKey:@"email"];
 [options setObject:fields forKey:@"fields"];
@@ -160,9 +161,9 @@ NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
       // response failed because of response.errormessage
     }
 });</pre>
-				
+
 					</div>
-        
+
               <a name="achievements"></a>
               <div class="section">
                 <h2>Achievements</h2>
@@ -171,7 +172,7 @@ NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
                 <p>Achievements have to be configured in your database first in the 'achievements' collection with the structure:</p>
                 <pre>{ achievement: "the name", achievementkey: "secret key used when awarding" }</pre>
                 <p>You can include any additional properties you want and have them returned in your game such as image urls, descriptions etc.</p>
-            
+
                 <h3>PlayerAchievement</h3>
                 <table class="table table-striped">
                   <tr>
@@ -213,7 +214,7 @@ NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
                   <tr>
                     <td>player</td>
                     <td>PlayerAward</td>
-                    <td>When listing if a playerid is provided their details are included 
+                    <td>When listing if a playerid is provided their details are included
                       here when they have the achievement</td>
                   </tr>
                   <tr>
@@ -241,18 +242,18 @@ NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
                     <td>If the player already has the achievement give it again</td>
                   </tr>
                 </table>
-          
+
                 <h2>Saving achievements</h2>
-                <p>To save an achievement you must know the achievement name and key and they must match what 
+                <p>To save an achievement you must know the achievement name and key and they must match what
                   you configure in your database.  This means if you want you can provide separate keys for
                   each achievement so players can't easily cheat.</p>
-            
+
                 <pre>Playtomic.Achievements.save(achievement, callback);</pre>
-                    
+
                 <p>A full example:</p>
   <pre>NSMutableDictionary *fields = [[NSMutableDictionary alloc] init];
 [fields setObject:@"easy" forKey:@"difficulty"];
-    
+
 PlayerAchievement *achievement = [[PlayerAchievement alloc] init];
 achievement.achievement = "Punched Tass",
 achievement.achievementkey = "abcdefgh",
@@ -273,10 +274,10 @@ achievement.fields = fields;
 </pre>
 
                 <h2>Listing achievements</h2>
-                <p>Achievement lists can be requested that include just the achievement information or also incorporate 
+                <p>Achievement lists can be requested that include just the achievement information or also incorporate
                   the player and friends.</p>
                 <pre>Playtomic.Achievements.list(options, callback);</pre>
-      
+
                 <h3>Listing options</h3>
                 <table class="table table-striped">
                   <tr>
@@ -300,7 +301,7 @@ achievement.fields = fields;
                     <td>Any additional filtering information from the 'fields'</td>
                   </tr>
                 </table>
-          
+
                 <p>Some examples:</p>
   <pre>// just the achievements
 [[Playtomic Achievements] list:Nil andHandler:^(NSArray* achievements, PResponse* response) {
@@ -309,7 +310,7 @@ achievement.fields = fields;
   for(PlayerAchievement *achievement in achievements)
   {
     NSLog(@"%@", achievement);
-  } 
+  }
   else
   {
     NSLog(@"Request failed because %@", response.errormessage);
@@ -325,7 +326,7 @@ NSMutableArray *friends = [[NSMutableArray alloc] init];
 
 NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
 [options setObject:@"1" forKey:@"playerid"];
-[options setObject:friends forKey:@"friendslist"];    
+[options setObject:friends forKey:@"friendslist"];
 
 [[Playtomic Achievements] list:options andHandler:^(NSArray* achievements, PResponse* response) {
   if(response.success) {
@@ -333,14 +334,14 @@ NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
     {
       NSLog(@"%@", achievement);
     // something like:
-    //{ 
-    //  achievement: "Punched Tass", 
-    //  player: { 
+    //{
+    //  achievement: "Punched Tass",
+    //  player: {
     //    playerid: "1",
     //    playername: "ben",
     //    date: Date(),
     //    rdate: "Just now",
-    //    fields: { 
+    //    fields: {
     //      difficulty: "easy"
     //    }
     //  },
@@ -356,7 +357,7 @@ NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
                 <h2>Activity stream</h2>
                 <p>You can also get achievements represented as an activity stream of each award.</p>
                 <pre>Playtomic.Achievements.stream(options, callback);</pre>
-          
+
                 <h3>Streaming options</h3>
                 <table class="table table-striped">
                   <tr>
@@ -406,11 +407,11 @@ NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
                     <td>Device or website if you save that information</td>
                   </tr>
                 </table>
-          
+
             <h3>PlayerAward</h3>
             <p>When you 'stream' the messages are returned in this format.  This is the same
               format used when you include player or friend information in 'list'.</p>
-        
+
           <table class="table table-striped">
             <tr>
               <td>playername</td>
@@ -446,7 +447,7 @@ NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
               when retrieving the achievements.</td>
             </tr>
           </table>
-          
+
                 <p>Example streams</p>
 
   <pre>// show all the hard achievements by my friends and i as a stream
@@ -461,7 +462,7 @@ NSMutableDictionary *filters = [[NSMutableDictionary alloc] init];
 
 NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
 [options setObject:@"1" forKey:@"playerid"];
-[options setObject:friends forKey:@"friendslist"];    
+[options setObject:friends forKey:@"friendslist"];
 [options setObject:filters forKey:@"filters"];
 [options setObject:[NSNumber numberWithBool:true] forKey:@"group"];
 
@@ -471,28 +472,28 @@ NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
     {
       NSLog(@"%@", achievement);
 	  // something like
-      // { 
-      //  playerid: "1", 
-      //  playername: "ben", 
-      //  date: Date(), 
-      //  rdate: "Just now", 
+      // {
+      //  playerid: "1",
+      //  playername: "ben",
+      //  date: Date(),
+      //  rdate: "Just now",
       //  fields: {
-      //     difficulty: "hard" } 
+      //     difficulty: "hard" }
       //  },
-      //  awarded: { 
+      //  awarded: {
       //    achievement: "Punched tass"
       //  }
       // }
     }
 }];</pre>
-          
+
               </div>
-        
+
         <a name="leaderboards"></a>
         <div class="section">
-          
+
           <h2>Leaderboards</h2>
-          <p>The Leaderboards API gives you very flexible high and low score leaderboards. They can be 
+          <p>The Leaderboards API gives you very flexible high and low score leaderboards. They can be
             created in your game dynamically or set up in the edit leaderboards page.</p>
 
           <h2>PlayerScore structure</h2>
@@ -567,9 +568,9 @@ NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
 
             <h2>Submitting scores</h2>
             <p>Score submission is handled by:</p>
-            <pre>[[Playtomic Leaderboards] save:score 
+            <pre>[[Playtomic Leaderboards] save:score
                      andHander:(void(^)(PResponse *response))handler);</pre>
-            
+
 <pre>// basic score
 PlayerScore *score = [[PlayerScore alloc] init];
 score.playername = @"ben";
@@ -585,14 +586,14 @@ score.allowduplicates = true;
   {
     // score failed because of [response errorMessage] with response.errorcode
   }
-}]; 
+}];
 
-// another score  
+// another score
 NSMutableDictionary *fields = [[NSMutableDictionary] alloc] init];
 [fields setObject:@"barbarian" forKey:@"character"];
 [fields setObject:[NSNumber numberWithInt:7] forKey:@"level"];
 [fields setObject:[NSNumber numberWithInt:18] forKey:@"kills"];
-  
+
 PlayerScore *score2 = [[PlayerScore alloc] init];
 score2.playername = @"ben";
 score2.points = 173000;
@@ -600,7 +601,7 @@ score2.table = @"highscores";
 score2.allowduplicates = true;
 score2.fields = fields;
 
-[[Playtomic Leaderboards] save:score andHandler:^(PResponse* response) 
+[[Playtomic Leaderboards] save:score andHandler:^(PResponse* response)
 {
   if(response.success)
   {
@@ -611,14 +612,14 @@ score2.fields = fields;
   }
 }];</pre>
 
-    
+
           <h2>Showing scores</h2>
-          <p>Scores are loaded via a simple method that returns an array of 
+          <p>Scores are loaded via a simple method that returns an array of
           scores to your function where you can display the data in your leaderboard.</p>
-          
-          <pre>[[Playtomic Leaderboards] list:options 
+
+          <pre>[[Playtomic Leaderboards] list:options
                     andHandler:(void(^)(NSArray *scores, int numscores, PResponse *response))handler;</pre>
-      
+
           <table class="table table-striped">
             <tr>
               <th>Property</th>
@@ -679,7 +680,7 @@ score2.fields = fields;
               <td>Results per page (default is 20)</td>
             </tr>
           </table>
-          
+
 <pre>NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
 [options setObject:@"highscores" forKey:@"table"];
 [options setObject:[NSNumber numberWithBool:true] forKey:@"highest"];
@@ -687,41 +688,41 @@ score2.fields = fields;
 [options setObject:[NSNumber numberWithInteger:10] forKey:@"perpage"];
 
 [[Playtomic Leaderboards] list:options andHandler:^(NSArray *scores, int numscores, PResponse *response) {
-    if(response.success) 
+    if(response.success)
   {
     for(PlayerScore *score in scores)
     {
       NSLog(@"%@ got %d points", score.name, score.points);
     }
-    } 
-  else 
+    }
+  else
   {
         // score failed because of [response errorMessage] with response.errorcode
     }
 }];</pre>
-          
+
           <h2>Save and list</h2>
           <p>You can submit scores and at the same time return the leaderboard page that that score is on.
             This combines the Save and List approaches from above:</p>
-            
+
           <pre>[[Playtomic PlayerLevels] saveAndList:(PlayerLevel*)level
                            andOptions:(NSDictionary*)options
                            andHandler:(void(^)(NSArray *scores, int numscores, PResponse *response))handler;</pre>
 
-          <p>You don't specify a 'page', you specify the 'perpage' (default 20) and it will automatically 
-            decide which page to return based on the submitted score's rank. If you submit the 1187th 
+          <p>You don't specify a 'page', you specify the 'perpage' (default 20) and it will automatically
+            decide which page to return based on the submitted score's rank. If you submit the 1187th
             best score at 30 per page then it will show you page 39, scores #1170 - #1200.</p>
-          <p>Ranks are returned so you are not viewing the top N scores you are viewing the top N scores 
-            from rank X onwards.</p>        
-          
+          <p>Ranks are returned so you are not viewing the top N scores you are viewing the top N scores
+            from rank X onwards.</p>
+
         </div>
-        
+
         <a name="playerlevels"></a>
         <div class="section">
-          
+
           <h2>Level sharing</h2>
-          
-          <p>The level sharing API provides a way to store and retrieve user-generated content for your game. 
+
+          <p>The level sharing API provides a way to store and retrieve user-generated content for your game.
             It can operate anonymously or authenticated via any 3rd party service you're already using.</p>
 
           <h3>PlayerLevel structure</h3>
@@ -743,7 +744,7 @@ score2.fields = fields;
               <td>NSString</td>
               <td>The player name.</td>
             </tr>
-            
+
             <tr>
               <td>playerid</td>
               <td>NSString</td>
@@ -765,57 +766,57 @@ score2.fields = fields;
               <td>Any additional data you want to (or have) attached to a level.</td>
             </tr>
           </table>
-          
+
           <h2>Saving levels</h2>
           <pre>[[Playtomic PlayerLevels] save:(PlayerLevel*)level
                     andHandler:(void(^)(PlayerLevel *level, PResponse *response))handler]</pre>
-          
+
           <p>Example saving level:</p>
 
 <pre>PlayerLevel *level = [[PlayerLevel alloc] init];
 level.name = @"my level";
 level.playername = @"ben";
 level.data = "obj1=cannon&amp;obj1x=120&amp;obj1y=180",
-    
+
 [[Playtomic PlayerLevels] save:level andHandler:^(PlayerLevel *l, PResponse *response) {
   if(response.success)
   {
     // new levelid is level.levelid;
-  } 
+  }
   else
   {
     // save failed because of [response errorMessage] with response.errorcode
   }
 }];</pre>
-          
+
           <h2>Rating levels</h2>
-          <p>Levels can be rated 1 - 10 by players. Rating can be done anonymously with some 
+          <p>Levels can be rated 1 - 10 by players. Rating can be done anonymously with some
             protection against repeat voting, or bound to playerids if you specify them.</p>
-            
-          <pre>[[Playtomic PlayerLevels] rate:(NSString*)levelid 
+
+          <pre>[[Playtomic PlayerLevels] rate:(NSString*)levelid
                      andRating:(int)rating
                     andHandler:(void(^)(PResponse *response))handler]</pre>
-          
+
           <p>Example rating level:</p>
 
 <pre>[[Playtomic PlayerLevels] rate:level.levelid andRating:7 andHandler:^(PResponse *response) {
-    if(response.success) 
+    if(response.success)
   {
         // rating succeeded
-    } 
-  else 
+    }
+  else
   {
         // Rating failed because of [response errorMessage] with response.errorcode
     }
 }];</pre>
-          
+
           <h2>Listing levels</h2>
-          <p>  Listing levels can be done by popular or newest, with optional 
+          <p>  Listing levels can be done by popular or newest, with optional
             filtering by date ranges and/or custom fields.</p>
 
-          <pre>[[Playtomic PlayerLevels] list:(NSDictionary*)options 
+          <pre>[[Playtomic PlayerLevels] list:(NSDictionary*)options
                     andHandler:(void (^)(NSArray *levels, int numlevels, PResponse *response))handler]</pre>
-          
+
           <h4>Listing options</h4>
           <table class="table table-striped">
             <tr>
@@ -893,8 +894,8 @@ level.data = "obj1=cannon&amp;obj1x=120&amp;obj1y=180",
               <td>Results per page (default is 20)</td>
             </tr>
           </table>
-  
-          
+
+
           <p>An example listing levels:</p>
 
 <pre>NSMutableDictionary *filters = [[NS MutableDictionary alloc] init];
@@ -905,104 +906,104 @@ NSMutableDictionary *list = [[NSMutableDictionary alloc] init];
 [list setObject:[NSNumber numberWithInt30] forKey:@"perpage"];
 [list setObject:[NSNumber numberWithBool:NO] forKey:@"data"];
 [list setObject:filters forKey:@"filters"];
-    
+
 [[Playtomic PlayerLevels] list:list andHandler:^(NSArray *levels, int numlevels, PResponse *response) {
 
-    if(response.success) 
+    if(response.success)
   {
     for(PlayerLevel *level in levels)
     {
       NSLog(@"%@", level.name);
     }
-    } 
-  else 
+    }
+  else
   {
         // score failed because of [response errorMessage] with response.errorcode
     }
-  
+
 }];</pre>
-          
+
           <h2>Loading levels</h2>
           <p>If you do not include the data when you load lists of levels then you can request it seperately.</p>
 
-          <pre>[[Playtomic PlayerLevels] load:(NSString*)levelid 
+          <pre>[[Playtomic PlayerLevels] load:(NSString*)levelid
                     andHandler:(void(^)(PlayerLevel *level, PResponse *response))handler];</pre>
-          
+
           <p>An example loading a single level:</p>
 
 <pre>[[Playtomic PlayerLevels] load:levelid andHandler:^(PlayerLevel *level, PResponse *response) {
-    if(response.success) 
+    if(response.success)
   {
     // level loaded
-    } 
-  else 
+    }
+  else
   {
         // score failed because of [response errorMessage] with response.errorcode
     }
 
 }];</pre>
-  
+
         </div>
-        
+
         <a name="gamevars"></a>
         <div class="section">
           <h2>GameVars</h2>
-          <p>GameVars let you change the value of key variables in your game any time you 
+          <p>GameVars let you change the value of key variables in your game any time you
             want.</p>
-            
+
           <h3>Setting them up in your database</h3>
           <p>In your <a href="https://mongohq.com/">MongoHQ</a> dashboard add a new entry
             to the "gamevars" collection.</p>
-            
+
 <pre>{
   name: "basehitpoints",
   value: 800
 }</pre>
-            
+
           <h2>Loading</h2>
           <p>They are loaded via:</p>
-          
+
           <pre>[[Playtomic GameVars] load:(void (^)(NSDictionary* gamevars, PResponse *response))handler];</pre>
-          
-          <p>You can load variables individually, for instance if you are caching the 
-            GameVars you can check a 'version' GameVar to decide whether to reload 
+
+          <p>You can load variables individually, for instance if you are caching the
+            GameVars you can check a 'version' GameVar to decide whether to reload
             the full collection.</p>
-            
-          <pre>[[Playtomic GameVars] loadWithName:(NSString*)name 
+
+          <pre>[[Playtomic GameVars] loadWithName:(NSString*)name
                         andHandler: (void (^)(NSDictionary* gamevars, PResponse *response))handler];</pre>
-          
-          <p>The callback parameter is your function that receives an NSDictionary that 
-            has properties matching the variables you have configured in your database. 
+
+          <p>The callback parameter is your function that receives an NSDictionary that
+            has properties matching the variables you have configured in your database.
             The callback is the same for all or single GameVars.</p>
-            
+
 <pre>// our variables with default, original values
 int basehitpoints = 100;
 int basegold = 50;
 
 [[Playtomic GameVars] load:^(NSDictionary* gamevars, PResponse* response){
-  
+
   if(response.success)
   {
     basehitpoints = [[gamevars objectForKey:@"basehitpoints"] integerValue];
   }
-  else 
+  else
   {
     // request failed with [response errorMessage] with response.errorcode
   }
 }];</pre>
         </div>
-        
+
         <a name="geoip"></a>
         <div class="geoip">
           <h2>Geolocation</h2>
-          <p>The GeoIP service identifies which country the player is from, 
+          <p>The GeoIP service identifies which country the player is from,
             returning their country code and name.</p>
           <p>It is called via:</p>
 
           <pre>[[Playtomic GeoIP] lookup:(void (^)(PlayerCountry* country, PResponse *response))handler]</pre>
-          
+
           <p>The callback function receives an object that has 'code' and 'name' properties:</p>
-            
+
 <pre>[[Playtomic GeoIP] lookup:^(PlayerCountry* country, PResponse* response){
   if(response.success)
   {
@@ -1014,20 +1015,20 @@ int basegold = 50;
   }
 }];</pre>
         </div>
-		
+
 	</div>
-          
+
       </div>
     </div>
   </div>
-  
+
 
   <footer>
     <div class="container">
       &copy; 2013 Ben Lowry.  Server and client software are released under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.
     </div>
   </footer>
-  
+
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -1038,6 +1039,6 @@ int basegold = 50;
     ga('send', 'pageview');
 
   </script>
-  
+
 </body>
 </html>
