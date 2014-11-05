@@ -95,15 +95,9 @@
 
 					<pre>Playtomic.initialize(publickey:String, privatekey:String, apiurl:String);</pre>
 					<p>Your apiurl will be in the format http://your-application-name.herokuapp.com/ or similar.</p>
-<<<<<<< HEAD
-					
+
 					<p>To import the packages in your game copy the 'playtomic' folder to your project and in your class:</p>
 					<pre>import playtomic.Playtomic; // or playtomic.Achievements etc</pre>
-=======
-
-					<p>To import the packages in your game copy the 'com' folder to your project and in your class:</p>
-					<pre>import com.playtomic.as3.*;</pre>
->>>>>>> master
 
 					<h2>Examples</h2>
 					<p>Each API has an extensive test library in the source code that demonstrates how to use every part in a variety of ways.</p>
@@ -261,9 +255,9 @@ Newsletters.subscribe(subscription, function(response:Response):Void {
 		            you configure in your database.  This means if you want you can provide separate keys for
 		            each achievement so players can't easily cheat.</p>
 <<<<<<< HEAD
-            
+
 		          <pre>Achievements.save(achievement, callback);</pre>
-                    
+
 =======
 
 		          <pre>Playtomic.Achievements.save(achievement, callback);</pre>
@@ -297,7 +291,7 @@ Achievements.save(achievement, function(response:Response):Void {
 		            the player and friends.</p>
 <<<<<<< HEAD
 		          <pre>Achievements.list(options, callback);</pre>
-      
+
 =======
 		          <pre>Playtomic.Achievements.list(options, callback);</pre>
 
@@ -372,7 +366,7 @@ Achievements.list(options, function(achievements:Array, response:Response):Void 
 		          <p>You can also get achievements represented as an activity stream of each award.</p>
 <<<<<<< HEAD
 		          <pre>Achievements.stream(options, callback);</pre>
-          
+
 =======
 		          <pre>Playtomic.Achievements.stream(options, callback);</pre>
 
