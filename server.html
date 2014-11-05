@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Playtomic: Setting up your server</title>
-	<meta name="description" content="Leaderboards and more for unity3d, html5, actionscript and more.">
+	<meta name="description" content="Leaderboards and more for iOS, Android, Unity3d, html5, actionscript and more.">
 	<link href='css/bootstrap/bootstrap.min.css' rel='stylesheet' type='text/css'>
 	<link href='css/custom.css' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800' rel='stylesheet' type='text/css'>
@@ -16,12 +16,13 @@
 			Need support you can't find on Stackoverflow or programming communities you use?  I'm busy but you can <a href="mailto:benlowry@outlook.com">contact me</a>!
 		</div>
 	</div>
-	
+
 	<header>
 		<div class="container">
 			<a href="http://playtomic.org/" class="logo"><img src="assets/playtomic.png" alt="Playtomic" title="Playtomic" /></a>
 			<ul>
 				<li><a href="/server.html">Server setup</a></li>
+				<li><a href="/games.html">Game setup</a></li>
 				<li><a href="/apis.html">API documentation</a></li>
 				<li class="follow">
 					<a href="https://github.com/playtomic" target="_blank" class="github-follow-button">
@@ -38,33 +39,52 @@
 			</ul>
 		</div>
 	</header>
-		
+
 	<div id="content2">
-		
+
 		<div class="container">
-				
+
 			<div class="row">
-		
+
 				<div class="span12">
-				
+
 					<div class="section">
 
-						<h2>The database</h2>
+						<h1>Deploy to Heroku</h1>
+						<p>You can just click this button to deploy the software to Heroku for you automatically.</p>
+						<p><a href='https://heroku.com/deploy?template=https://github.com/playtomic/apiserver/tree/master'><img src='https://www.herokucdn.com/deploy/button.png' alt='Deploy to Heroku' /></a></p>
+
+					</div>
+
+					<div class="section">
+
+						<h2>Manual setup</h2>
+						<p>If you want to set the software up yourself on your own hosting you will need <a href='http://nodejs.org/'>NodeJS</a> and <a href='http://mongodb.org'>MongoDB</a>
+							which can run on any conventional web hosting including <a href=' https://www.digitalocean.com/?refcode=2fc166549414'>Digital Ocean</a> (referral link), <a href='http://aws.amazon.com/'>Amazon Web Services</a> and <a href='http://azure.microsoft.com/'>Microsoft Azure</a>.</p>
+
+					</div>
+
+					<div class="section">
+
+						<h2>Manual setup on Heroku</h2>
+						<p>This is less necessary now that they have automated deployment from git repositories.</p>
+
+						<h3>The database</h3>
 						<ol>
-							<li><p>Create an account at <a href="https://mongohq.com/">MongoHQ</a> and make 
+							<li><p>Create an account at <a href="https://compose.io/">Compose.io</a> and make
 								a database.  The free one will be enough to get started.</p></li>
 							<li><p>In the "Admin" tab of your database create a new user.</p></li>
 
 						</ol>
-					
-						<h2>The server</h2>
+
+						<h3>The server</h3>
 						<ol>
-							<li>Create an account at <a href="http://heroku.com/">Heroku</a>.  
+							<li>Create an account at <a href="http://heroku.com/">Heroku</a>.
 								They have a <a href="https://devcenter.heroku.com/articles/quickstart">great quickstart guide here</a>.</li>
 
-							<li>Create an application on your computer for Heroku and download the api server source 
+							<li>Create an application on your computer for Heroku and download the api server source
 								from <a href="http://github.com/playtomic/apiserver">Github</a>.</li>
-							<li><p>In your MongoHQ dashboard copy the "URI" from the "Admin" tab and put your user credentials in it,
+							<li><p>In your Compose dashboard copy the "URI" from the "Admin" tab and put your user credentials in it,
 								and then in your Heroku application:</p>
 								<pre>heroku config:set playtomic=mongodb://the_uri_you_copied</pre>
 							</li>
@@ -77,71 +97,37 @@ git push heroku master</pre>
 								<pre>heroku apps:info</pre>
 							</li>
 						</ol>
-					
-						<h2>Creating game credentials</h2>
-						<p>You can add game credentials from the MongoHQ dashboard in the 'games' collection.  The collection will be 
-							created for you automatically the first time you upload to Heroku.</p>
-<pre>{ 
-	publickey: "mypublickey", 
-	privatekey: "myprivatekey", 
-	leaderboards: true, 
-	playerlevels: true, 
-	gamevars: true, 
-	geoip: true
-}</pre>
-						<p>To limit access to the API server you can set the above properties to false.</p>
-					
-						<h2>Newsletters</h2>
-						<p>If you want to use the in-game newsletter subscriptions you'll have to do a few things to set up.  We're using <a href="http://mailchimp.com/">MailChimp</a> 
-							in our API server so:</p>
-						<ol>
-							<li>Create your account, it's free for up to 2,000 subscribers and 12,000 emails per month after which
-								you can either pay monthly or only when you want to send newsletters</li>
-							<li>Create a List and take note of the List ID, you can access it in the list's settings</li>
-							<li>Define any custom fields, called MERGE TAGS, that you want to collect such as the 
-								api, the game version, the date the player first played in the "List fields and |MERGE| tags" section</li>
-							<li>Create an API key in your account settings</li>
-						</ol>
-			
-						<p>Once you've done all of that you need to configure the server with your data:</p>
-						<pre>heroku config:set mailchimp=your_api_key mailchimp_listid=your_list_id</pre>
-						<p>You can also disable the default double opt-in requirement that emails players a confirmation before subscribing them by:</p>
-						<pre>heroku config:set mailchimp_doubleoptin=false</pre>
-						<p>By default if a player subscribes 2x their information will update but if you would like to prevent that:</p>
-						<pre>heroku config:set mailchimp_allowupdates=false</pre>
 
 						<h2>Scaling</h2>
 						<p>This toolkit is designed to scale 'horizontally' by using eventual consistency, that means the more resources you assign it on Heroku
-							the more capacity you can handle.  Each 'dyno' or thread or equivalent for your hosting maintains its own caching and state that is 
+							the more capacity you can handle.  Each 'dyno' or thread or equivalent for your hosting maintains its own caching and state that is
 							periodically synced against your database or expired.</p>
 						<p>Heroku can be automatically scaled using <a href="http://hirefire.io/">HireFire.io</a> to create and terminate 'dynos' as your load requires.</p>
-						<p>Your MongoHQ database can be manually upgraded at any time through their website.</p>
+						<p>Your Compose database can be manually upgraded at any time through their website.</p>
 
 						<h2>Recommended deployment</h2>
-						<p>If you're not a starving indie the ideal deployment would be:</p>
 						<ul>
 							<li>2+ dynos at Heroku because inactive single-dyno applications hibernate</li>
 							<li>Use your own domain in case you ever move hosting</li>
 							<li>SSL to keep your player's activities private</li>
-							<li>'Small' database plan (or larger) at MongoHQ with <a href="http://aws.amazon.com/s3">Amazon S3</a> backups</li>
+							<li>'Small' database plan (or larger) at Compose with <a href="http://aws.amazon.com/s3">Amazon S3</a> backups</li>
 							<li>HireFire configured to add a few more dynos when necessary</li>
-							<li><a href="http://pingdom.com/">Pingdom</a> for uptime monitoring</li>			
+							<li><a href="http://pingdom.com/">Pingdom</a> for uptime monitoring</li>
 						</ul>
-						
+
 					</div>
-					
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 
 	<footer>
 		<div class="container">
 			&copy; 2013 Ben Lowry.  Server and client software are released under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.
 		</div>
 	</footer>
-	
+
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -151,6 +137,6 @@ git push heroku master</pre>
 	  ga('create', 'UA-40077834-4', 'playtomic.org');
 	  ga('send', 'pageview');
 	</script>
-	
+
 </body>
 </html>

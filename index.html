@@ -10,18 +10,19 @@
 	<link rel="icon" href="assets/favicon.ico" type="image/icon" />
 </head>
 <body>
-	
+
 	<div id="sponsor">
 		<div class="container">
 			Need support you can't find on Stackoverflow or programming communities you use?  I'm busy but you can <a href="mailto:benlowry@outlook.com">contact me</a>!
 		</div>
 	</div>
-	
+
 	<header>
 		<div class="container">
 			<a href="http://playtomic.org/" class="logo"><img src="assets/playtomic.png" alt="Playtomic" title="Playtomic" /></a>
 			<ul>
 				<li><a href="/server.html">Server setup</a></li>
+				<li><a href="/games.html">Game setup</a></li>
 				<li><a href="/apis.html">API documentation</a></li>
 				<li class="follow">
 					<a href="https://github.com/playtomic" target="_blank" class="github-follow-button">
@@ -38,40 +39,40 @@
 			</ul>
 		</div>
 	</header>
-			
+
 	<div id="splash">
-		
+
 		<div class="container">
-			
+
 			<h1>Leaderboards, achievements, user levels,<br />dynamic content, in-game newsletter subscriptions</h1>
 			<h2>Open source.  Scalable.  Free.</h2>
 
 		</div>
-		
+
 	</div>
-		
+
 	<div id="content">
-					
-		<div class="container">	
-			
+
+		<div class="container">
+
 			<div class="row">
-			
+
 				<div class="span6">
-				
+
 					<div class="section">
 						<h2>Developers, take control of your backend</h2>
-						<p>Playtomic.org is the new home of the tools 
-							once provided by Playtomic - achievements, leaderboards, player levels, gamevars, geoip and in-game newsletter subscription - as a simple to host, open source platform for your game 
+						<p>Playtomic.org is the new home of the tools
+							once provided by Playtomic - achievements, leaderboards, player levels, gamevars, geoip and in-game newsletter subscription - as a simple to host, open source platform for your game
 							compatible with most gaming platforms.</p>
 						<p>Setting up your server is very easy and for small games will probably stay under the free limits of the selected hosting providers.</p>
 						<p>It's your game, now it's your backend too.</p>
 
 					</div>
-				
+
 				</div>
-			
+
 				<div class="span6">
-				
+
 					<div class="section">
 						<h2>Game APIs</h2>
 						<p>Playtomic has extensive documentation, compatibility and tests/examples for all major gaming platforms.</p>
@@ -82,11 +83,11 @@
 							<li><a href="/api/html5.html">HTML5 / JavaScript</a></li>
 							<li><a href="/api/ios.html">iOS / Objective C</a></li>
 							<li><a href="/api/csharp.html">Mono and .NET</a></li>
-							<li><a href="/api/unity3d.html">Unity3d</a></li>		
+							<li><a href="/api/unity3d.html">Unity3d</a></li>
 						</ul>
 
 					</div>
-								
+
 				</div>
 
 				<div class="span12">
@@ -106,7 +107,7 @@
 				</div>
 			</div>
 		</div>
-				
+
 		<div class="row1 firstrow">
 			<div class="container">
 				<div class="row">
@@ -125,10 +126,10 @@
 								<li>Filter by custom fields like difficulty to differentiate between different levels of achievement</li>
 								<li>Include own and friends' status when retrieving lists</li>
 								<li>Filter by own and friends' ids to make everything social</li>
-								<li>View awarded achievements as a stream of updates</li>								
+								<li>View awarded achievements as a stream of updates</li>
 								<li>Group the achievement stream to show only the most recent for each player</li>
 							</ul>
-							
+
 							<h4>Achievements example</h4>
 							<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('achievement_example').style.display='block'; ">Show the example code</button>
 <pre id="achievement_example" style="display: none;"><span class="green">// let's start with listing</span>
@@ -136,124 +137,124 @@
   playerid: <span class="blue">"my_id"</span> <span class="green">// optional from facebook or google or twitter or apple or whatever</span>
 }
 
-Playtomic.Achievements.list(options, function(achievements, response){ 
+Playtomic.Achievements.list(options, function(achievements, response){
 
     <span class="blue3">if</span>(!response.success) {
       <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
     }
-  
-   <span class="green">/* 
+
+   <span class="green">/*
     * now we have our achievement list, it will be something like this:
     * [
-    *  { 
-    *    achievement: "did something awesome" 
+    *  {
+    *    achievement: "did something awesome"
     *  },
-    *  { 
-    *    achievement: "killed the boss", 
+    *  {
+    *    achievement: "killed the boss",
     *    player: {  // when the specified player has the achievement we have a 'player' object
     *               // with the data, when we include our friends we get an
     *               // array called 'friends' of objects the same as this
-    *      playerid: "my_id", 
-    *      playername: "fred", 
-    *      date: new Date(), 
-    *      rdate: "3 days ago", 
-    *      fields: { 
-    *        difficulty: "easy" 
-    *      } 
-    *    } 
+    *      playerid: "my_id",
+    *      playername: "fred",
+    *      date: new Date(),
+    *      rdate: "3 days ago",
+    *      fields: {
+    *        difficulty: "easy"
+    *      }
+    *    }
     *  }
     * ]
     */</span>
-  
+
   <span class="green">// now let's make it more interesting by including our friends</span>
   options.friendslist = [ <span class="blue">"an"</span>, <span class="blue">"array"</span>, <span class="blue">"of"</span>, <span class="blue">"friends"</span>, <span class="blue">"ids"</span>];
 
-  Playtomic.Achievements.list(options, <span class="blue3">function</span>(achievements, response){ 
+  Playtomic.Achievements.list(options, <span class="blue3">function</span>(achievements, response){
       <span class="blue3">if</span>(!response.success) {
         <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
       }
-    
+
     <span class="blue3">for</span>(<span class="blue3">var</span> i=<span class="red">0</span>; i&lt;achievements.length; i++) {
       <span class="blue3">var</span> message = achievements[i].achievement;
-      
+
       <span class="blue3">if</span>(achievements[i].player) {
         message += <span class="blue">", awarded to player on "</span> + achievements[i].player.date;
       }
-      
+
       <span class="blue3">if</span>(achievements[i].friends) {
-        
+
         <span class="blue3">var</span> friends = <span class="blue">""</span>;
-        
-        <span class="blue3">if</span>(achievements[i].friends.length &gt; 3) { 
-          friends = achievements[i].friends[<span class="red">0</span>].playername + <span class="blue">", "</span> + 
-                    achievements[i].friends[<span class="red">1</span>].playername + <span class="blue">", "</span> + 
-                    achievements[i].friends[<span class="red">2</span>].playername + <span class="blue">" and "</span> +   
+
+        <span class="blue3">if</span>(achievements[i].friends.length &gt; 3) {
+          friends = achievements[i].friends[<span class="red">0</span>].playername + <span class="blue">", "</span> +
+                    achievements[i].friends[<span class="red">1</span>].playername + <span class="blue">", "</span> +
+                    achievements[i].friends[<span class="red">2</span>].playername + <span class="blue">" and "</span> +
                     (achievements[i].friends.length - <span class="red">3</span>) + <span class="blue">" more"</span>;
         } else {
           <span class="blue3">for</span>(<span class="blue3">var</span> j=<span class="red">0</span>; j&lt;achievements[i].friends.length; j++) {
             friends += (j > <span class="red">0</span> ? <span class="blue">","</span> : <span class="blue">""</span>) + achievements[i].friends[j].playername;
           }
         }
-        
+
         message += <span class="blue">", awarded to "</span> + achievements[i].friends.length + <span class="blue">" friends: "</span> + friends;
       }
-      
+
       console.log(message);
-      <span class="green">// output: killed the boss, awarded to player on May 10 2013, 
+      <span class="green">// output: killed the boss, awarded to player on May 10 2013,
       // awarded to 7 friends: tom, dick, harry and 4 more</span>
     }
-    
+
     <span class="green">// let's view the achievements chronologically by me</span>
-    options = { 
+    options = {
       playerid: <span class="blue">"my_id"</span>,
     }
-    
+
     Playtomic.Achievements.stream(options, <span class="blue3">function</span>(achievements, numachievements, response) {
         <span class="blue3"><span class="blue3">if</span></span>(!response.success) {
           <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
         }
-      
-      console.log(<span class="blue">"I have "</span> + numachievements + <span class="blue">" achievements, 
+
+      console.log(<span class="blue">"I have "</span> + numachievements + <span class="blue">" achievements,
                   here are the latest"</span>);
-      
+
       <span class="blue3">for</span>(<span class="blue3">var</span> i=<span class="red">0</span>; i&lt;achievements.length; i++) {
-        console.log(achievements[i].awarded.achievement + <span class="blue">" on "</span> + achievements[i].date + 
+        console.log(achievements[i].awarded.achievement + <span class="blue">" on "</span> + achievements[i].date +
                     <span class="blue">" ("</span> + achievements[i].fields.difficulty + <span class="blue">")"</span>);
       }
-      
+
       <span class="green">// and now let's view me and my friends with one-update-per-person</span>
       options.friendslist =  [<span class="blue">"2"</span>, <span class="blue">"3"</span>, <span class="blue">"4"</span>, <span class="blue">"5"</span>];
       options.group = <span class="blue2">true</span>; <span class="green">// this triggers making it the most recent for each person</span>
-      
+
       Playtomic.Achievements.stream(options, <span class="blue3">function</span>(achievements, numachievements, response) {
         <span class="blue3"><span class="blue3">if</span></span>(!response.success) {
           <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
         }
-      
+
         console.log(<span class="blue">"My friends and I have "</span> + numachievements + <span class="blue">" achievements, here are the latest"</span>);
-      
+
         <span class="blue3">for</span>(<span class="blue3">var</span> i=<span class="red">0</span>; i&lt;achievements.length; i++) {
-          console.log(achievements[i].awarded.achievement + <span class="blue">" to "</span> + achievements[i].playername + 
+          console.log(achievements[i].awarded.achievement + <span class="blue">" to "</span> + achievements[i].playername +
 		              <span class="blue">" on "</span> + achievements[i].date + <span class="blue">" ("</span> + achievements[i].fields.difficulty + <span class="blue">")"</span>;
           <span class="green">// output: killed the boss, awarded to ben on May 14 2013 (easy)</span>
           <span class="green">// output: killed the boss, awarded to tom on May 10 2013 (hard)</span>
         }
-        
+
         <span class="green">// and now let's make it just the hard achievements</span>
         options.filter = {
           difficulty: <span class="blue">"hard"</span>
         }
-        
+
         Playtomic.Achievements.stream(options, <span class="blue3">function</span>(achievements, numachievements, response) {
             <span class="blue3"><span class="blue3">if</span></span>(!response.success) {
               <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
             }
-      
+
           console.log(<span class="blue">"My friends and I have "</span> + numachievements + <span class="blue">" hard achievements, here are the latest"</span>);
-      
+
           <span class="blue3">for</span>(<span class="blue3">var</span> i=<span class="red">0</span>; i&lt;achievements.length; i++) {
-            console.log(achievements[i].awarded.achievement + <span class="blue">" to "</span> + achievements[i].playername + 
-                        <span class="blue">" on "</span> + achievements[i].date + 
+            console.log(achievements[i].awarded.achievement + <span class="blue">" to "</span> + achievements[i].playername +
+                        <span class="blue">" on "</span> + achievements[i].date +
                         <span class="blue">" ("</span> + achievements[i].fields.difficulty + <span class="blue">")"</span>);
             <span class="green">// output: killed the boss, awarded to tom on May 10 2013 (hard)</span>
           }
@@ -262,13 +263,13 @@ Playtomic.Achievements.list(options, function(achievements, response){
     });
   });
 });</pre>
-			
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row2">
 			<div class="container">
 				<div class="row">
@@ -287,17 +288,17 @@ Playtomic.Achievements.list(options, function(achievements, response){
 								<li>Free for up to 2,000 players with 12,000 emails per month</li>
 								<li>Pay as you go and subscription options available</li>
 							</ul>
-							
+
 							<p>On the server side you can turn double opt-in off and disable updating a player's records
 								if they re-submit their information.</p>
-							
+
 							<h4>Subscription example</h4>
 							<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('newsletter_example').style.display='block'; ">Show the example code</button>
 <pre id="newsletter_example" style="display: none;"><span class="blue3">var</span> subscription = {
 	email: <span class="blue">"test@exampleuri.com"</span>, <span class="green">// the only mandatory field</span>
-	firstname: <span class="blue">"fred"</span>, 
-	lastname: <span class="blue">"bloggs"</span>, 
-	fields: { 
+	firstname: <span class="blue">"fred"</span>,
+	lastname: <span class="blue">"bloggs"</span>,
+	fields: {
 		FIRSTPLAYED: <span class="blue">"2013-05-20"</span>,
 		PLATFORM: <span class="blue">"as3-web"</span>,
 		GAMEVERSION: <span class="red">1.08</span>,
@@ -316,13 +317,13 @@ Playtomic.Newsletters.subscribe(subscription, <span class="blue3">function</span
       <span class="green">// response failed because of response.errormessage</span>
     }
 });</pre>
-	
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row1">
 			<div class="container">
 				<div class="row">
@@ -344,11 +345,11 @@ Playtomic.Newsletters.subscribe(subscription, <span class="blue3">function</span
 								<li>Filter by player's id to make your leaderboards personal</li>
 								<li>Combine all of the above to make the most powerful leaderboards around!</li>
 							</ul>
-					
+
 							<h4>Leaderboard example</h4>
 							<p>Imagine a racing game that you and your friends play.  Let's walk through some of the awesome capabilities
 								waiting for you in these leaderboards using the HTML5 API.</p>
-						
+
 					<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('leaderboard_example').style.display='block'; ">Show the example code</button>
 <pre id="leaderboard_example" style="display: none;"><span class="green">// we just tore up race #10 in our lambo</span>
 <span class="blue3">var</span> score = {
@@ -369,94 +370,94 @@ Playtomic.Newsletters.subscribe(subscription, <span class="blue3">function</span
 <span class="green">// by using saveAndList we submit a score and return the 'page' of scores the</span>
 <span class="green">// ranked score sits on, eg 17th score on 10 per page will give us scores #11 - 20</span>
 Playtomic.Leaderboards.saveAndList(score, <span class="blue3">function</span>(scores, numscores, response) {
-  
+
   <span class="blue3">if</span>(!response.success) {
     <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
   }
-  
+
   console.log(<span class="blue">"Best times for race #10 ("</span> + numscores + <span class="blue">" total scores)"</span>);
   <span class="blue3">var</span> i;
-  
+
   <span class="blue3">for</span>(i=<span class="red">0</span>; i&lt;scores.length; i++) {
-    console.log(scores[i].rank + <span class="blue">"   "</span> + scores[i].points + <span class="blue">"   "</span> + 
+    console.log(scores[i].rank + <span class="blue">"   "</span> + scores[i].points + <span class="blue">"   "</span> +
                 scores[i].playername + <span class="blue">" driving "</span> + scores[i].fields.car);
   }
-  
+
   <span class="green">// let's drill down further and just look at that car</span>
   <span class="blue3">var</span> list = {
     lowest: <span class="blue2">true</span>,
     perpage: <span class="red">10</span>,
-    filters: { 
+    filters: {
       car: <span class="blue">"Lamborghini Gallardo"</span>,
       race: <span class="red">10</span>
     }
   }
-  
+
   Playtomic.Leaderboards.list(list, <span class="blue3">function</span>(scores, numscores, response) {
-  
+
     <span class="blue3">if</span>(!response.success) {
       <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
     }
-  
+
     console.log(<span class="blue">"Best times for Lamborghini Gallardos on race #10"</span>);
-  
+
     <span class="blue3">for</span>(i=<span class="red">0</span>; i&lt;scores.length; i++) {
       console.log(scores[i].rank + <span class="blue">"   "</span> + scores[i].points + <span class="blue">"   "</span> + scores[i].playername);
     }
-    
+
     <span class="green">// let's drill down further and make this about my personal bests</span>
     <span class="blue3">var</span> myleaderboard = {
       lowest: <span class="blue2">true</span>,
       perpage: <span class="red">10</span>,
       playerid: <span class="blue">"my_id"</span>,
-      filters: { 
+      filters: {
         car: <span class="blue">"Lamborghini Gallardo"</span>,
         race: <span class="red">10</span>
       }
     }
-    
+
     Playtomic.Leaderboards.list(myleaderboard, <span class="blue3">function</span>(scores, numscores, response) {
-  
+
       <span class="blue3">if</span>(!response.success) {
         <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
       }
-  
+
       console.log(<span class="blue">"My best times for Lamborghini Gallardos on race #10"</span>);
-  
+
       <span class="blue3">for</span>(i=<span class="red">0</span>; i&lt;scores.length; i++) {
         console.log(scores[i].rank + <span class="blue">"   "</span> + scores[i].points + <span class="blue">"   "</span> + scores[i].rdate);
         <span class="green">// 'rdate' is a friendly date format relative to utc, like 7 minutes ago</span>
       }
-      
+
       <span class="green">// let's see what my friends are submitting as a stream</span>
       <span class="blue3">var</span> friendsactivity = {
         perpage: <span class="red">20</span>,
         friendslist: [<span class="blue">"array of friends' playerids"</span>],
         mode: <span class="blue">"newest"</span> <span class="green">// in 'newest' we get the scores as an unranked stream</span>
       }
-    
+
       Playtomic.Leaderboards.list(friendsactivity, <span class="blue3">function</span>(scores, numscores, response) {
-  
+
         <span class="blue3">if</span>(!response.success) {
           <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
         }
-  
+
         console.log(<span class="blue">"Latest scores from my friends"</span>);
-  
+
         <span class="blue3">for</span>(i=<span class="red">0</span>; i&lt;scores.length; i++) {
-          console.log(scores[i].points + <span class="blue">"   "</span> + scores[i].playername + 
+          console.log(scores[i].points + <span class="blue">"   "</span> + scores[i].playername +
                       <span class="blue">" driving "</span> + scores[i].fields.car + <span class="blue">" on race "</span> + scores[i].fields.race);
         }
       });
     });
-  });  
+  });
 });</pre>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row2">
 			<div class="container">
 				<div class="row">
@@ -479,13 +480,13 @@ Playtomic.Leaderboards.saveAndList(score, <span class="blue3">function</span>(sc
 								<li>Filter by player's id to maintain a catalog of the player's creations</li>
 								<li>Create content on tablets or web to share with smaller form factors</li>
 							</ul>
-					
+
 							<h4>PlayerLevel example</h4>
-							<p>You've created a game where players can design their own levels for other people 
+							<p>You've created a game where players can design their own levels for other people
 								to play.  This is how you'd do it with the HTML5 API.</p>
-						
+
 								<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('playerlevel_example').style.display='block'; ">Show the example code</button>
-												
+
 <pre id="playerlevel_example" style="display: none;"><span class="green">// let's save our creation</span>
 <span class="blue3">var</span> level = {
   name: <span class="blue">"my level"</span>,
@@ -503,9 +504,9 @@ Playtomic.PlayerLevels.save(level, <span class="blue3">function</span>(l, respon
   <span class="blue3">if</span>(!response.success) {
     <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
   }
-  
+
   console.log(<span class="blue">"my level has been saved with level id "</span> + l.levelid);
-  
+
   <span class="green">// someone wants to play the levels other people have made</span>
   <span class="blue3">var</span> options = {
     mode: <span class="blue">"popular"</span>,
@@ -514,39 +515,39 @@ Playtomic.PlayerLevels.save(level, <span class="blue3">function</span>(l, respon
                 <span class="green">// levels at once you can exclude the data and just load it</span>
                 <span class="green">// individually </span>
   }
-  
+
   Playtomic.PlayerLevels.list(options, <span class="blue3">function</span>(levels, numlevels, response) {
     <span class="blue3">if</span>(!response.success) {
       <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
     }
-  
+
     console.log(<span class="blue">"loaded "</span> + levels.length + <span class="blue">" levels out of "</span> + numlevels + <span class="blue">" total"</span>);
-  
+
     <span class="blue3">for</span>(<span class="blue3">var</span> i=<span class="red">0</span>; i&lt;levels.length; i++) {
       console.log(levels[i].name + <span class="blue">" by "</span> + levels[i].ben + <span class="blue">": "</span> + levels[i].rating);
     }
-  
+
     <span class="green">// now let's pretend we clicked on one of those levels to play it, because</span>
     <span class="green">// we excluded the data when we fetched the list we now need to load it in</span>
     <span class="green">// a seperate request</span>
     Playtomic.PlayerLevels.load(selected.levelid, <span class="blue3">function</span>(level, response) {
-    
+
         <span class="blue3">if</span>(!response.success) {
           <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
         }
-    
+
       console.log(<span class="blue">"ready to play "</span> + level.name);
-    
+
       <span class="green">// so we beat this level and now we want to rate it out of 10</span>
       Playtomic.PlayerLevels.rate(level.levelid, <span class="red">8</span>, <span class="blue3">function</span>(response) {
-    
+
           <span class="blue3">if</span>(!response.success) {
             <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
           }
-      
-        console.log(<span class="blue">"rated "</span> + level.levelid + <span class="blue">" successfully, which increases "</span> + 
+
+        console.log(<span class="blue">"rated "</span> + level.levelid + <span class="blue">" successfully, which increases "</span> +
                     <span class="blue">"the votes by 1 and the score by 8, from which the rating is calculated."</span>);
-					
+
           <span class="green">// now we want to play our friends' levels</span>
           <span class="blue3">var</span> friendslevels =  {
             mode: <span class="blue">"popular"</span>,
@@ -554,37 +555,37 @@ Playtomic.PlayerLevels.save(level, <span class="blue3">function</span>(l, respon
             data: <span class="blue2">true</span>,
             friendslist: [<span class="blue">"my"</span>, <span class="blue">"friends"</span>, <span class="blue">"playerids"</span>]
           }
-          
+
           Playtomic.PlayerLevels.list(friendslists, <span class="blue3">function</span>(levels, numlevels, response) {
-            
+
               <span class="blue3">if</span>(!response.success) {
                 <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
               }
-            
+
               console.log(<span class="blue">"loaded "</span> + levels.length + <span class="blue">" levels out of "</span> + numlevels + <span class="blue">" total"</span>);
-  
+
               <span class="blue3">for</span>(<span class="blue3">var</span> i=<span class="red">0</span>; i&lt;levels.length; i++) {
                 console.log(levels[i].name + <span class="blue">" by "</span> + levels[i].ben + <span class="blue">": "</span> + levels[i].rating);
               }
-            
+
               <span class="green">// now i want to show off my own creations</span>
               <span class="blue3">var</span> mylevels = {
                 mode: <span class="blue">"popular"</span>,
                 playerid: <span class="blue">""my_id"</span>
               }
-            
+
               Playtomic.PlayerLevels.list(mylevels, <span class="blue3">function</span>(levels, numlevels, response) {
-              
+
                 <span class="blue3">if</span>(!response.success) {
                   <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
                 }
-              
+
                 console.log(<span class="blue">"loaded "</span> + levels.length + <span class="blue">" levels out of "</span> + numlevels + <span class="blue">" total"</span>);
-  
+
                 <span class="blue3">for</span>(<span class="blue3">var</span> i=<span class="red">0</span>; i&lt;levels.length; i++) {
                   console.log(levels[i].name + <span class="blue">" by "</span> + levels[i].ben + <span class="blue">": "</span> + levels[i].rating);
                 }
-  
+
             });
           });
         });
@@ -597,10 +598,10 @@ Playtomic.PlayerLevels.save(level, <span class="blue3">function</span>(l, respon
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="row1">
 			<div class="container">
-		
+
 				<div class="row">
 					<div class="span3">
 						<div class="section">
@@ -618,19 +619,19 @@ Playtomic.PlayerLevels.save(level, <span class="blue3">function</span>(l, respon
 								<li>Manage cross-promotions</li>
 								<li>Rotate between advertising partners</li>
 							</ul>
-					
+
 							<h4>GameVars example</h4>
 							<p>In our game we are going to store the entire configuration for our enemies.  This data weighs in at
 								47 kilobytes so we are also going to store a 'version' we can cache to skip reloading the same
 								data.</p>
-						
+
 							<button class="btn btn-small" onclick="this.style.display='none'; document.getElementById('gamevars_example').style.display='block'; ">Show the example code</button>
-						
+
 <pre id="gamevars_example" style="display: none;"><span class="green">// first let's set up our default configuration for when the player is disconnected</span>
-<span class="blue3">var</span> config = { 
+<span class="blue3">var</span> config = {
 	version: <span class="red">1</span>,
 	enemies: { <span class="green">// the enemy configuration</span>
-		badguy1: { 
+		badguy1: {
 			hitpoints: <span class="red">100</span>,
 			gun: <span class="red">3</span>,
 			speed: <span class="red">8</span>,
@@ -670,27 +671,27 @@ Playtomic.GameVars.loadSingle(<span class="blue">"version"</span>, <span class="
   <span class="blue3">if</span>(!response.success) {
     <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
   }
-  
+
   <span class="green">// check if we need to make the bigger request for all of the data</span>
   <span class="blue3">if</span>(gamevars.version &gt; config.version) {
-    
+
     Playtomic.GameVars.load(<span class="blue3">function</span>(gamevars, response) {
-    
+
       <span class="blue3">if</span>(!response.success) {
         <span class="blue3">return</span> console.log(<span class="blue">"something went wrong: "</span> + response.errormessage);
       }
-      
+
       <span class="green">// and update our local config, you could do this in a variety of ways depending on</span>
       <span class="green">// if you are storing one giant GameVar with the entire config:</span>
       config = gamevars;
-        
+
       <span class="green">// or doing each section as a separate GameVar</span>
       config.version = gamevars.version;
       config.enemies = gamevars.enemies;
       config.player = gamevars.player;
       config.powerups = gamevars.powerups;
       config.crosspromotion = gamevars.crosspromotion;
-      
+
       <span class="green">// or going even more granular</span>
       config.enemies.badguy1 = gamevars.enemies_badguy1;
     });
@@ -702,7 +703,7 @@ Playtomic.GameVars.loadSingle(<span class="blue">"version"</span>, <span class="
 				</div>
 			</div>
 		</div>
-		
+
 	</div>
 
 	<footer>
@@ -710,7 +711,7 @@ Playtomic.GameVars.loadSingle(<span class="blue">"version"</span>, <span class="
 			&copy; 2013 Ben Lowry.  Server and client software are released under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.
 		</div>
 	</footer>
-	
+
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -721,6 +722,6 @@ Playtomic.GameVars.loadSingle(<span class="blue">"version"</span>, <span class="
 	  ga('send', 'pageview');
 
 	</script>
-	
+
 </body>
 </html>
