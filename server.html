@@ -51,7 +51,7 @@
 					<div class="section">
 
 						<h1>Deploy to Heroku</h1>
-						<p>Just click this button to deploy the software to Heroku for you automatically on their free tier webhosting with the free tier <a href='http://compose.io/'>compose.io</a> MongoDB database.</p>
+						<p>Just click this button to deploy the software to Heroku for you automatically on their free tier webhosting with the free tier <a href='http://mongolab.com/'>MongoLab</a> MongoDB database.</p>
 						<p>You will have an opportunity to create your own Heroku account during the deployment.</p>
 						<p><a href='https://heroku.com/deploy?template=https://github.com/playtomic/apiserver/tree/master'><img src='https://www.herokucdn.com/deploy/button.png' alt='Deploy to Heroku' /></a></p>
 
@@ -62,21 +62,12 @@
 						<h2>Manual setup</h2>
 						<p>If you want to set the software up yourself on your own hosting you will need <a href='http://nodejs.org/'>NodeJS</a> and <a href='http://mongodb.org'>MongoDB</a>
 							which can run on any conventional web hosting including <a href=' https://www.digitalocean.com/?refcode=2fc166549414'>Digital Ocean</a> (referral link), <a href='http://aws.amazon.com/'>Amazon Web Services</a> and <a href='http://azure.microsoft.com/'>Microsoft Azure</a>.</p>
-
 					</div>
 
 					<div class="section">
 
 						<h2>Manual setup on Heroku</h2>
 						<p>This is less necessary now that they have automated deployment from git repositories.</p>
-
-						<h3>The database</h3>
-						<ol>
-							<li><p>Create an account at <a href="https://compose.io/">Compose.io</a> and make
-								a database.  The free one will be enough to get started.</p></li>
-							<li><p>In the "Admin" tab of your database create a new user.</p></li>
-
-						</ol>
 
 						<h3>The server</h3>
 						<ol>
@@ -98,10 +89,17 @@ git push heroku master</pre>
 								<pre>heroku apps:info</pre>
 							</li>
 						</ol>
+						
+						<h3>The database</h3>
+						<ol>
+							<li><p>Create a database in your application via the command line:</p>
+							<pre>heroku addons:add mongolab</pre>
+							<p></p>The free 'sandbox' one will be enough to get started and for small games.</p></li>
+						</ol>
 
 						<h2>Scaling</h2>
-						<p>This toolkit is designed to scale 'horizontally' by using eventual consistency, that means the more resources you assign it on Heroku
-							the more capacity you can handle.  Each 'dyno' or thread or equivalent for your hosting maintains its own caching and state that is
+						<p>This toolkit is designed to handle more capacity based on the resources you assign it on Heroku.  
+							Each 'dyno' or thread or equivalent for your hosting maintains its own caching and state that is
 							periodically synced against your database or expired.</p>
 						<p>Heroku can be automatically scaled using <a href="http://hirefire.io/">HireFire.io</a> to create and terminate 'dynos' as your load requires.</p>
 						<p>Your Compose database can be manually upgraded at any time through their website.</p>
@@ -111,11 +109,10 @@ git push heroku master</pre>
 							<li>2+ dynos at Heroku because inactive single-dyno applications hibernate</li>
 							<li>Use your own domain in case you ever move hosting</li>
 							<li>SSL to keep your player's activities private</li>
-							<li>'Small' database plan (or larger) at Compose with <a href="http://aws.amazon.com/s3">Amazon S3</a> backups</li>
+							<li>Any paid database plan at <a href="http://compose.io/">Compose</a> or <a href="http://mongolab.com/">MongoLab</a> with <a href="http://aws.amazon.com/s3">Amazon S3</a> backups</li>
 							<li>HireFire configured to add a few more dynos when necessary</li>
 							<li><a href="http://pingdom.com/">Pingdom</a> for uptime monitoring</li>
 						</ul>
-
 					</div>
 				</div>
 			</div>
